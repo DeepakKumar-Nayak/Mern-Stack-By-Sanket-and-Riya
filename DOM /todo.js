@@ -18,8 +18,7 @@ function addTodo(todoText){
 
 document.addEventListener('DOMContentLoaded', ()=>{
    const todoInput = document.getElementById('todo-input')
-   const taskList = document.getElementById('taskList')
-
+   
    todoInput.addEventListener('change', (event)=>{
         const todoText = event.target.value;
         event.target.value = todoText.trim()
@@ -34,11 +33,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }else{
             addTodoToLocalStorage(todoText)
             addTodo(todoText)
+            todoInput.value = ""
         }
    })
 
-const todo = getTodoFromLocalStorage()
-todo.forEach((data)=>{
+    const todo = getTodoFromLocalStorage()
+    todo.forEach((data)=>{
     
     const createLi = document.createElement("li")
     createLi.textContent = data
