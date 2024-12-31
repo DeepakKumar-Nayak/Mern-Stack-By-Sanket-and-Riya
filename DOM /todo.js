@@ -1,18 +1,20 @@
 function getTodoFromLocalStorage(){
-    const todo = JSON.parse(localStorage.getItem('todo')) || []
-    return todo; 
+    const todos = JSON.parse(localStorage.getItem('todos')) || {todoList:[]}
+    console.log(todos)
+    return todos; 
 }
 
-function addTodoToLocalStorage(todoText){
-    const todo = getTodoFromLocalStorage()
-    todo.push(todoText)
-    localStorage.setItem('todo',JSON.stringify(todo))
+function addTodoToLocalStorage(todo){
+    const todos = getTodoFromLocalStorage()
+    
+    todos.todoList.push(todo)
+    localStorage.setItem('todos',JSON.stringify(todos))
 }
 
-function addTodo(todoText){
+function addTodo(todo){
     const taskList = document.getElementById('taskList')
     const createLi = document.createElement("li")
-    createLi.textContent = todoText
+    createLi.textContent = todo.text
 
     //adding class to an li element before appending
     createLi.classList.add('todo-item')
@@ -21,13 +23,17 @@ function addTodo(todoText){
     const creatediv = document.createElement('div')
     creatediv.classList.add('delete_edit_buttons')
 
+    // creating edit button
     const editBtn = document.createElement("button")
     editBtn.textContent = 'Edit'
     editBtn.classList.add('edit-btn')
 
+    // creating delete button
     const deleteBtn = document.createElement('button')
     deleteBtn.textContent = "Delete"
     deleteBtn.classList.add('delete-btn')
+
+    // creating an completed button
 
     createLi.appendChild(creatediv)
 
@@ -53,14 +59,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(todoText === ""){
             alert('please enter some todo')
         }else{
-            addTodoToLocalStorage(todoText)
-            addTodo(todoText)
+            addTodoToLocalStorage({
+                text:todoText,
+                isCompleted:false
+            })
+            addTodo({text:todoText,isCompleted:false})
             todoInput.value = ""
         }
    })
 
     const todo = getTodoFromLocalStorage()
-    todo.forEach((data)=>{
+    todo.todoList.forEach((data)=>{
     addTodo(data)
 })
    
