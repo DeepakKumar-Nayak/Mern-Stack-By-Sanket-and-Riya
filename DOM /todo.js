@@ -5,13 +5,21 @@ function getTodoFromLocalStorage(){
 }
 
 function addTodoToLocalStorage(todo){
+    console.log(todo,'inside addTodoToLocalStorage')
     const todos = getTodoFromLocalStorage()
     
     todos.todoList.push(todo)
     localStorage.setItem('todos',JSON.stringify(todos))
 }
 
+function executeFilter(event){
+    let element = event.target
+    const value = element.getAttribute('data-filter')
+    console.log(value)
+   }
+
 function addTodo(todo){
+    console.log(todo,'inside the addTodo')
     const taskList = document.getElementById('taskList')
     const createLi = document.createElement("li")
     createLi.textContent = todo.text
@@ -53,6 +61,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         console.log(event.target.value)
    })
 
+   
+
+  const filterBtns = document.getElementsByClassName('filterbtn')
+  for(let btn of filterBtns){
+    btn.addEventListener('click', executeFilter)
+  }
    const submitButton = document.getElementById("addTodo")
    submitButton.addEventListener('click', ()=>{
         const todoText = todoInput.value
