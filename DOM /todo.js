@@ -13,7 +13,29 @@ function addTodo(todoText){
     const taskList = document.getElementById('taskList')
     const createLi = document.createElement("li")
     createLi.textContent = todoText
+
+    //adding class to an li element before appending
+    createLi.classList.add('todo-item')
+
+    // creating and addind edit and delete button 
+    const creatediv = document.createElement('div')
+    creatediv.classList.add('delete_edit_buttons')
+
+    const editBtn = document.createElement("button")
+    editBtn.textContent = 'Edit'
+    editBtn.classList.add('edit-btn')
+
+    const deleteBtn = document.createElement('button')
+    deleteBtn.textContent = "Delete"
+    deleteBtn.classList.add('delete-btn')
+
+    createLi.appendChild(creatediv)
+
+    creatediv.appendChild(editBtn)
+    creatediv.appendChild(deleteBtn)
+
     taskList.appendChild(createLi)
+    
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -39,10 +61,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     const todo = getTodoFromLocalStorage()
     todo.forEach((data)=>{
-    
-    const createLi = document.createElement("li")
-    createLi.textContent = data
-    taskList.appendChild(createLi)
+    addTodo(data)
 })
    
    
