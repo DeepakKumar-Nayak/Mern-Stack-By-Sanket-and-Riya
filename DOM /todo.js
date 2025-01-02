@@ -8,15 +8,37 @@ function addTodoToLocalStorage(todo){
     console.log(todo,'inside addTodoToLocalStorage')
     const todos = getTodoFromLocalStorage()
     
+    
     todos.todoList.push(todo)
     localStorage.setItem('todos',JSON.stringify(todos))
 }
 
 function executeFilter(event){
+    const taskList = document.getElementById('taskList')
     let element = event.target
     const value = element.getAttribute('data-filter')
-    console.log(value)
+    taskList.innerHTML = ""
+    const todos = getTodoFromLocalStorage()
+    //console.log(value)
+    
+    if(value === "all"){
+        todos.todoList.forEach((data)=>{
+            addTodo(data)
+        })
+   }else if(value === "pending"){
+        todos.todoList.forEach((data)=>{
+            if(data.isCompleted !== true){
+                addTodo(data)
+            }
+        })
+   }else{
+    todos.todoList.forEach((data)=>{
+        if(data.isCompleted == true){
+            addTodo(data)
+        }
+    })  
    }
+}
 
 function addTodo(todo){
     console.log(todo,'inside the addTodo')
@@ -42,11 +64,15 @@ function addTodo(todo){
     deleteBtn.classList.add('delete-btn')
 
     // creating an completed button
+    const completedBtn = document.createElement('button')
+    completedBtn.textContent = "Completed"
+    completedBtn.classList.add('complete-btn')
 
     createLi.appendChild(creatediv)
 
     creatediv.appendChild(editBtn)
     creatediv.appendChild(deleteBtn)
+    creatediv.appendChild(completedBtn)
 
     taskList.appendChild(createLi)
     
@@ -83,6 +109,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
    })
 
     const todo = getTodoFromLocalStorage()
+    console.log(todo)
     todo.todoList.forEach((data)=>{
     addTodo(data)
 })
