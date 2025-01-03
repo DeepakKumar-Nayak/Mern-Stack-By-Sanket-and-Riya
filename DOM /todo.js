@@ -89,11 +89,26 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
    
 
-  const filterBtns = document.getElementsByClassName('filterbtn')
-  for(let btn of filterBtns){
+    const filterBtns = document.getElementsByClassName('filterbtn')
+        for(let btn of filterBtns){
     btn.addEventListener('click', executeFilter)
-  }
-   const submitButton = document.getElementById("addTodo")
+    }
+    const todo = getTodoFromLocalStorage()
+    
+    function getTodoLength(){
+        const todo = getTodoFromLocalStorage()
+        let todoid;
+        if(todo.todoList.length === 0){
+            todoid = 0;
+        }else{
+            todoid = todo.todoList.length
+        }
+        return todoid;
+    }
+    
+    
+    const submitButton = document.getElementById("addTodo")
+
    submitButton.addEventListener('click', ()=>{
         const todoText = todoInput.value
         if(todoText === ""){
@@ -101,14 +116,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }else{
             addTodoToLocalStorage({
                 text:todoText,
-                isCompleted:false
+                isCompleted:false,
+                todoId: getTodoLength()
+    
             })
             addTodo({text:todoText,isCompleted:false})
             todoInput.value = ""
         }
    })
 
-    const todo = getTodoFromLocalStorage()
     console.log(todo)
     todo.todoList.forEach((data)=>{
     addTodo(data)
