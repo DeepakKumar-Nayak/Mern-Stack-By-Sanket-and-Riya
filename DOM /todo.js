@@ -49,7 +49,7 @@ function addTodo(todo){
     const taskList = document.getElementById('taskList')
     const createLi = document.createElement("li")
     createLi.textContent = todo.text
-    createLi.setAttribute('id', todo.todoId)
+    createLi.setAttribute('todo-id', todo.todoId)
 
 
     //adding class to an li element before appending
@@ -95,6 +95,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         event.target.value = todoText.trim()
         console.log(event.target.value)
    })
+
+   
 
    
 
