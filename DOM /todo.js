@@ -43,9 +43,12 @@ function executeFilter(event){
    }
 }
 
+function completeTodo(event){
+    console.log(event.target)
+}
+
 function addTodo(todo){
-    //console.log(todo,'inside the addTodo')
-    console.log(todo, 'inside addData')
+    //console.log(todo, 'inside addData')
     const taskList = document.getElementById('taskList')
     const createLi = document.createElement("li")
     createLi.textContent = todo.text
@@ -54,9 +57,6 @@ function addTodo(todo){
 
     //adding class to an li element before appending
     createLi.classList.add('todo-item')
-
-    
-
 
     // creating and addind edit and delete button 
     const creatediv = document.createElement('div')
@@ -87,6 +87,7 @@ function addTodo(todo){
     
 }
 
+
 document.addEventListener('DOMContentLoaded', ()=>{
    const todoInput = document.getElementById('todo-input')
    
@@ -95,14 +96,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         event.target.value = todoText.trim()
         console.log(event.target.value)
    })
-
    
-
-   
-
     const filterBtns = document.getElementsByClassName('filterbtn')
-        for(let btn of filterBtns){
-    btn.addEventListener('click', executeFilter)
+    for(let btn of filterBtns){
+        btn.addEventListener('click', executeFilter)
     }
     
     
