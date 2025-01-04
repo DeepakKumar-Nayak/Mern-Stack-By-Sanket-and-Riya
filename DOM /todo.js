@@ -1,6 +1,6 @@
 function getTodoFromLocalStorage(){
     const todos = JSON.parse(localStorage.getItem('todos')) || {todoList:[]}
-    console.log(todos)
+    //console.log(todos)
     return todos; 
 }
 
@@ -13,9 +13,12 @@ function addTodoToLocalStorage(todo){
     localStorage.setItem('todos',JSON.stringify(todos))
 }
 
+
+
 function executeFilter(event){
     const taskList = document.getElementById('taskList')
     let element = event.target
+    //console.log(element)
     const value = element.getAttribute('data-filter')
     taskList.innerHTML = ""
     const todos = getTodoFromLocalStorage()
@@ -41,13 +44,19 @@ function executeFilter(event){
 }
 
 function addTodo(todo){
-    console.log(todo,'inside the addTodo')
+    //console.log(todo,'inside the addTodo')
+    console.log(todo, 'inside addData')
     const taskList = document.getElementById('taskList')
     const createLi = document.createElement("li")
     createLi.textContent = todo.text
+    createLi.setAttribute('id', todo.todoId)
+
 
     //adding class to an li element before appending
     createLi.classList.add('todo-item')
+
+    
+
 
     // creating and addind edit and delete button 
     const creatediv = document.createElement('div')
@@ -93,7 +102,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         for(let btn of filterBtns){
     btn.addEventListener('click', executeFilter)
     }
-    const todo = getTodoFromLocalStorage()
+    
     
     function getTodoLength(){
         const todo = getTodoFromLocalStorage()
@@ -120,12 +129,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 todoId: getTodoLength()
     
             })
-            addTodo({text:todoText,isCompleted:false})
+            addTodo({text:todoText,isCompleted:false, todoId:getTodoLength()})
             todoInput.value = ""
         }
    })
-
-    console.log(todo)
+    
+    const todo = getTodoFromLocalStorage()
     todo.todoList.forEach((data)=>{
     addTodo(data)
 })
