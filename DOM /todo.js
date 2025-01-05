@@ -1,21 +1,25 @@
-function getTodoFromLocalStorage(){
-    const todos = JSON.parse(localStorage.getItem('todos')) || {todoList:[]}
+function getTodoFromLocalStorage() {
+    const todos = JSON.parse(localStorage.getItem('todos')) || { todoList: [] }
     //console.log(todos)
-    return todos; 
+    return todos;
 }
 
-function addTodoToLocalStorage(todo){
-    console.log(todo,'inside addTodoToLocalStorage')
+function refreshTodos(todos){
+    localStorage.setItem("todos",todos)
+}
+
+function addTodoToLocalStorage(todo) {
+    console.log(todo, 'inside addTodoToLocalStorage')
     const todos = getTodoFromLocalStorage()
-    
-    
+
+
     todos.todoList.push(todo)
-    localStorage.setItem('todos',JSON.stringify(todos))
+    localStorage.setItem('todos', JSON.stringify(todos))
 }
 
 
 
-function executeFilter(event){
+function executeFilter(event) {
     const taskList = document.getElementById('taskList')
     let element = event.target
     //console.log(element)
@@ -23,36 +27,33 @@ function executeFilter(event){
     taskList.innerHTML = ""
     const todos = getTodoFromLocalStorage()
     //console.log(value)
-    
-    if(value === "all"){
-        todos.todoList.forEach((data)=>{
+
+    if (value === "all") {
+        todos.todoList.forEach((data) => {
             addTodo(data)
         })
-   }else if(value === "pending"){
-        todos.todoList.forEach((data)=>{
-            if(data.isCompleted !== true){
+    } else if (value === "pending") {
+        todos.todoList.forEach((data) => {
+            if (data.isCompleted !== true) {
                 addTodo(data)
             }
         })
-   }else{
-    todos.todoList.forEach((data)=>{
-        if(data.isCompleted == true){
-            addTodo(data)
-        }
-    })  
-   }
+    } else {
+        todos.todoList.forEach((data) => {
+            if (data.isCompleted == true) {
+                addTodo(data)
+            }
+        })
+    }
 }
 
-function completeTodo(event){
-    console.log(event.target)
-}
-
-function addTodo(todo){
-    //console.log(todo, 'inside addData')
+function addTodo(todo) {
+ 
+    console.log(todo, 'inside addData')
     const taskList = document.getElementById('taskList')
     const createLi = document.createElement("li")
     createLi.textContent = todo.text
-    createLi.setAttribute('todo-id', todo.todoId)
+    createLi.setAttribute('todo-id', todo.id)
 
 
     //adding class to an li element before appending
@@ -84,59 +85,78 @@ function addTodo(todo){
     creatediv.appendChild(completedBtn)
 
     taskList.appendChild(createLi)
-    
+
+}
+
+function completeTodo(event){
+    const element = event.target.parentElement.parentElement
+    const todoId = element.getAttribute('todo-id')
+    const todos = getTodoFromLocalStorage()
+    todos.forEach((todo)=>{
+        if(todo.id === todoId){
+            todo.isCompleted = !todo.isCompleted
+        }
+    })
+    return refreshTodos(todos)
 }
 
 
-document.addEventListener('DOMContentLoaded', ()=>{
-   const todoInput = document.getElementById('todo-input')
-   
-   todoInput.addEventListener('change', (event)=>{
+document.addEventListener('DOMContentLoaded', () => {
+    const todoInput = document.getElementById('todo-input')
+    const submitButton = document.getElementById("addTodo")
+    const taskList = document.getElementById('taskList')
+    const todo = getTodoFromLocalStorage() 
+
+
+    
+
+   const filterBtns = document.getElementsByClassName('filterbtn')
+    for (let btn of filterBtns) {
+        btn.addEventListener('click', executeFilter)
+    }
+
+    const completedBtns = document.getElementsByClassName('complete-btn')
+    for(const btn of completedBtns){
+        btn.addEventListener('click', completeTodo)
+    }
+    
+    todoInput.addEventListener('change', (event) => {
         const todoText = event.target.value;
         event.target.value = todoText.trim()
         console.log(event.target.value)
-   })
-   
-    const filterBtns = document.getElementsByClassName('filterbtn')
-    for(let btn of filterBtns){
-        btn.addEventListener('click', executeFilter)
-    }
-    
-    
-    function getTodoLength(){
+    })
+
+
+    function getTodoLength() {
         const todo = getTodoFromLocalStorage()
         let todoid;
-        if(todo.todoList.length === 0){
+        if (todo.todoList.length === 0) {
             todoid = 0;
-        }else{
+        } else {
             todoid = todo.todoList.length
         }
         return todoid;
     }
-    
-    
-    const submitButton = document.getElementById("addTodo")
 
-   submitButton.addEventListener('click', ()=>{
+    submitButton.addEventListener('click', () => {
         const todoText = todoInput.value
-        if(todoText === ""){
+        if (todoText === "") {
             alert('please enter some todo')
-        }else{
+        } else {
             addTodoToLocalStorage({
-                text:todoText,
-                isCompleted:false,
-                todoId: getTodoLength()
-    
+                text: todoText,
+                isCompleted: false,
+                id: getTodoLength()
+
             })
-            addTodo({text:todoText,isCompleted:false, todoId:getTodoLength()})
+            addTodo({ text: todoText, isCompleted: false, id: getTodoLength() })
             todoInput.value = ""
         }
-   })
-    
-    const todo = getTodoFromLocalStorage()
-    todo.todoList.forEach((data)=>{
-    addTodo(data)
-})
-   
-   
+    })
+
+    todo.todoList.forEach((data) => {
+        addTodo(data)
+    })
+
+
 })
