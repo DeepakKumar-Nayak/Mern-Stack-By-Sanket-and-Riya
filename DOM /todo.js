@@ -1,6 +1,6 @@
 function getTodoFromLocalStorage() {
     const todos = JSON.parse(localStorage.getItem('todos')) || { todoList: [] }
-    //console.log(todos)
+    console.log(todos)
     return todos;
 }
 
@@ -68,18 +68,15 @@ function completeTodo(event){
 }
 
 function deleteData(event){
-    //console.log(event.target, 'inside deletedata')
     const element = event.target.parentElement.parentElement
     const todoId = element.getAttribute('data-id')
     console.log(todoId)
     let todos = getTodoFromLocalStorage()
-    todos.todoList = todos.todoList.filter((data)=>{
-        data.id != todoId
-    })
+    todos.todoList = todos.todoList.filter((data)=> data.id != todoId)
     refreshTodos(todos)
     const taskList = document.getElementById('taskList')
     taskList.innerHTML = "";
-    todos = todos.todoList.forEach((todo)=>{
+    todos.todoList.forEach((todo)=>{
         addTodo(todo)
     })
 }
@@ -140,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-   const filterBtns = document.getElementsByClassName('filterbtn')
+    const filterBtns = document.getElementsByClassName('filterbtn')
     for (let btn of filterBtns) {
         btn.addEventListener('click', executeFilter)
     }
@@ -166,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function getTodoLength() {
         const todo = getTodoFromLocalStorage()
         let todoid;
-        if (todo.todoList.length === 0) {
+        if (todo.todoList.length == 0) {
             todoid = 0;
         } else {
             todoid = todo.todoList.length
@@ -190,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    
     todo.todoList.forEach((data) => {
         addTodo(data)
     })
