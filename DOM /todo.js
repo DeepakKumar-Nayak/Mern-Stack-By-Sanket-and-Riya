@@ -5,11 +5,12 @@ function getTodoFromLocalStorage() {
 }
 
 function refreshTodos(todos){
-    localStorage.setItem("todos",todos)
+    //console.log(todos)
+    localStorage.setItem("todos",JSON.stringify(todos))
 }
 
 function addTodoToLocalStorage(todo) {
-    console.log(todo, 'inside addTodoToLocalStorage')
+    //console.log(todo, 'inside addTodoToLocalStorage')
     const todos = getTodoFromLocalStorage()
 
 
@@ -47,13 +48,49 @@ function executeFilter(event) {
     }
 }
 
+function completeTodo(event){
+    const element = event.target.parentElement.parentElement
+    console.log(element,'inside complete')
+    const todoId = element.getAttribute('data-id')
+    console.log(todoId)
+    const todos = getTodoFromLocalStorage()
+    todos.todoList.forEach((todo)=>{
+        if(todo.id == todoId){
+            todo.isCompleted = !todo.isCompleted
+        }
+    })
+    refreshTodos(todos)
+    const taskList = document.getElementById('taskList')
+    taskList.innerHTML = ""
+    todos.todoList.forEach((todo)=>{
+        addTodo(todo)
+    })
+}
+
+function deleteData(event){
+    //console.log(event.target, 'inside deletedata')
+    const element = event.target.parentElement.parentElement
+    const todoId = element.getAttribute('data-id')
+    console.log(todoId)
+    let todos = getTodoFromLocalStorage()
+    todos.todoList = todos.todoList.filter((data)=>{
+        data.id != todoId
+    })
+    refreshTodos(todos)
+    const taskList = document.getElementById('taskList')
+    taskList.innerHTML = "";
+    todos = todos.todoList.forEach((todo)=>{
+        addTodo(todo)
+    })
+}
+
 function addTodo(todo) {
  
-    console.log(todo, 'inside addData')
+    //console.log(todo, 'inside addData')
     const taskList = document.getElementById('taskList')
     const createLi = document.createElement("li")
     createLi.textContent = todo.text
-    createLi.setAttribute('todo-id', todo.id)
+    createLi.setAttribute('data-id', todo.id)
 
 
     //adding class to an li element before appending
@@ -67,16 +104,19 @@ function addTodo(todo) {
     const editBtn = document.createElement("button")
     editBtn.textContent = 'Edit'
     editBtn.classList.add('edit-btn')
-
+   
     // creating delete button
     const deleteBtn = document.createElement('button')
     deleteBtn.textContent = "Delete"
     deleteBtn.classList.add('delete-btn')
+    deleteBtn.addEventListener('click', deleteData)
+
 
     // creating an completed button
     const completedBtn = document.createElement('button')
     completedBtn.textContent = "Completed"
     completedBtn.classList.add('complete-btn')
+    completedBtn.addEventListener('click',completeTodo)
 
     createLi.appendChild(creatediv)
 
@@ -88,24 +128,14 @@ function addTodo(todo) {
 
 }
 
-function completeTodo(event){
-    const element = event.target.parentElement.parentElement
-    const todoId = element.getAttribute('todo-id')
-    const todos = getTodoFromLocalStorage()
-    todos.forEach((todo)=>{
-        if(todo.id === todoId){
-            todo.isCompleted = !todo.isCompleted
-        }
-    })
-    return refreshTodos(todos)
-}
 
 
 document.addEventListener('DOMContentLoaded', () => {
     const todoInput = document.getElementById('todo-input')
     const submitButton = document.getElementById("addTodo")
+    const todo = getTodoFromLocalStorage()
     const taskList = document.getElementById('taskList')
-    const todo = getTodoFromLocalStorage() 
+     
 
 
     
@@ -119,7 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
     for(const btn of completedBtns){
         btn.addEventListener('click', completeTodo)
     }
-    
+
+    const deleteBtns = document.getElementsByClassName('delete-btn')
+    for(const btns of deleteBtns){
+        console.log(btns)
+        btns.addEventListener('click', deleteData)
+    }
+
     todoInput.addEventListener('change', (event) => {
         const todoText = event.target.value;
         event.target.value = todoText.trim()
