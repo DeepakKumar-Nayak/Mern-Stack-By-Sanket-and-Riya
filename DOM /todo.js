@@ -1,7 +1,8 @@
 function getTodoFromLocalStorage() {
-    const todos = JSON.parse(localStorage.getItem('todos')) || { todoList: [] }
-    console.log(todos)
-    return todos;
+    const todos = JSON.parse(localStorage.getItem('todos')) || {"todoList":[]}
+    //console.log(todos)
+    return todos
+    
 }
 
 function refreshTodos(todos){
@@ -70,15 +71,33 @@ function completeTodo(event){
 function deleteData(event){
     const element = event.target.parentElement.parentElement
     const todoId = element.getAttribute('data-id')
-    console.log(todoId)
+    console.log(todoId,'inside deleteData')
     let todos = getTodoFromLocalStorage()
-    todos.todoList = todos.todoList.filter((data)=> data.id != todoId)
+    todos.todoList = todos.todoList.filter((data)=>{
+        return data.id != todoId
+    })
     refreshTodos(todos)
     const taskList = document.getElementById('taskList')
-    taskList.innerHTML = "";
+    taskList.innerHTML = ""
     todos.todoList.forEach((todo)=>{
         addTodo(todo)
     })
+    
+}
+
+function performEdit(event){
+    const element = event.target.parentElement.parentElement
+    const todoId = element.getAttribute('data-id')
+    console.log(todoId)
+    let todos = getTodoFromLocalStorage()
+    const todo = todos.todoList.filter((data)=>{
+        if(data.id == todoId){
+            return data
+        }
+    })
+    console.log(todo[0].text)
+    
+    
 }
 
 function addTodo(todo) {
@@ -101,6 +120,7 @@ function addTodo(todo) {
     const editBtn = document.createElement("button")
     editBtn.textContent = 'Edit'
     editBtn.classList.add('edit-btn')
+    editBtn.addEventListener('click', performEdit)
    
     // creating delete button
     const deleteBtn = document.createElement('button')
@@ -111,7 +131,7 @@ function addTodo(todo) {
 
     // creating an completed button
     const completedBtn = document.createElement('button')
-    completedBtn.textContent = "Completed"
+    completedBtn.textContent = todo.isCompleted ? "Work Completed": "Click If You Have Completed The Task"
     completedBtn.classList.add('complete-btn')
     completedBtn.addEventListener('click',completeTodo)
 
@@ -153,6 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btns.addEventListener('click', deleteData)
     }
 
+    const editBtns = document.getElementsByClassName('edit-btn')
+    for(btn of editBtns){
+        btn.addEventListener('click', performEdit)
+    }
+
     todoInput.addEventListener('change', (event) => {
         const todoText = event.target.value;
         event.target.value = todoText.trim()
@@ -163,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function getTodoLength() {
         const todo = getTodoFromLocalStorage()
         let todoid;
-        if (todo.todoList.length == 0) {
+        if (todo.todoList.length === 0) {
             todoid = 0;
         } else {
             todoid = todo.todoList.length
@@ -187,10 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    
-    todo.todoList.forEach((data) => {
+    todo.todoList.forEach((data)=>{
         addTodo(data)
     })
-
 
 })
