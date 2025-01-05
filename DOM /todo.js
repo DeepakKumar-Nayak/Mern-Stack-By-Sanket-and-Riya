@@ -88,16 +88,19 @@ function deleteData(event){
 function performEdit(event){
     const element = event.target.parentElement.parentElement
     const todoId = element.getAttribute('data-id')
-    console.log(todoId)
-    let todos = getTodoFromLocalStorage()
-    const todo = todos.todoList.filter((data)=>{
+    const todos = getTodoFromLocalStorage()
+    const response = prompt('enter the new data')
+    todos.todoList.forEach((data)=>{
         if(data.id == todoId){
-            return data
+            data.text = response
         }
     })
-    console.log(todo[0].text)
-    
-    
+    refreshTodos(todos)
+    const taskList = document.getElementById('taskList')
+    taskList.innerHTML = ""
+    todos.todoList.forEach((todo)=>{
+        addTodo(todo)
+    })
 }
 
 function addTodo(todo) {
