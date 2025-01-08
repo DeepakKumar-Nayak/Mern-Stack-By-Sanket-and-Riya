@@ -13,16 +13,18 @@
     display:flex;
     gap: 1rem;
     align-items: center;
+    width: 100%;
     
 }
 
 .instagram-freind-request-container{
     display: flex;
-    justify-content: space-between; /* Horizontal centering */
-    align-items: center;    /* Vertical centering */
-    height: 100vh;          /* Full viewport height */
+    justify-content: space-between; 
+    align-items: center;    
+    height: 100vh;          
     margin: 0 auto;
-    width: 40%;
+    max-width: 600px;
+    
     
 }
 
@@ -31,4 +33,9 @@
     height:80px;
     border-radius: 100%;
     object-position: cover;
+}
+.follow-section button{
+    border:none;
+    background-color: rgb(14, 151, 242);
+    padding: 10px 20px
 }
