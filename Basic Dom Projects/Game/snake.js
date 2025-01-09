@@ -27,13 +27,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
 
         const foodElement = drawDiv(food.x, food.y, 'food');
-        gameArena.appendChild(foodElement )
+        gameArena.appendChild(foodElement)
     }
 
     function runGame(){
         if(!gameStarted){
             gameStarted = true;
-            gameLoop()
+            drawFoodAndSnake();
+            //gameLoop()
         }
     }
 
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         startButton.classList.add('start-button')
 
         startButton.addEventListener('click', function startGame(){
-            startButton.style.display = 'none'
+            startButton.style.display = 'none' // hiding start button onclick
 
             runGame()
         })
