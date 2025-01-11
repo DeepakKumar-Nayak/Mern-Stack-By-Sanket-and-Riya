@@ -48,12 +48,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }else if(e.key === "ArrowDown" && !isGoingUp){
             dx = 0;
             dy = cellSize
-        }else if(e.key === "ArrowLeft" && !isGoingRight  ){
+        }else if(e.key === "ArrowLeft" && !isGoingRight){
             dx = -cellSize
             dy = 0;
         }else if(e.key === "ArrowRight" && !isGoingLeft){
             dx = cellSize
-        }   dy = 0;
+            dy = 0;
+        }
     }
     function drawDiv(x,y,className){
         const divElement = document.createElement('div')
