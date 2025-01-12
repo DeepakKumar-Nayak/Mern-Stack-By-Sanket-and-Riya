@@ -1,0 +1,20 @@
+Scopes: Scopes ka matkab hai ki kahan pe hamara function or hamara variable accessible hai ya toh visible hai. 
+its a concept to figure out where is our function or our variable is accessible or visible. 
+
+But before laearning about Scope lets learn how does our Scoping Mechanism Works: 
+Javascript ka Scoping mechanism bahut diffrent hai baki languages se , So Scoping Mechanism 
+samajhne se pehle kuch aur bhi samajhna bahut jaruri hai jaise ki Complied Languages kya hai Interpreted Language kya hai .
+
+Par Actual mein Javascript kis type ka language hai Complied Language hai ya interpreted language hai. 
+so lets deep dine into Complied language and Interpreted Language. 
+
+Complied Language: So complied language ko run karne ke liye ek software ki jarurat hai jisse ham bolte hein 
+compiler, so compiler will take the whole code , analyses it for errors, pura ka pura code leke eror kr liye check karega 
+aggar koi error nahi hai toh bhai thik hai bahut badiya esse ham ek executable binary mein convert kar denge and ham us executable 
+binary ko run kar sakhte hein , par aggar koi bhi error show karega then hame koi bhi executable binary file milega nahi and hame error 
+throw kar dega. 
+
+Interpreted Language: Interpreted Languages ke bhi example hai jaise ki Bash .. Hybrid Languages are those languages which execute our code line by line, if any line has en error then everything before properly gets executed the moment we detect the first error our execution stops and will throw us an error , aggar koi code bhi hai tab bhi execute nahi hoga. 
+
+Hybrid Language: This is a kind of language which uses both complitaion and interpretation for final execution od code. 
+example Java, JS, Python. 
