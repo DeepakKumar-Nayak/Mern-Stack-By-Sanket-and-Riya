@@ -16,5 +16,26 @@ throw kar dega.
 
 Interpreted Language: Interpreted Languages ke bhi example hai jaise ki Bash .. Hybrid Languages are those languages which execute our code line by line, if any line has en error then everything before properly gets executed the moment we detect the first error our execution stops and will throw us an error , aggar koi code bhi hai tab bhi execute nahi hoga. 
 
-Hybrid Language: This is a kind of language which uses both complitaion and interpretation for final execution od code. 
+Hybrid Language: This is a kind of language which uses both complitaion and interpretation for final execution of the code. 
 example Java, JS, Python. 
+
+aggar koi apko yeah bole ki javascript purely interpreted language hai toh yeah technically correct hai hi nahi . lets get into an example 
+
+console.log('hello')
+function getData(){
+    le = name
+}
+
+so if it is an interpreted language then obviously javascript will be able ot print 'hello' but print toh hoga hi nahi kyun nahi hoga 
+kyun k hame function ko galat likha hua hai syntax error hai us function and syntac error kon check karta hai compiler check karta hai(that means complier exist in javascript) and complier ko pata kab chalta hai parsing phase mein, kyun ki pehle parsing phase hota hai then code execution phase hota hai aggar parsing successfully complete hog gaya then only code execution phase hoga acche se . 
+
+compiler exist karta hai eska matlab yeah nahi ki javascipt ek complied language hai.. Javascript is an Hybrid language that means it combines the process of both compilation and interpretation.
+
+Note:
+----
+Javascript never check for semantic error during parsing phase and compilation phase it check for syntac error and other kinds of error but not semantic error and the sematic error never stops the flow of program unlike syntax error
+
+Javascript 2 phase mein chalta hai 
+1. Memory Phase 
+2. Code Execution phase
+
