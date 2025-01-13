@@ -116,3 +116,35 @@ so reassign nahi hoga but internall aggar kuch value jaise ki info mein aggar ap
     1. Objects.freeze() => update , adding new element, deteing data, all these are not allowed 
     2. Objects.seal() => update is allowed, adding new element, deleting data is not allowed
     3. Object.preventExtensions() => update, deleting data is allowed adding new element is not allowed
+    4. Object.defineProperty(data, 'name', {writable:false, configurble:false}) 
+        aab mein name ke saath koi bhi action perform nahi kar paunga jaise ki update, delete baki elements ke saath kar sakhtha hoon par name k saath nahi. 
+
+    so aggar hame ek complete immutable object chahiye then we can use freeze or else we can use 
+    Object.preventExtensions() inclucing Object.defineProperty() and  Object.preventExtensions()
+    with the helo of Object.preventExtensions() i wont be allowed to add new element to an object
+    and with the help of Object.defineProperty() i wont be able to update or delete particular element from an object
+
+    Example: 
+    ---------
+
+    const elements = Object.keys(info)
+    Object.preventExtensions(info)
+    for(let i=0; i<elements.length; i++){
+        Object.defineProperty(info, elements[i], {writable:false, configurable:false})
+    }
+    
+    info.name = "rahul" // cant perform
+    info.fullname = "kl rahul" // cant perform
+    info.location = "Odisha" // cant perform
+    
+    console.log(delete info.name) // false
+    console.log(info)
+
+    Output:
+    -------
+    {
+        name: 'deepak',
+        fullname: 'deepak kumar nayak',
+        gmail: 'deepak@gmail.com',
+        working: 'Fullstack Developer / Mern Stack Developer'
+    }
