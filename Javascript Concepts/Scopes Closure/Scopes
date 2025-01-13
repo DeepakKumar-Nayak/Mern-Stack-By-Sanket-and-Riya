@@ -39,3 +39,80 @@ Javascript 2 phase mein chalta hai
 1. Memory Phase 
 2. Code Execution phase
 
+Objects Methods and Immutability:
+---------------------------------
+const info = {
+    name :'deepak',
+    fullname : 'deepak kumar nayak',
+    gmail : 'deepak@gmail.com',
+    working: 'Fullstack Developer / Mern Stack Developer'
+}
+
+
+//console.log(Object.keys(info))
+//console.log(Object.values(info))
+//console.log(Object.entries(info))
+
+
+Mutability and Immutability:
+-----------------------------
+if we can modify something for example 
+var a = 10;
+a= 99
+
+console.log(a) // 99
+This mechanism where we can modify the value of a is known as mutable. And immutable means where we cannot do the modifications.
+
+so if we initialize a variable with const then we can make it immutable because const never allow us to modify it.
+aur jab bhi ham const variable banaenge hame us mein kuch na kuch value dena hi padega ham usko khali nahi chod sakhte jaise ki ..
+
+const name; // this will give us syntax error that missing initializer in const declaration
+const name = "deepak" // this is absolutely correct. 
+
+const z = undefined // this will work.
+
+Handling Immutability In Objects:
+-----------------------------------
+const info = {
+    name :'deepak',
+    fullname : 'deepak kumar nayak',
+    gmail : 'deepak@gmail.com',
+    working: 'Fullstack Developer / Mern Stack Developer'
+}
+
+though i have created an object with const still i can change its values like: 
+
+info.name = "rahul" // this is allowed
+info.fulllname = "kl rahul
+
+console.log(info)
+{
+  name: 'rahul',
+  fullname: 'kl rahul',
+  gmail: 'deepak@gmail.com',
+  working: 'Fullstack Developer / Mern Stack Developer'
+}
+
+But
+---
+const name = {
+    name : 'virat'
+    // this is not allowed
+    // TypeError assignment to a const variable
+}
+
+so what const is actually doing here . const is basically stopping the reassignment, i can also add more key value pairs, but reassigning is not allowed. 
+
+when i am creating an object with some key and value pair , a varaible bucket is stored in the stack and the object is created in the heap memory (heap is a collection of unstructured memory), so the reference is already stored in the variable bucket so if we try to reassign an new object then we are changing the refernce which is not allowed.
+
+so reassign nahi hoga but internall aggar kuch value jaise ki info mein aggar apko name, username, gmail change karna hai tih aap kar sakhte ho .. but kya ham objects ko purely Mutaable kar sakhte hein .. The answer is Yes, now lets learn ho to do it , so there are some methods called 
+
+    const data = { name : 'deepak', username : 'deepak_user' }
+    Object.freeze(data) 
+    delete data.name => performs delete operation
+    data.name = "deepak_kumar" => performs update operation 
+    data.gmail = "deepak@gmail.com" performs adding new element to data object.
+
+    1. Objects.freeze() => update , adding new element, deteing data, all these are not allowed 
+    2. Objects.seal() => update is allowed, adding new element, deleting data is not allowed
+    3. Object.preventExtensions() => update, deleting data is allowed adding new element is not allowed
