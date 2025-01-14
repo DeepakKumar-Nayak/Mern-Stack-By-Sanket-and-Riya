@@ -153,3 +153,107 @@ so reassign nahi hoga but internall aggar kuch value jaise ki info mein aggar ap
 
 Scoping Mechanism Of JS
 -------------------------
+Every Js code run in two phase: 
+    1. Compilation and Scope Resoultion Phase(memory phase)
+    2. Interpretaion and Execution Phase(Code Execution Phase)
+
+Toh hamara jo javacscript code hota hai woh two phases mein chalta hai ek hai complitaion phase and ek hai interpretation phase or code execution phase .. 
+
+So Scope Resolutuon ka matlab hai yeah ki we need to allocate some scope / memory / visibility to each and every variable and functions 
+
+Par Thoda Scope ke bare mein thoda padh lete hein jaise ki kitne types ke scope exist karte hai javascript mein for example :
+    1. Global Scope.
+    2. Function Scope.
+    3. Block Scope. 
+
+Global Scope: Global Scope mein aggar aap kuch define karte ho toh aap usko kahin bhi access kar sakhte ho matlab poore program mein kahin se bhi accessible hoga jaise ki aggar koi program ke andar access karna hai toh kar sakhte hein, aggar koi loop ke andar jaise ki for loop tab bhi ham access kar sakhte hein. 
+
+let x = 10; 
+function fun(){
+    let b = 20 // now it will behave as a function scope
+    console.log(a) // a is accessible access here. 
+    console.log(b) // b is accessible here
+}
+function funOne(){
+    console.log(b) // b is not accessible here
+    console.log(a) // a is also accessible here
+}
+
+
+Function Scope: Function scope mean any variable which is only accessible inside the function not outside the function.. ek function ke andar apne ek variable ko define kiya hai and un function ke andar aap 2-3-4-5 kitne bhi function likho uske andar access ho sakhta hai par bahar access nahi hoga. 
+
+function getName(){
+    let name = "deepak_kumar_nayak"
+
+    function getdataOne(){
+        var surname = "nayak"
+        console.log(name) // can be accessible
+    }
+    function getDatTwo(){
+        let favGame = "Carrom"
+        console.log(name) // can be accessible
+        console.log(surname) // not accessible
+    }
+    function getdataThree(){
+        console.log(favGame) // not accessible
+        console.log(name) // can be accessible
+    }
+    getdataOne()
+    getDatTwo()
+    getdataThree()
+}
+getName()
+
+Look at the above code sala var ko bhi access nahi kar pa rahe ho , baki let and const ki toh baat hi chod do aggar koi bhi variable 
+apne ek function ko banaya hai toh aap usko uske andar hi access kar sakhte ho bahar nahi kar paoge access. aur aisa scope jahan pe variable khali function ke andar visible ho or accessible ho usko ham bolte hain function scope.
+
+Block Scope: Any variable defined inside a block is a block scope variable
+
+Scope of the variable is decided by how it is declared and where it is declared. by using let , const, var i can declare a variable and usko scope bhi us husab se mil jaega. 
+
+var : help us to initialize function scope and global scoped variables.
+let : help us to initialize block scoped variables. 
+const : help us to initialize block scope variable thoda allag hai let se 
+
+Lexical Scoping / Lexical Parsing: 
+-----------------------------------
+In javascript scope resolution is possible due to Lexical Scoping, Lexical Scoping mein scope allocate hote hai variables ko, and variables ko value allocate hote hein execution phase mein, but the scope of the variable is decided is Phase-One eska matlab code execution se pehle bhi sare variables ko scope allocate ho jate hein, 
+
+Var help us to declare global and function scoped variables we cannot make a block scope variable with var. 
+var ka aur ek khasiyat hai ki aap usko declare karne se pehle hi access kar sakhte ho aur apko koi bhi error nahi milega ulta apko milega undefined aur undefined pehle wale stage mein hi matlab in phase one jitne bhi sare variables ya toh function hote hein usko key value pair mein dekhne ko milega jitne bhi variables hai unmein undefined store ho jaega phase Two mein actual value initialize hoga par phase one mein undefined store hoga and thats the reason we are getting undefined not any error 
+...
+
+par same chiz na aggar aap let and const se accept karoge toh nahi milega wahan apko ulta error milega 
+
+function getValue(){
+    console.log(a) // undefined
+    var a = 10
+    console.log(a) // 10
+}
+
+
+
+function getValue(){
+    console.log(a) // referenceError cannot access a before initialization 
+    let a = 10; 
+    
+}  
+
+In dono mein se pehle wale jo meine var se declare kiya hai uske pass function scope hai and doosre wale mein block scope hai aggar kisi varaible ke pass function scope hai then usko ham function mein kahin bhi access kar sakhte hein aur hame error nahi milega kabhi bhi haan undefined mil sakhta hai par error nahi milega aur undefined kab milega aggar mein usko declare karne se pehle access kar raha hoon tab. 
+
+// Note: 
+--------
+aggar mein koi bhi variable declare kar raha hoon with the help of var, let,const then usko ham kahenge formal declaration 
+
+let a = 10 // this tis a formal declaration
+var a = 10 // this tis a formal declaration
+const a = 10 // this tis a formal declaration
+
+a= 10 // this is not a formal declaration
+
+LHS : assigning 
+RHS : consuming
+
+. Phase one mein compilation hoga/ scope resolution hoga
+. aggar mein pehli bar koi variable ko hit kar raha hoon as LHS aur woh bhi withour formal declaration then hamesha woh auto-global banaya jaega matlab usko global mein space mil jaega i.e var variable_name = value; 
+. aggar mein variable ko hit kiya as RHS toh usko auto global banaya nahi jaega aur mujhe mlega error (not-defined wala error milega)
