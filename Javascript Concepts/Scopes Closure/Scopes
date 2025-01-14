@@ -128,9 +128,10 @@ so reassign nahi hoga but internall aggar kuch value jaise ki info mein aggar ap
     ---------
 
     const elements = Object.keys(info)
-    Object.preventExtensions(info)
+    Object.preventExtensions(info) // it will not allow to add any element into the object
     for(let i=0; i<elements.length; i++){
         Object.defineProperty(info, elements[i], {writable:false, configurable:false})
+        // this will not allow us to edit or delete the elements
     }
     
     info.name = "rahul" // cant perform
@@ -148,3 +149,7 @@ so reassign nahi hoga but internall aggar kuch value jaise ki info mein aggar ap
         gmail: 'deepak@gmail.com',
         working: 'Fullstack Developer / Mern Stack Developer'
     }
+
+
+Scoping Mechanism Of JS
+-------------------------

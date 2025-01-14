@@ -27,5 +27,5 @@ info.name = "rahul"
 info.fullname = "kl rahul"
 info.location = "Odisha"
 
-console.log(delete info.name)
-console.log(info)
+//console.log(delete info.name)
+//console.log(info)
