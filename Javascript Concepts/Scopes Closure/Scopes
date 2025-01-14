@@ -257,3 +257,5 @@ RHS : consuming
 . Phase one mein compilation hoga/ scope resolution hoga
 . aggar mein pehli bar koi variable ko hit kar raha hoon as LHS aur woh bhi withour formal declaration then hamesha woh auto-global banaya jaega matlab usko global mein space mil jaega i.e var variable_name = value; 
 . aggar mein variable ko hit kiya as RHS toh usko auto global banaya nahi jaega aur mujhe mlega error (not-defined wala error milega)
+. So LHS hai toh auto-global banega and RHS hai toh auto-global nahi banega. 
+. aggar aap block scope mein var use karoge toh bhai usko koi farak nahi padne wala woh as a global hi behave karega kyun ki block ke liye let and const hai na bhai usko use karo kyun bekar mein var use karna .

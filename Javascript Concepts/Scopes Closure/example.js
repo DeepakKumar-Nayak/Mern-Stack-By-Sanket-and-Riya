@@ -1,9 +1,9 @@
-const info = {
-    name :'deepak',
-    fullname : 'deepak kumar nayak',
-    gmail : 'deepak@gmail.com',
-    working: 'Fullstack Developer / Mern Stack Developer'
-}
+// const info = {
+//     name :'deepak',
+//     fullname : 'deepak kumar nayak',
+//     gmail : 'deepak@gmail.com',
+//     working: 'Fullstack Developer / Mern Stack Developer'
+// }
 // info.name = "rahul"
 // info.fullname = "kl rahul"
 //console.log(info)
@@ -30,24 +30,28 @@ const info = {
 //console.log(delete info.name)
 //console.log(info)
 
-function getName(){
-    let name = "deepak_kumar_nayak"
+// function getName(){
+//     let name = "deepak_kumar_nayak"
 
-    function getdataOne(){
-        var surname = "nayak"
-        console.log(name) // can be accessible
-    }
-    function getDatTwo(){
-        let favGame = "Carrom"
-        console.log(name) // can be accessible
-        console.log(surname) // not accessible
-    }
-    function getdataThree(){
-        console.log(favGame) // not accessible
-        console.log(name) // can be accessible
-    }
-    getdataOne()
-    getDatTwo()
-    getdataThree()
-}
-getName()
+//     function getdataOne(){
+//         var surname = "nayak"
+//         console.log(name) // can be accessible
+//     }
+//     function getDatTwo(){
+//         let favGame = "Carrom"
+//         console.log(name) // can be accessible
+//         console.log(surname) // not accessible
+//     }
+//     function getdataThree(){
+//         console.log(favGame) // not accessible
+//         console.log(name) // can be accessible
+//     }
+//     getdataOne()
+//     getDatTwo()
+//     getdataThree()
+// }
+// getName()
+
+
+
+
