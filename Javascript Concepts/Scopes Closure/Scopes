@@ -251,7 +251,7 @@ const a = 10 // this tis a formal declaration
 
 a= 10 // this is not a formal declaration
 
-LHS : assigning 
+LHS : assigning / value allocate kiya ja raha hai
 RHS : consuming
 
 . Phase one mein compilation hoga/ scope resolution hoga
