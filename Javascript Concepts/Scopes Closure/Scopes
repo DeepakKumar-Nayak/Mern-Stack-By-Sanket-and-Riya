@@ -259,3 +259,8 @@ RHS : consuming
 . aggar mein variable ko hit kiya as RHS toh usko auto global banaya nahi jaega aur mujhe mlega error (not-defined wala error milega)
 . So LHS hai toh auto-global banega and RHS hai toh auto-global nahi banega. 
 . aggar aap block scope mein var use karoge toh bhai usko koi farak nahi padne wala woh as a global hi behave karega kyun ki block ke liye let and const hai na bhai usko use karo kyun bekar mein var use karna .
+
+Temporal Dead Zone: This is the region before the declaration of a block scoped variable, A variable declared with let const is said to be in Temporal Dead Zone(TDZ) from the start of the block untill code execution reaches the place where variable is intitialized. 
+
+Function Scope and Block Scope:
+When we say function scope it means no matter what where we declare a variable in the fuction it's available through out the function and we can access it anywhere inside the function
