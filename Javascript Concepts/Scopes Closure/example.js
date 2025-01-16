@@ -52,7 +52,13 @@
 // }
 // getName()
 
+// function functionScopeExample(){ 
+//     console.log(x) // undefined
+//     var x = 10; 
+//     console.log(x)
+// }
 
+// functionScopeExample()
 
 
 

@@ -262,5 +262,31 @@ RHS : consuming
 
 Temporal Dead Zone: This is the region before the declaration of a block scoped variable, A variable declared with let const is said to be in Temporal Dead Zone(TDZ) from the start of the block untill code execution reaches the place where variable is intitialized. 
 
+(woh region jahan aap  variable jo app access karna chahte ho before their declaration usse kehte hai temporal dead zone, yeah ek asia zone hai jahan pe apka variable available nahi hai. A region before the declaration of a block scope variable.)
+
 Function Scope and Block Scope:
 When we say function scope it means no matter what where we declare a variable in the fuction it's available through out the function and we can access it anywhere inside the function
+
+Block Scope: let and const are used to create block scoped variables which are only accessible inside the block we cannot access outside the block. We cannot access those variable before their declaration and if you try to access it then obviously we will get error so we can access them after their declaration
+
+function blockScopeExample(){
+    console.log(x) // error cannot access before their declaration
+    let x = 10; 
+    console.log(x) //10
+}
+
+function functionScopeExample(){ 
+    console.log(x) // undefined
+    var x = 10; 
+    console.log(x) // 10
+}
+
+
+More Facts On Let: 
+-------------------
+let doesn't allow re-declaration and this will get caught in the Phase One. 
+
+let x = 10; 
+console.log(x)
+let x = 20 // not allowed. 
+
