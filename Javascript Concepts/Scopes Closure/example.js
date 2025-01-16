@@ -61,5 +61,10 @@
 // functionScopeExample()
 
 
+console.log(data)
+let data = function getName(){
+    return 'name'
+}
 
+console.log(data())
 

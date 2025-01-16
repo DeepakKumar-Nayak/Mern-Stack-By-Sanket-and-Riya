@@ -290,3 +290,43 @@ let x = 10;
 console.log(x)
 let x = 20 // not allowed. 
 
+Hoisting: 
+----------
+Hoisting is a consequence of the scoping mechanism, till now in the EcmaScript you will never find any defination of hoisting in MDN also it is written that Hoisting is not a term normatively defined in the ECMAScript specification. 
+
+Because of the fact we know that JS execute our code in two phases , a lot of variables are already known during the phase 1 and then they are accessed in phase 2, so aisa lagta hai ki js ko pata hota hai kuch kuch function ya tih variables ke bare mein uske declaration se pehle and sahi bhi hai kyun ki phase one mein hi sare fromal declaration ko read kar diya jata hai JS ke duara so JS ko pata chal jata hai variables ke bare mein before execution phase and essi phenomena ko ham bolte hai Hoisting, The word not an actual word present in ECMAScript Docs. 
+
+Function Expression:
+---------------------
+function getData(){
+    // this is called function declaration
+    // where function keyword is mandatory
+}
+
+In JS Functions are the first class citizens 
+    . we can store return a function from function.
+    . we can send a function as an argument to another function.
+    . we can store a fuunction in a variable. 
+
+Stroring a function in a variable this is knoan as function expression for example 
+
+    let data = function getName(){
+        return 'name'
+        // this also called named function expression
+    }
+    
+    console.log(data())
+
+jaise ki apne let mein store kiya hai apne functions ko so aap usko jaise variable ko aap pehle access nahi kar pata the declarations se pehle thik ussi tarah aap yahan bhi usko access nahi kar paoge and aggar aap karna bhi chahoge toh apko thik ussi tarah error milega that 
+
+" Reference Error : Cannot access 'data' before initialization "
+
+    let anotherExample = function(){
+        // this is also a function expression
+        // this is also called Anonymous Function Expression
+        // a function without any name
+    }
+
+    let anotherexample = () => {
+        // this is called arrow function expression example 
+    }
