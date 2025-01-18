@@ -61,10 +61,14 @@
 // functionScopeExample()
 
 
-console.log(data)
-let data = function getName(){
-    return 'name'
-}
+// console.log(data)
+// let data = function getName(){
+//     return 'name'
+// }
 
-console.log(data())
+// console.log(data())
 
+const arr = [10,20,30,40,50,60]
+arr.map(function(element){
+    console.log(element)
+})

@@ -1,12 +1,12 @@
 Scopes: Scopes ka matkab hai ki kahan pe hamara function or hamara variable accessible hai ya toh visible hai. 
 its a concept to figure out where is our function or our variable is accessible or visible. 
 
-But before laearning about Scope lets learn how does our Scoping Mechanism Works: 
+But before learning about Scope lets learn how does our Scoping Mechanism Works: 
 Javascript ka Scoping mechanism bahut diffrent hai baki languages se , So Scoping Mechanism 
 samajhne se pehle kuch aur bhi samajhna bahut jaruri hai jaise ki Complied Languages kya hai Interpreted Language kya hai .
 
 Par Actual mein Javascript kis type ka language hai Complied Language hai ya interpreted language hai. 
-so lets deep dine into Complied language and Interpreted Language. 
+so lets deep dive into Complied language and Interpreted Language. 
 
 Complied Language: So complied language ko run karne ke liye ek software ki jarurat hai jisse ham bolte hein 
 compiler, so compiler will take the whole code , analyses it for errors, pura ka pura code leke eror kr liye check karega 
@@ -14,20 +14,20 @@ aggar koi error nahi hai toh bhai thik hai bahut badiya esse ham ek executable b
 binary ko run kar sakhte hein , par aggar koi bhi error show karega then hame koi bhi executable binary file milega nahi and hame error 
 throw kar dega. 
 
-Interpreted Language: Interpreted Languages ke bhi example hai jaise ki Bash .. Hybrid Languages are those languages which execute our code line by line, if any line has en error then everything before properly gets executed the moment we detect the first error our execution stops and will throw us an error , aggar koi code bhi hai tab bhi execute nahi hoga. 
+Interpreted Language: Interpreted Languages ke bhi example hai jaise ki Bash .. Interpreted Languages are those languages which execute our code line by line, if any line has en error then everything before properly gets executed the moment we detect the first error our execution stops and will throw us an error , aggar koi code bhi hai tab bhi execute nahi hoga. 
 
 Hybrid Language: This is a kind of language which uses both complitaion and interpretation for final execution of the code. 
 example Java, JS, Python. 
 
 aggar koi apko yeah bole ki javascript purely interpreted language hai toh yeah technically correct hai hi nahi . lets get into an example 
 
-console.log('hello')
+console.log("hello")
 function getData(){
     le = name
 }
 
-so if it is an interpreted language then obviously javascript will be able ot print 'hello' but print toh hoga hi nahi kyun nahi hoga 
-kyun k hame function ko galat likha hua hai syntax error hai us function and syntac error kon check karta hai compiler check karta hai(that means complier exist in javascript) and complier ko pata kab chalta hai parsing phase mein, kyun ki pehle parsing phase hota hai then code execution phase hota hai aggar parsing successfully complete hog gaya then only code execution phase hoga acche se . 
+so if it is an interpreted language then obviously javascript will be able print 'hello' but print toh hoga hi nahi kyun nahi hoga 
+kyun k hamne function ko galat likha hua hai syntax error hai us function mein and syntax error kon check karta hai compiler check karta hai(that means complier exist in javascript) and complier ko pata kab chalta hai parsing phase mein, kyun ki pehle parsing phase hota hai then code execution phase hota hai aggar parsing successfully complete ho gaya then only code execution phase hoga acche se . 
 
 compiler exist karta hai eska matlab yeah nahi ki javascipt ek complied language hai.. Javascript is an Hybrid language that means it combines the process of both compilation and interpretation.
 
@@ -105,7 +105,7 @@ so what const is actually doing here . const is basically stopping the reassignm
 
 when i am creating an object with some key and value pair , a varaible bucket is stored in the stack and the object is created in the heap memory (heap is a collection of unstructured memory), so the reference is already stored in the variable bucket so if we try to reassign an new object then we are changing the refernce which is not allowed.
 
-so reassign nahi hoga but internall aggar kuch value jaise ki info mein aggar apko name, username, gmail change karna hai tih aap kar sakhte ho .. but kya ham objects ko purely Mutaable kar sakhte hein .. The answer is Yes, now lets learn ho to do it , so there are some methods called 
+so reassign nahi hoga but internally aggar kuch value jaise ki info mein aggar apko name, username, gmail change karna hai toh aap kar sakhte ho .. but kya ham objects ko purely Mutable kar sakhte hein .. The answer is Yes, now lets learn how to do it , so there are some methods called 
 
     const data = { name : 'deepak', username : 'deepak_user' }
     Object.freeze(data) 
@@ -121,7 +121,7 @@ so reassign nahi hoga but internall aggar kuch value jaise ki info mein aggar ap
 
     so aggar hame ek complete immutable object chahiye then we can use freeze or else we can use 
     Object.preventExtensions() inclucing Object.defineProperty() and  Object.preventExtensions()
-    with the helo of Object.preventExtensions() i wont be allowed to add new element to an object
+    with the help  of Object.preventExtensions() i wont be allowed to add new element to an object
     and with the help of Object.defineProperty() i wont be able to update or delete particular element from an object
 
     Example: 
@@ -205,7 +205,7 @@ function getName(){
 getName()
 
 Look at the above code sala var ko bhi access nahi kar pa rahe ho , baki let and const ki toh baat hi chod do aggar koi bhi variable 
-apne ek function ko banaya hai toh aap usko uske andar hi access kar sakhte ho bahar nahi kar paoge access. aur aisa scope jahan pe variable khali function ke andar visible ho or accessible ho usko ham bolte hain function scope.
+apne ek function mein banaya hai toh aap usko uske andar hi access kar sakhte ho bahar nahi kar paoge access. aur aisa scope jahan pe variable khali function ke andar visible ho or accessible ho usko ham bolte hain function scope.
 
 Block Scope: Any variable defined inside a block is a block scope variable
 
@@ -245,9 +245,9 @@ In dono mein se pehle wale jo meine var se declare kiya hai uske pass function s
 --------
 aggar mein koi bhi variable declare kar raha hoon with the help of var, let,const then usko ham kahenge formal declaration 
 
-let a = 10 // this tis a formal declaration
-var a = 10 // this tis a formal declaration
-const a = 10 // this tis a formal declaration
+let a = 10 // this is a formal declaration
+var a = 10 // this is a formal declaration
+const a = 10 // this is a formal declaration
 
 a= 10 // this is not a formal declaration
 
@@ -255,7 +255,7 @@ LHS : assigning / value allocate kiya ja raha hai
 RHS : consuming
 
 . Phase one mein compilation hoga/ scope resolution hoga
-. aggar mein pehli bar koi variable ko hit kar raha hoon as LHS aur woh bhi withour formal declaration then hamesha woh auto-global banaya jaega matlab usko global mein space mil jaega i.e var variable_name = value; 
+. aggar mein pehli bar koi variable ko hit kar raha hoon as LHS aur woh bhi without formal declaration then hamesha woh auto-global banaya jaega matlab usko global mein space mil jaega i.e var variable_name = value; 
 . aggar mein variable ko hit kiya as RHS toh usko auto global banaya nahi jaega aur mujhe mlega error (not-defined wala error milega)
 . So LHS hai toh auto-global banega and RHS hai toh auto-global nahi banega. 
 . aggar aap block scope mein var use karoge toh bhai usko koi farak nahi padne wala woh as a global hi behave karega kyun ki block ke liye let and const hai na bhai usko use karo kyun bekar mein var use karna .
@@ -294,7 +294,7 @@ Hoisting:
 ----------
 Hoisting is a consequence of the scoping mechanism, till now in the EcmaScript you will never find any defination of hoisting in MDN also it is written that Hoisting is not a term normatively defined in the ECMAScript specification. 
 
-Because of the fact we know that JS execute our code in two phases , a lot of variables are already known during the phase 1 and then they are accessed in phase 2, so aisa lagta hai ki js ko pata hota hai kuch kuch function ya tih variables ke bare mein uske declaration se pehle and sahi bhi hai kyun ki phase one mein hi sare fromal declaration ko read kar diya jata hai JS ke duara so JS ko pata chal jata hai variables ke bare mein before execution phase and essi phenomena ko ham bolte hai Hoisting, The word not an actual word present in ECMAScript Docs. 
+Because of the fact we know that JS execute our code in two phases , a lot of variables are already known during the phase 1 and then they are accessed in phase 2, so aisa lagta hai ki JS ko pata hota hai kuch function ya toh variables ke bare mein uske declaration se pehle and sahi bhi hai kyun ki phase one mein hi sare fromal declaration ko read kar diya jata hai JS ke duara so JS ko pata chal jata hai variables ke bare mein before execution phase and essi phenomena ko ham bolte hai Hoisting, The word not an actual word present in ECMAScript Docs. 
 
 Function Expression:
 ---------------------
@@ -304,7 +304,7 @@ function getData(){
 }
 
 In JS Functions are the first class citizens 
-    . we can store return a function from function.
+    . we can return a function from function.
     . we can send a function as an argument to another function.
     . we can store a fuunction in a variable. 
 
@@ -317,7 +317,7 @@ Stroring a function in a variable this is knoan as function expression for examp
     
     console.log(data())
 
-jaise ki apne let mein store kiya hai apne functions ko so aap usko jaise variable ko aap pehle access nahi kar pata the declarations se pehle thik ussi tarah aap yahan bhi usko access nahi kar paoge and aggar aap karna bhi chahoge toh apko thik ussi tarah error milega that 
+jaise ki apne let mein store kiya hai apne functions ko so aap usko jaise variable ko aap pehle access nahi kar pate the declarations se pehle thik ussi tarah aap yahan bhi function ko access nahi kar paoge and aggar aap karna bhi chahoge toh apko thik ussi tarah error milega that 
 
 " Reference Error : Cannot access 'data' before initialization "
 
@@ -330,3 +330,4 @@ jaise ki apne let mein store kiya hai apne functions ko so aap usko jaise variab
     let anotherexample = () => {
         // this is called arrow function expression example 
     }
+
