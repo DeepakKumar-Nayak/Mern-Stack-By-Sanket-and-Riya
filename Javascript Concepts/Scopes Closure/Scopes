@@ -331,4 +331,28 @@ jaise ki apne let mein store kiya hai apne functions ko so aap usko jaise variab
         // this is called arrow function expression example 
     }
 
-aggar koi apse puche ki hame dono mein se mera matlab ki hame named function expression and anonymous function expression se konsa wala use karna hai toh uska ans yeah hai ki its actually a pesonal choice but named function expression use karna accha rahe apko debug karne mein easy hoga and anonymous function are hard to use in recursion
+aggar koi apse puche ki hame dono mein se mera matlab ki hame named function expression and anonymous function expression se konsa wala use karna hai toh uska ans yeah hai ki its actually a pesonal choice but named function expression use karna accha rahega apko debug karne mein easy hoga and anonymous function are hard to use in recursion, let me clear this with an example that how it is helpful for using it in recursion, lets take an example if factorial ... 
+
+recurion mean a function calling itself again and again .. 
+
+    const data = arr.map(function factorial(n){
+        if(n == 1) return 1;
+        return n*factorial(n-1)
+        
+    })
+    
+    console.log(data) // [ 2, 6, 24, 120, 720 ]
+
+named function expression ka matlab a function having a name which is factorial here but aggar mein named function use hi nahi karunga toh usko call kaise karunga yahan es example mein meine jo likha hai (return n*factorial(n-1)) yahin oe sara khel ho raha hai aggar mein usko anonymous function ke help se bauanga toh thoda difficult hoga kyun ki wahan mein factorial likh nahi paunga kyun ki anonymous function hai na function having no name, toh wahan toh bahut dikkat hoga . but still uske like bhi ek solution hai and uske bare mein ham baat nahi karte hein kyun ki woh outdated ho chuka hai aaj kal koi use nahi karta hai usko so in this case named function expression use karna easy hoga instead of using anonymous function expression.
+
+note: function ka aggar koi name hi nahi hoga toh recursion function call kaise hoga.
+
+    const data = arr.map(function(n){
+        if(n == 1) return 1;
+        //return n*(n-1) // aggar name hi nahi hoga toh yahan pe kya likhoge
+        return n * arguments.callee (n-1) // depricated ho gaya hai
+        console.log(data)
+        
+    })
+
+Named function expression improve the readibility of the code, named function exression ke name se pata chal jaega ki ham es particular function ko kis vajah se use kar rahe hein par aggar ham Anonymous function expression use karenge toh jis function ka name hi nahi hai uska readibility kaisa accha ho sakhta hai.

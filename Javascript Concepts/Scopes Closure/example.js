@@ -68,7 +68,25 @@
 
 // console.log(data())
 
-const arr = [10,20,30,40,50,60]
-arr.map(function(element){
-    console.log(element)
+const arr = [2,3,4,5,6]
+function CustomMap(arr, fn){
+    let newArray = [];
+    for(let i=0; i<arr.length; i++){
+        newArray.push(fn(arr[i]))
+    }
+    return newArray;
+}
+
+function fn(element){
+    return element*element
+}   
+//console.log(CustomMap(arr, fn))
+
+const data = arr.map(function factorial(n){
+    if(n == 1) return 1;
+    return n*factorial(n-1)
+    
 })
+
+console.log(data)
+
