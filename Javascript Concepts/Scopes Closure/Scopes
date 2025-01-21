@@ -356,3 +356,18 @@ note: function ka aggar koi name hi nahi hoga toh recursion function call kaise 
     })
 
 Named function expression improve the readibility of the code, named function exression ke name se pata chal jaega ki ham es particular function ko kis vajah se use kar rahe hein par aggar ham Anonymous function expression use karenge toh jis function ka name hi nahi hai uska readibility kaisa accha ho sakhta hai.
+
+Arrow Functions: 
+-----------------
+In arrow functions this keyword is resolved lexically whereas in other functions this keyword is resolved by callsite. 
+
+arrow function us also used to write concise code mean chota code.
+
+in arrow function there is no need of writting return keyword if we have writtn a oneline logic for example: 
+
+    const square = (x) => x*x       // using arrow function
+    
+    const square = function(x){     // using normal function
+        return x*x
+    }
+
