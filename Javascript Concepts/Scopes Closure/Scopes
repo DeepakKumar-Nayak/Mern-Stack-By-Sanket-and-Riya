@@ -308,7 +308,7 @@ In JS Functions are the first class citizens
     . we can send a function as an argument to another function.
     . we can store a fuunction in a variable. 
 
-Stroring a function in a variable this is knoan as function expression for example 
+Stroring a function in a variable this is known as function expression for example 
 
     let data = function getName(){
         return 'name'
@@ -324,10 +324,11 @@ jaise ki apne let mein store kiya hai apne functions ko so aap usko jaise variab
     let anotherExample = function(){
         // this is also a function expression
         // this is also called Anonymous Function Expression
-        // a function without any name
+        // a function without any name ans stored in variable anotherExample
     }
 
     let anotherexample = () => {
         // this is called arrow function expression example 
     }
 
+aggar koi apse puche ki hame dono mein se mera matlab ki hame named function expression and anonymous function expression se konsa wala use karna hai toh uska ans yeah hai ki its actually a pesonal choice but named function expression use karna accha rahe apko debug karne mein easy hoga and anonymous function are hard to use in recursion
