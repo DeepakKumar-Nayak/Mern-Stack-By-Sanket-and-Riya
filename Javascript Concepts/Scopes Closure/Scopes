@@ -343,7 +343,7 @@ recurion mean a function calling itself again and again ..
     
     console.log(data) // [ 2, 6, 24, 120, 720 ]
 
-named function expression ka matlab a function having a name which is factorial here but aggar mein named function use hi nahi karunga toh usko call kaise karunga yahan es example mein meine jo likha hai (return n*factorial(n-1)) yahin oe sara khel ho raha hai aggar mein usko anonymous function ke help se bauanga toh thoda difficult hoga kyun ki wahan mein factorial likh nahi paunga kyun ki anonymous function hai na function having no name, toh wahan toh bahut dikkat hoga . but still uske like bhi ek solution hai and uske bare mein ham baat nahi karte hein kyun ki woh outdated ho chuka hai aaj kal koi use nahi karta hai usko so in this case named function expression use karna easy hoga instead of using anonymous function expression.
+named function expression ka matlab a function having a name which is factorial here but aggar mein named function use hi nahi karunga toh usko call kaise karunga yahan es example mein meine jo likha hai (return n*factorial(n-1)) yahin pe sara khel ho raha hai aggar mein usko anonymous function ke help se bauanga toh thoda difficult hoga kyun ki wahan mein factorial likh nahi paunga kyun ki anonymous function hai na function having no name, toh wahan toh bahut dikkat hoga . but still uske like bhi ek solution hai and uske bare mein ham baat nahi karte hein kyun ki woh outdated ho chuka hai aaj kal koi use nahi karta hai usko so in this case named function expression use karna easy hoga instead of using anonymous function expression.
 
 note: function ka aggar koi name hi nahi hoga toh recursion function call kaise hoga.
 
@@ -371,3 +371,13 @@ in arrow function there is no need of writting return keyword if we have writtn 
         return x*x
     }
 
+IIFE: 
+------
+Ek aisa function jisko jaise hi hamne define kiya woh call ho jaega is known as IIFE (Immediately invoked function expression) for example: 
+
+    (function square(x){
+        return x*x
+    })(10)
+
+
+IIFE ko ek bar call kar diya matlab bar var usko call nahi kar sakhta kyun ki IIFE jo hai na woh call hone ke baad wiped out ho jaega memory se. 
