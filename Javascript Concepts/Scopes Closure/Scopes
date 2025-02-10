@@ -380,4 +380,4 @@ Ek aisa function jisko jaise hi hamne define kiya woh call ho jaega is known as 
     })(10)
 
 
-IIFE ko ek bar call kar diya matlab bar var usko call nahi kar sakhta kyun ki IIFE jo hai na woh call hone ke baad wiped out ho jaega memory se. 
+IIFE ko ek bar call kar diya matlab bar bar usko call nahi kar sakhta kyun ki IIFE jo hai na woh call hone ke baad wiped out ho jaega memory se. 
