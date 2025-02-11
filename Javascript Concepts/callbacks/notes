@@ -22,3 +22,37 @@ Callback Hell:
 --------------
 callback hell is known for its dis-advantage instead of advantages because callback hell is a readibility problem which is a minor problem , because there is something else which is much more bigger problem then this readibility problem and that is known as inversion of control where we are going the give power to someone else to the third person which will eventually create a big problem. 
 
+Callbacks heavily used hote hein Async Programming mein . And Async programming mein 2 types ke hote hein 
+
+1. Sync Programming - jo line by line execute hoga for example aggar hamare pass 3line of code hai toh kya hoga 1st line execute hone ke baad hi 2nd wala line execute hoga then 3rd hoga so har ek chiz line by line hoga. 
+
+2. Async Programming - jaise ki hamaare pass 5 line of code hein toh hamara 1st line of code execute hone ke baad 2nd line backend mein execute ho raha hoga but khatam nahi hua hoga and 3rd line ko chala gaya and 3rd line execute ho gaya and so on and baad mein kabhi 2nd line ho gaya execute so yahan pe kuch bhi line by line nahi hota hain. Async mein line by line execute hoga kabhi bhi aisa 1st line ke baad 3rd ko nahi jaega and baad mein kabhi 2nd wala line execute hogaya yeah sab Sync mien nahi hota hein. 
+
+
+So jo ham javascripr ka code likhte hein kya woh async hai ya sync hai .. the answer is any native peice of javascript code matlab javascript ka jitna bhi apna khud ka code hai woh sare ke sare Sync nature ke hote hein, aur baki sab async hein 
+
+for example for loop javascript ka khud ka code hai, woh hamesha sync nature ka hai ek for loop execute hoga uske baad dusra execute hoga ek ke baad hi dusra hoga. 
+
+for example: 
+for(let i=0; i<=10; i++){
+    // console i 
+}
+
+for(let i=0; i<=20; i++){
+    // console i
+}
+
+console.log('its over')
+
+
+Javascript jo hai hamara bahut hi basic language hai , aab Javascript ko modern capabilites ke saath use karne ke liye bahut sare features lagte hein 
+
+jaise ki javascript ko files read karna nahi atta hai, javascript ko timer run karna nahi atta, Javascript ko html ke saath kaise interact karna nahi atta and also javascript ko nwtwork ke saath bhi interact karna nahi atta hai insort javascript ko bahut sare chiz nahi atta hai jo aaj kal modern applications mein use hote hain
+
+aur aggar hame woh sare ke sare fearues ko run karna hai toh uske liye Javascript ko ek sutitable environment ki jarurat hai jahan javascript apni capabilities se agge badh kar kuch kar paye and aise environment ko ham bolte hein runtime environment . 
+
+runtime environment ek software hai jo Javascript ko help karta hain naye naye requirements ko poora karne ke liye.
+
+jaise ki browser, woh bhi ek software hai jo javascript ke naye naye features ko run karne ke liye help karta hein
+
+and ar ek jo ki hai nodejs so nodejs ke help se bhi main bahut sare functionality use kar paunga aur yeah jo capabilities hai woh javascript ka part nahi nahi woh nodejs, browser ka part hai   
