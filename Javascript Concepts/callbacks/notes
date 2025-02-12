@@ -55,4 +55,24 @@ runtime environment ek software hai jo Javascript ko help karta hain naye naye r
 
 jaise ki browser, woh bhi ek software hai jo javascript ke naye naye features ko run karne ke liye help karta hein
 
-and ar ek jo ki hai nodejs so nodejs ke help se bhi main bahut sare functionality use kar paunga aur yeah jo capabilities hai woh javascript ka part nahi nahi woh nodejs, browser ka part hai   
+and aur ek jo ki hai nodejs so nodejs ke help se bhi main bahut sare functionality use kar paunga aur yeah jo capabilities hai woh javascript ka part nahi nahi woh nodejs, browser ka part hai   
+
+
+Closure
+--------
+Closure is a mechanism using which any inner function remembers all those variables which are defined in the outer function scope even when the outer function scope executon is completed. for example: 
+
+    function func(a,c){
+        let m = 10
+        function gun(){
+            console.log(m,c)
+        }
+        return gun;
+    }
+    
+    const g = func(10,20)
+    g()
+
+jab mein kuch return kar raha hoon that means woh chiz gayab ho jaega callstack se es mein g mein function func hai and woh function gayab ho jaega callstack se and still gayab hone ke baad bhi gun ko m and c ka values yaad hai and that is because of closure. 
+
+and what about those variables which are not used like a, i am not accessing anywhere not even in the inner function so its simple that ki woh memory mein se hat jaega, aap usko use krna chahte ho toh aap kar sakhte ho but aggar aap nahi kar rahe ho use that means hat jaega memory se. 
