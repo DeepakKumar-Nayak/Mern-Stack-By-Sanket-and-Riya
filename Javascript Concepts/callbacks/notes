@@ -86,4 +86,47 @@ but es problem ko resolve kaise karte hai uske bare mein baat karte hein jo java
 Promises jo hai woh Inversion of Control ko end to end solve kar dete hein and callback hell ka bhi but initially promises ko callback ka solution nahi mana jata hai kyun ki promises ka khud ka ek problem hai jisko kehte hein promise hell toh callback hell ko thikkarne ke chakkar mein aap promise hell ko introduce kar sakhte ho kyun ki jaise callback hell ek readibility problem hai waise promises hell bhi ek readibility problem hai (code saf sutra nahi rakhna, padha nahi jata) so promises ko IOC ka full solution and callback hell ka thoda bahut solution mana jata hai 
 
 Promises: 
-Promises is a good elternative for callback 
+Promises is a good elternative for callback, aggar future mein hame kuch kam ko complete karna hai toh uske liye hame promise use kar sakhte hai par usse pehle let me discuss kaise ham promise ko create karenge aur kaise ham promise ko consume karenge
+
+Impliment a set of dummy functions which can mimic the bahaviour of the following functions 
+    1. download -> this function should mimic the download of some content to the file. 
+    2. writefile -> this function should mimic writing of some content to a file. 
+    3. upload -> this function should mimic uploading a file to the server
+
+        function download(url,callback){
+            console.log('downloading data from the url', url)
+            setTimeout(()=>{
+                console.log('downloading data from the url is completed')
+                let Downloaddata = "someData"
+                callback(Downloaddata)
+            },3000)
+        }
+        
+        function writeFile(data, filename, callback){
+            console.log('writting',data,'to the file',filename)
+            setTimeout(()=>{
+                console.log('writting data to the file is over')
+                let status = "successfully"
+                callback(status)
+            },4000)
+        }
+        
+        function upload(filename,link,status, callback){
+            console.log('uploading file to the',link)
+            setTimeout(()=>{
+                console.log('uploaded',filename,status)
+                let msg = "everything done successfully"
+                callback(msg)
+        
+            },5000)
+        }
+        
+        download('www.google.com', function writeData(data){
+            writeFile(data, 'file.txt', function uploadData(status){
+                upload('file.txt', 'googleDriev',status, function Over(msg){
+                    console.log(msg)
+                })  
+            })
+        })
+
+i can write the same function by using promise also.
