@@ -130,3 +130,22 @@ Impliment a set of dummy functions which can mimic the bahaviour of the followin
         })
 
 i can write the same function by using promise also.
+
+How to Create a Promise and How To Consume A Promise 
+-----------------------------------------------------
+const pr = new Promise(cb)
+
+new keyword 
+
+Promise -> promise constructor which expects a callback in the argument
+
+cb -> this callback is called executor callback and why it is called as executor callback because when we create a promise object at that point of time our promise constructor will execute this callback that means this callback is executed by the promise constructor immediately. 
+
+// how does this callback looks like 
+new Promise((res,rej)=>{}) This is how it looks like which consist of two parameter .
+
+res stands for resolve and rej stands for reject, we can also use diffrent name but its good to use as resolve and reject for better understanding.
+
+Jab ham ek promise object banaenge hamara promise object 3 states mein se kisi ek state mein hoga and the 3 states are pending, fulfilled and rejected but promise hamesha pending state mein milta hai untill and unless woh fullfill ya toh reject ho . 
+
+Pending se ya toh rejct hoga ya toh fulfilled hoga but bydefault hamesha pending state mein rahega.
