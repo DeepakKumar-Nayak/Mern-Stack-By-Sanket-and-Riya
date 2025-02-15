@@ -181,14 +181,79 @@ arrayOne = [10,20,30,40,50]
 //     console.log(number, 'The number is odd')
 // })
 
-const pr = new Promise((res,rej)=>{
-    const randomNumber = Math.floor(Math.random()*100)
-    if (randomNumber % 2 ===0){
-        res(randomNumber)
-    }else{
-        rej(randomNumber)
-    }
-})
+// const pr = new Promise((res,rej)=>{
 
-const p2 = pr.then(value => value)
-p2.then((value)=> {return value})
+//     setTimeout(()=>{
+//         const randomNumber = Math.floor(Math.random()*100)
+//         if (randomNumber % 2 ===0){
+//             res(randomNumber)
+//         }else{
+//             rej(randomNumber)
+//         }
+//     },1000)
+// })
+
+// let p2 = pr.then(function resolved(data){
+//         return(`${data} : even number`)
+//     },
+//     function rejected(data){
+//         return(`${data} : this is rejeected with oddNumber`)
+//     })   
+
+// p2.then((data)=>{
+//     console.log(data)
+// })
+
+function download(url){
+    return new Promise((res,rej)=>{
+        console.log('downloaded started from',url)
+        setTimeout(()=>{
+            let data = "someData"
+            console.log('downloading data over')
+            res(data)
+        },2000)
+    })
+}
+
+function writeFile(data,filename){
+    return new Promise((resolve, reject) => {
+        console.log('writting',data, 'to the file')
+        setTimeout(()=>{
+            console.log('writting' ,data, 'to the',filename,'is over')
+            let status = "successfully"
+            resolve(status)
+        },3000)
+    })
+}
+
+function Upload(filename,url){
+    return new Promise((resolve, reject) => {
+        console.log('uploading',filename,'to the',url)
+        setTimeout(()=>{
+            console.log('Uploding done')
+            let status = "Successfully"
+            resolve(status)
+
+        },4000)
+    })
+}
+
+// download('www.google.com').then((data)=>{
+//     console.log('downloaded data is:',data)
+//     writeFile(data,'file.txt').then((status)=>{
+//         console.log('writting to the file done',status)
+//         Upload('file.txt','www.gdrive.com').then((status)=>{
+//             console.log('All operations completed',status)
+//         })
+//     })
+// })
+
+download('https://www.example.com').then((data)=>{
+    console.log('download data is:',data)
+    return writeFile(data, 'file.txt')
+}).then((status)=>{
+    console.log('writting to the file done',status)
+    return Upload('file.txt','www.gdrive.com')
+}).then((status)=>{
+    console.log('All Operations Completed',status)
+})

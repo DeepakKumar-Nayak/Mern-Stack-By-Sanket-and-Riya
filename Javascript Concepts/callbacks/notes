@@ -157,7 +157,7 @@ aur hamara promise object poore lifetime ke sirf ek baar hi state change kar sak
 if inside the executor callback we called resolver function then pending se fulfilled state mein aa jaega 
 
 if inside the executor we called rejector function then pending se rejected state mein aa jaega.
-
+whenever we create a promise bydefault the state will remain pending but the value will remain undefined 
 example: 
 
 const pr = new Promise((res,rej)=>{
