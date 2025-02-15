@@ -88,6 +88,8 @@ Promises jo hai woh Inversion of Control ko end to end solve kar dete hein and c
 Promises: 
 Promises is a good elternative for callback, aggar future mein hame kuch kam ko complete karna hai toh uske liye hame promise use kar sakhte hai par usse pehle let me discuss kaise ham promise ko create karenge aur kaise ham promise ko consume karenge
 
+Promise act as a placeholder object for something that is to be completed in the future.
+
 Impliment a set of dummy functions which can mimic the bahaviour of the following functions 
     1. download -> this function should mimic the download of some content to the file. 
     2. writefile -> this function should mimic writing of some content to a file. 
@@ -149,3 +151,80 @@ res stands for resolve and rej stands for reject, we can also use diffrent name 
 Jab ham ek promise object banaenge hamara promise object 3 states mein se kisi ek state mein hoga and the 3 states are pending, fulfilled and rejected but promise hamesha pending state mein milta hai untill and unless woh fullfill ya toh reject ho . 
 
 Pending se ya toh rejct hoga ya toh fulfilled hoga but bydefault hamesha pending state mein rahega.
+
+aur hamara promise object poore lifetime ke sirf ek baar hi state change kar sakhta hai
+
+if inside the executor callback we called resolver function then pending se fulfilled state mein aa jaega 
+
+if inside the executor we called rejector function then pending se rejected state mein aa jaega.
+
+example: 
+
+const pr = new Promise((res,rej)=>{
+    const randomNumber = Math.floor(Math.random()*100)
+    if (randomNumber % 2 ===0){
+        res(randomNumber)
+    }else{
+        rej(randomNumber)
+    }
+})
+
+const p2 = pr.then(function f(value){
+    return value
+})
+
+console.log(p2)
+
+pr.then only do the registration it doesnot execute. infact it will return a brand new promise.
+
+Note: 
+------
+const pr = new Promise((res,rej)=>{
+    
+    let randomNumber = Math.floor(Math.random()*100)
+    if(randomNumber % 2  ==0){
+        res(randomNumber)
+    }else{
+        rej(randomNumber)
+    }
+
+
+})
+
+async function getResult(){
+try {
+    let result = await pr
+    console.log(result, 'this is an even number')
+}catch(err){
+    console.log(err, 'err occured this is not an even number')
+}
+}
+
+getResult()
+
+To handle the exception  we have to write a function like getresult()
+because rej will only handle the rejection, promise rejection if we will not handle like this then we will get an error message like unhadled rejection now i have handled the rejction with a simple message like 'the number is an even number'
+
+Like i can do the same thing with .then and .catch also like
+
+    const pr = new Promise((res,rej)=>{
+    
+        let randomNumber = Math.floor(Math.random()*100)
+        if(randomNumber % 2  ==0){
+            res(randomNumber)
+        }else{
+            rej(randomNumber)
+        }
+    
+    
+    })
+    pr.then((number)=>{
+        console.log(number,'the number is even')
+    }).catch((number)=>{
+        console.log(number, 'The number is odd')
+    })
+
+But there is a diffrence between using .then .catch and using try and catch so basically try and catch are used for async/await operations and we can use .then and .catch while working with promises
+
+.then and .catch are directly used on promises Obhects
+try and catch are used inside the async operations
