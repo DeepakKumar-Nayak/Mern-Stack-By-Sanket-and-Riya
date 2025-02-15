@@ -1,0 +1,89 @@
+Class: 
+------- 
+Classes are just like blueprint. 
+classes are going to represent how an entity should look and behave. 
+
+when i say how do they look that mean the property they posses and when i say how do they behave that mean action they perform 
+
+Lets talk about the propery they posses which are otherwise known as the Data Members for examle: 
+
+Just take an example of a Product Class so what are the properties of a product.
+
+price,
+quantity,
+productName,
+reviews
+
+Now lets talk about the actions they perform that mean which are otherwise known as Member Functions: 
+
+We can Display the details of the product
+We can buy a Product
+we can wishlist a product
+we can rate a product
+adding review to a product
+adding product to the cart
+
+// How to make a class in Javascript 
+with the help of class keyword we can make a class in Javascript. 
+
+class Product {
+    // here we can add some data member and member functions
+}
+
+Example: 
+--------
+class Product {
+
+    // writting some data members: 
+
+    name
+    price
+    category
+    description
+    quantity
+
+    // writing some member functions
+ 
+
+    addToCart(){
+        console.log('product added to the cart')
+    }
+
+    DisplayDetails(){
+        console.log('display details of the product')
+    }
+
+
+}
+
+// no need of writting function while creating a member function we  can just write simply name of the member function
+
+    . function addToCart() - not required
+    . addToCart() - this is great
+
+// Constructor: 
+---------------
+. Every class in javascript has one special member function called as constructor which is only executed once at the time of object creation and that too it will be the first method to get execute. 
+
+. whenever we create an object and try to execute it constructor will be first one to get execute out of all the methods and the constructor is the method which get automatically called by JS. 
+
+. Koi bhi class ham banaye usmein bydefault kuch constructor bane banaya milega , already available for any class which is called as default constructor.
+
+. Yeah jo constructor hai thoda diffrent hai kyun ki yeah ek hi method hai jo javascript khud se call kar dega baki kisi bhi member function ko javascript khud se call nahi karega 
+
+
+
+Objects:
+-------
+The physical Realisation of the class are called Objects
+To create an Object in JS we use a keyword called new
+
+// How new works: 
+-----------------
+Every time we use new it does four following procedure
+
+1. It creates a brand new absolutely empty object. 
+2. It calls the constructor of the class and passes the newely created object inside a keyword called this. 
+    (constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun ki ham plain object ka access de rahe hein)
+3. In step 3 new trigger everything we need to be done for prototype.
+4. 
