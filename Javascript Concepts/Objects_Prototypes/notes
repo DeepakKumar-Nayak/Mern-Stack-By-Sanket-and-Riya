@@ -101,7 +101,7 @@ for example :
 
     data = this i.e the Product
     
-    if i do like this then i will get the the whole product where this will be pointing i.e the product. 
+    if i do like this then i will get the the whole product where this will be pointing i.e the product object. 
 
     class Product{
         constructor(){
@@ -113,3 +113,55 @@ for example :
     but here i will get {name : 'deepak'}
 
     data = {name: 'deepak'}
+ 
+
+   
+Explanation in Hindi Point4:
+-----------------------------
+aggar aap constructor se koi object manually return kar rahe ho toh apko wohi object milega as a result par aggar aap koi aur chiz return kar rahe ho (Look at the code above for more clear understanding meine eske liye bhi examples likha hai) so tab mujhe hamara actual product milega jo this ko pointout kar raha ho. 
+
+Program/; 
+--------
+
+class Product {
+    name;
+    category;
+    quantity;
+    description;
+    rating;
+
+    constructor(productName, productCategory, productQuantity, productDescription, productRating){
+
+        this.name = productName; // Laptop
+        this.category = productCategory; // Electronics
+        this.quantity = productQuantity; // 12
+        this.description = productDescription; // Hp Laptop
+        this.rating = productRating // 4.0
+
+        addToCart(){
+            console.log('product added to the cart')
+        }
+
+    }
+}
+
+const productOne = new Product('Laptop','Electronics',12, 'Hp Laptop', '4.0')
+// aggar apko new data members add karna hai toh aap object ke help se kar sakhte ho called variable ko leke for example; 
+productOne.color = "black"
+console.log(productOne)
+
+Product {
+  name: 'Laptop',
+  category: 'Electronics',
+  quantity: 12,
+  description: 'Hp Laptop',
+  rating: '4.0',
+  color: 'black'
+}
+
+Note: 
+-----
+aggar mein data member nahi bhi define karun aur directly constructor ke andar define karun like 
+this.name = product_name
+then also its okay we will not get any error infact when we console productOne then i will get the actual product.
+i can also access the productname like console.log(productOne.name)
