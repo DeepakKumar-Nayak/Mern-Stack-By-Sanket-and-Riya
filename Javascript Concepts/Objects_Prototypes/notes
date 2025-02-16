@@ -86,4 +86,30 @@ Every time we use new it does four following procedure
 2. It calls the constructor of the class and passes the newely created object inside a keyword called this. 
     (constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun ki ham plain object ka access de rahe hein)
 3. In step 3 new trigger everything we need to be done for prototype.
-4. 
+
+4. if from a constructor an object is manually returned then this manual returned object is stored in the called variable, otherwise in any other case either we return something or dont return something constructor doesnot care about it and returns the value inside the this key. 
+
+for example :
+
+    class Product{
+        constructor(){
+        return 10
+        }
+    }
+    const data = new Product()
+    console.log(data)
+
+    data = this i.e the Product
+    
+    if i do like this then i will get the the whole product where this will be pointing i.e the product. 
+
+    class Product{
+        constructor(){
+        return {name: 'deepak'}
+        }
+    }
+    const data = new Product()
+    console.log(data)
+    but here i will get {name : 'deepak'}
+
+    data = {name: 'deepak'}
