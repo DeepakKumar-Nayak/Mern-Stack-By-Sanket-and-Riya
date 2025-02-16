@@ -26,27 +26,28 @@
 
 
 
-class Product {
+// class Product {
 
-    constructor(productName, productCategory, productQuantity, productDescription, productRating){
+//     constructor(productName, productCategory, productQuantity, productDescription, productRating){
 
-        this.name = productName; // Laptop
-        this.category = productCategory; // Electronics
-        this.quantity = productQuantity; // 12
-        this.description = productDescription; // Hp Laptop
-        this.rating = productRating // 4.0
+//         this.name = productName; // Laptop
+//         this.category = productCategory; // Electronics
+//         this.quantity = productQuantity; // 12
+//         this.description = productDescription; // Hp Laptop
+//         this.rating = productRating // 4.0
 
-    }
-    addToCart(){
-        console.log('product added to the cart')
-    }
-}
+//     }
+//     addToCart(){
+//         console.log('product added to the cart')
+//     }
+// }
 
-const productOne = new Product('Laptop','Electronics',12, 'Hp Laptop', '4.0')
+// const productOne = new Product('Laptop','Electronics',12, 'Hp Laptop', '4.0')
 
-// aggar apko new data members add karna hai toh aap object ke help se kar sakhte ho called variable ko leke for example; 
+// // aggar apko new data members add karna hai toh aap object ke help se kar sakhte ho called variable ko leke for example; 
 
-productOne.color = "black"
+// productOne.color = "black"
 
-console.log(productOne.name)
+// console.log(productOne.name)
+
 

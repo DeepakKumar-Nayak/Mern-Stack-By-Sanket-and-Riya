@@ -165,3 +165,69 @@ aggar mein data member nahi bhi define karun aur directly constructor ke andar d
 this.name = product_name
 then also its okay we will not get any error infact when we console productOne then i will get the actual product.
 i can also access the productname like console.log(productOne.name)
+
+
+This keyword in Javascript:
+----------------------------
+This keyword works very diffrently in compare to other languages. 
+lets get to know more with help of an examples : 
+
+let obj = {
+    x : 10;
+    y : 20;
+    fn : function(){
+        console.log(this.x, this.y)
+    }
+}
+
+obj.fn()
+
+in this example this is referring to the obj and obj here will act as a callsite. this keyword access kar para raha ha obj ko that mean 
+this.x is also same as obj.x
+
+Example 2: 
+----------
+
+let obj = {
+    x : 10;
+    y : 20;
+    z : {
+        x : 99;
+        fn : function(){
+            console.log(this.x, this.y)
+        }
+    }
+}
+
+In the above example this is referring to z here so thats why this.x will be pointing to 99 but for this.y i will get undefined why because inside z i havn't defined y , i have done that in obj. but here this is referring to z not obj. (callsite iz z not obj)
+
+How this is used in arrow function: 
+-----------------------------------
+let obj = {
+    x : 10;
+    y : 20;
+    fn : ()=>{
+        console.log(this.x, this.y)
+    }
+}
+
+obj.fn()
+
+so what do you think whm does this is referring to here in the above example if we are using this inside the arrow function then it will never refer it to the callsite so we have to do some changes in arrow function this is defined lexically. 
+
+let obj = {
+    x : 10;
+    y : 20;
+    fn : function(){
+        const arw = () => {
+            console.log(this.x, this.y)
+            // 10 , 20
+        }
+    }
+}
+
+obj.fn()
+
+so how i am getting 10 and 20 here because this is being defined here lexically that mean aggar hame arw ke andar nahi mile the value of x and y toh yeah ek level upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe 
+
+so the point is aggar aap ek arrow function ke andar this ko access karna chahoge then it wont happen par aap us arrow function ko aggar ek normal function mein enclose karoge toh usko this ka value milega kyun ki normal function ke andar this obj ko point out kar raha hai and esliye this.x is same as obj.x thats why we are getting the value as 10
