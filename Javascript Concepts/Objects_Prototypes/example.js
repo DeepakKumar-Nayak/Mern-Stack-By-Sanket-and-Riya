@@ -67,37 +67,87 @@
 // console.log(data)
 
 // Example with private data-member; 
-class Product {
-    #name;
-    #quantity;
-    #rating;
-    review;
-    price;
+// class Product {
+//     #name;
+//     #quantity;
+//     #rating;
+//     review;
+//     price;
 
-    constructor(productName, productQuantity, productRating, productReview, productPrice){
-        this.#name = productName;                   
-        this.#quantity = productQuantity;
-        this.#rating = productRating;
-        this.review = productReview;
-        this.price = productPrice;
+//     constructor(productName, productQuantity, productRating, productReview, productPrice){
+//         this.#name = productName;                   
+//         this.#quantity = productQuantity;
+//         this.#rating = productRating;
+//         this.review = productReview;
+//         this.price = productPrice;
+//     }
+
+//     //accessing private data-member inside the class
+//     getname(){
+//         console.log(this.#name)
+//     }
+
+//     // updating the private data-member .. name .. inside the class
+//     setName(changeName){
+//         if(changeName != this.#name){
+//             this.#name = changeName
+//         }
+//     }
+
+
+
+// }
+// const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
+
+// productOne.setName('HP')
+// console.log(productOne)
+
+// class Product {
+//     #name;
+//     #quantity;
+//     #rating;
+//     review;
+//     price;
+
+//     constructor(productName, productQuantity, productRating, productReview, productPrice){
+//         this.#name = productName;                   
+//         this.#quantity = productQuantity;
+//         this.#rating = productRating;
+//         this.review = productReview;
+//         this.price = productPrice;
+//     }
+
+//     // how to writer a actual setter and getter function by using set and get so i have done this by using get and set keyword
+    
+//     set price(p){
+//         if(p > this.price){
+//             this.price = p
+//         }else{
+//             console.log('please choose a higher/updated price')
+//         }
+//     }
+//     get price(){
+//         return this.price
+//     }
+
+// }
+// const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
+
+// //productOne.setName('HP')
+// productOne.price = 90000;
+// console.log(productOne.price)
+// console.log(productOne)
+
+function Product(n,d,p){
+    this.name = n;
+    this.description = d;
+    this.price = p;
+
+    this.displayProductDetails = function(){
+        console.log(this.name,this.description,this.price)
     }
-
-    //accessing private data-member inside the class
-    getname(){
-        console.log(this.#name)
-    }
-
-    // updating the private data-member .. name .. inside the class
-    setName(changeName){
-        if(changeName != this.#name){
-            this.#name = changeName
-        }
-    }
-
-
 
 }
-const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
 
-productOne.setName('HP')
-console.log(productOne)
+const data = new Product('laptop','hp-laptop',78999)
+data.displayProductDetails()
