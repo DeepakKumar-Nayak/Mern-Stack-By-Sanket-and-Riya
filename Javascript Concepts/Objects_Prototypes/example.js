@@ -51,3 +51,37 @@
 // console.log(productOne.name)
 
 
+// class Product {
+//     name;
+//     age;
+
+//     constructor(){
+
+//     }
+// }
+
+// const data = new Product()
+// data.name = "deepak"
+// data.age = 30
+
+// console.log(data)
+
+// Example with private data-member; 
+class Product {
+    #name;
+    #quantity;
+    #rating;
+    review;
+    price;
+
+    constructor(productName, productQuantity, productRating, productReview, productPrice){
+        this.#name = productName;                   
+        this.#quantity = productQuantity;
+        this.#rating = productRating;
+        this.review = productReview;
+        this.price = productPrice;
+    }
+
+}
+const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
+productOne.#name = ""

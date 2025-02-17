@@ -231,3 +231,68 @@ obj.fn()
 so how i am getting 10 and 20 here because this is being defined here lexically that mean aggar hame arw ke andar nahi mile the value of x and y toh yeah ek level upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe 
 
 so the point is aggar aap ek arrow function ke andar this ko access karna chahoge then it wont happen par aap us arrow function ko aggar ek normal function mein enclose karoge toh usko this ka value milega kyun ki normal function ke andar this obj ko point out kar raha hai and esliye this.x is same as obj.x thats why we are getting the value as 10
+
+// So how to add data-members without providing value through constructor. 
+class Product {
+    name;
+    age;
+
+    constructor(){
+
+    }
+}
+
+const data = new Product()
+data.name = "deepak"
+data.age = 30
+
+console.log(data)
+
+look at the above program where i am adding some valus but i am not doing that through constructor so this is one way where i can add some values but this is not the right thing to do because just look at the code how i am adding the values after object creation i mean anyone can do some sort of changes even after the object creation without any issues which violates the fundamental princicple of OOPS called as encapsulation that means classes ke bahar ham data members ko update nahi kar sakhte and jo ki usually hota bhi nahi hai.
+
+kyun ki agar aisa hua then koi bhi akke kuch bhi random value pass kar dega and update lar dega which is not required, par es sab chiz ko ham resolve bhi kar sakhte hein but not simply allowing your data members from being accessible outside the class and is to be done only inside the class (update and accessible)
+
+so we can make private to the data members so that it can be accessible/updatable only inside the class not from outside. and how to make the datamembers prive just to add # before declaring the datamember for example: 
+
+class Product {
+    #name; this is a private data member
+    #age; this private data member
+}
+
+// so now theese datamembers cannot be access outside the class neither can be updateable outside the class
+Example: 
+
+class Product {
+    #name;
+    #quantity;
+    #rating;
+    review;
+    price;
+
+    constructor(productName, productQuantity, productRating, productReview, productPrice){
+        this.#name = productName;                   
+        this.#quantity = productQuantity;
+        this.#rating = productRating;
+        this.review = productReview;
+        this.price = productPrice;
+    }
+
+}
+const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
+console.log(productOne)
+
+// Product { review: 'Good One', price: 67000 }
+
+// see though i have make it private so iam unable to acess it from outside node js runtime mein apko basi yahi dikhai de raha hai aggar mein same chiz ko browser mein check karunga toh mujhe thoda allag sa result aega like asia esliye aa raha kyun ki dono ka kam karne ka tarika allag hai browser and nodejs: 
+
+// Product {review: 'Good One', price: 67000, #name: 'hp-laptop', #quantity: '14', #rating: '4.2'} but you can clearly see that apko kuch data members mein #name , #quantity, #rating aur woh esliye kyun ki meine en data-members ko private jo banaya tha aur haan aggar mein enko update karna chahun toh bhi nahi kar sakhta jo jo data-members meine private banaya hai uska value kabhi change nahi hoga par ek naya allag se name ban jaega jo ki private hoga hi nahi par jo private hai us mein koi bhi changes nahi hoga infact ek naya ban jaega for example: 
+
+productOne.name = "hp"
+Product { review: 'Good One', price: 67000, name: 'hp' }
+this is what it will happpen but it wont be changing the value which i have made private.
+
+productOne.#name = "hp"
+//Property '#name' is not accessible outside class 'Product' because it has a private identifier.
+// but aggar mein yeah same chiz browser se karunga toh change ho jaega but terminal se nahi hoga.
+
+and yes they way we are making data-members private these are the old school technique.
