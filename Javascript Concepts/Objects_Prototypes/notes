@@ -296,3 +296,40 @@ productOne.#name = "hp"
 // but aggar mein yeah same chiz browser se karunga toh change ho jaega but terminal se nahi hoga.
 
 and yes they way we are making data-members private these are the old school technique.
+
+// So its very Crystal Clear that aap bahar se change nahi kar sakhte private-members ko par aap class ke andar kar sakhte ho and lets see with an example how to do ..
+
+    class Product {
+        #name;
+        #quantity;
+        #rating;
+        review;
+        price;
+    
+        constructor(productName, productQuantity, productRating, productReview, productPrice){
+            this.#name = productName;                   
+            this.#quantity = productQuantity;
+            this.#rating = productRating;
+            this.review = productReview;
+            this.price = productPrice;
+        }
+    
+        //accessing private data-member inside the class
+        getname(){
+            console.log(this.#name)
+        }
+        
+        // updating the private data-member .. name .. inside the class
+        setName(changeName){
+            if(changeName != this.#name){
+                this.#name = changeName
+            }
+        }
+    
+    
+    
+    }
+    const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
+    
+    productOne.setName('HP')
+    console.log(productOne)

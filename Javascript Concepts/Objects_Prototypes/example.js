@@ -82,6 +82,22 @@ class Product {
         this.price = productPrice;
     }
 
+    //accessing private data-member inside the class
+    getname(){
+        console.log(this.#name)
+    }
+
+    // updating the private data-member .. name .. inside the class
+    setName(changeName){
+        if(changeName != this.#name){
+            this.#name = changeName
+        }
+    }
+
+
+
 }
 const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
-productOne.#name = ""
+
+productOne.setName('HP')
+console.log(productOne)
