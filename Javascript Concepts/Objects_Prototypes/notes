@@ -352,3 +352,5 @@ and yes they way we are making data-members private these are the old school tec
     data.displayProductDetails()
 
     // Output : laptop hp-laptop 78999
+
+// ek chiz apne notice kiya ki class anur abhi jo meine likha hai kaise mein new Product banata hun arguments pass karke dono mein same hai class main apko ek constructor banana padhta par yahan koi banane ki jarurat nahi hai  aur yana pe mein koi class bhi define nahi kar raha hoon and yeahi hai woh traditional tarika jisse pehle class keyword introduce hone se pehle ham essi tarah blueprinting kari jati thi and yahan pe private members ki koi bhi faciity nahi thi 
