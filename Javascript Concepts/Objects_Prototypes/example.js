@@ -152,31 +152,92 @@
 // const data = new Product('laptop','hp-laptop',78999)
 // data.displayProductDetails()
 
-class Product {
-    name;
-    modelno;
-    quantity;
-    price
+// class Product {
+//     name;
+//     modelno;
+//     quantity;
+//     price;
 
-    constructor(obj){
-        this.name = obj.name;
-        this.modelno= obj.modelno;
-        this.quantity = obj.quantity;
-        this.price = obj.price
+//     constructor(obj){
+//         this.name = obj.name;
+//         this.modelno= obj.modelno;
+//         this.quantity = obj.quantity;
+
+//         // adding validation in constructor
+//         if(obj.price > 0 && typeof(obj.price) === "number"){
+//             this.price = obj.price
+//         }else{
+//             return null
+//         }
+        
+//     }
+
+//     getDetails(){
+//         return `
+//         ${this.name}, ${this.modelno},${this.quantity}, ${this.price}
+//         `
+//     }
+// }
+
+// const Iphone = new Product({
+//     name: 'Iphone',
+//     modelno : 'Iphone14',
+//     quantity: 14,
+//     price : 10,
+// })
+
+// console.log(Iphone.getDetails())
+
+// Builder Pattern Example 2: 
+
+
+class Product {
+    #name
+    #price
+    #quantity
+
+    constructor(builder){
+        this.#name = builder.name;
+        if(builder.price>0){
+            this.#price = builder.price
+        }else{
+            return {}
+        }
+        this.#price = builder.price;
+        this.#quantity = builder.quantity;
     }
 
-    getDetails(){
-        return `
-        ${this.name}, ${this.modelno},${this.quantity}, ${this.price}
-        `
+    displayProduct(){
+        console.log(this.#name, this.#price, this.#quantity)
+    }
+    static get Builder(){
+        class Builder {
+            constructor(){
+                this.name = "";
+                this.price = 0;
+                this.quantity = 1;
+            }
+            setName(newname){
+                this.name = newname
+                return this
+            }
+            setPrice(newprice){
+                this.price = newprice
+                return this
+            }
+            setQuantity(newquantity){
+                this.quantity = newquantity
+                return this
+            }
+            build(){
+                return new Product(this)
+            }
+        }
+
+        return Builder;
     }
 }
 
-const Iphone = new Product({
-    name: 'Iphone',
-    modelno : 'Iphone14',
-    quantity: 14,
-    price : 150000,
-})
-
-console.log(Iphone.getDetails())
+const iPhone = new Product.Builder()
+iPhone.setName('IPhone').setPrice(150000).setQuantity(10)
+console.log(iPhone)
