@@ -335,7 +335,7 @@ and yes they way we are making data-members private these are the old school tec
     console.log(productOne.price)
     console.log(productOne)
 
-// So classes jo hai woh pehle nahi hua karta tha classes toh newely implement hua tha but ussse pehle bhi without classes ham function ke helo se bhi same chiz kar pare they
+// So classes jo hai woh pehle nahi hua karta tha classes toh newely implement hua tha but ussse pehle bhi without classes ham function ke help se bhi same chiz kar pate they , this is known as function constructor javascript mein aggar mein class ko use nahi karunga but still class jaise functionality mujhe chahiye toh uske liye mein function constructor use kar sakhta hoon
 
     function Product(n,d,p){
         this.name = n;
@@ -354,3 +354,51 @@ and yes they way we are making data-members private these are the old school tec
     // Output : laptop hp-laptop 78999
 
 // ek chiz apne notice kiya ki class anur abhi jo meine likha hai kaise mein new Product banata hun arguments pass karke dono mein same hai class main apko ek constructor banana padhta par yahan koi banane ki jarurat nahi hai  aur yana pe mein koi class bhi define nahi kar raha hoon and yeahi hai woh traditional tarika jisse pehle class keyword introduce hone se pehle ham essi tarah blueprinting kari jati thi and yahan pe private members ki koi bhi faciity nahi thi 
+
+
+Static Members: 
+---------------
+Static members woh data-members hote hein jo object ke saath associated nahi hote hein class ke hote hein for example: 
+
+
+class Product {
+    static x = 10; 
+    constructor(name, price){
+        this.name = name
+        this.price = price
+    }
+}
+const p1 = new Product('Iphone',1500000)
+console.log(p1.x) // you are trying to access static member and that too with the help of an Object but static members are not associated with Objects
+
+console.log(Product.x)
+// so here you can access it, it is accessible outside the class and here we are accessing with the help of an class
+
+// Code Improvisation
+---------------------
+class Product {
+    
+    constructor(obj){
+        this.name = obj.name;
+        this.modelno= obj.modelno;
+        this.quantity = obj.quantity;
+        this.price = obj.price
+    }
+
+    getDetails(){
+        return `
+        ${this.name}, ${this.modelno},${this.quantity}, ${this.price}
+        `
+    }
+}
+
+const Iphone = new Product({
+    name: 'Iphone',
+    modelno : 'Iphone14',
+    quantity: 14,
+    price : 150000,
+})
+
+console.log(Iphone.getDetails())
+
+// so now the code is looking even more good then the previous one they way i have created an object during calling this is called builder design pattern

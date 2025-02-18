@@ -138,16 +138,45 @@
 // console.log(productOne.price)
 // console.log(productOne)
 
-function Product(n,d,p){
-    this.name = n;
-    this.description = d;
-    this.price = p;
+// function Product(n,d,p){
+//     this.name = n;
+//     this.description = d;
+//     this.price = p;
 
-    this.displayProductDetails = function(){
-        console.log(this.name,this.description,this.price)
+//     this.displayProductDetails = function(){
+//         console.log(this.name,this.description,this.price)
+//     }
+
+// }
+
+// const data = new Product('laptop','hp-laptop',78999)
+// data.displayProductDetails()
+
+class Product {
+    name;
+    modelno;
+    quantity;
+    price
+
+    constructor(obj){
+        this.name = obj.name;
+        this.modelno= obj.modelno;
+        this.quantity = obj.quantity;
+        this.price = obj.price
     }
 
+    getDetails(){
+        return `
+        ${this.name}, ${this.modelno},${this.quantity}, ${this.price}
+        `
+    }
 }
 
-const data = new Product('laptop','hp-laptop',78999)
-data.displayProductDetails()
+const Iphone = new Product({
+    name: 'Iphone',
+    modelno : 'Iphone14',
+    quantity: 14,
+    price : 150000,
+})
+
+console.log(Iphone.getDetails())
