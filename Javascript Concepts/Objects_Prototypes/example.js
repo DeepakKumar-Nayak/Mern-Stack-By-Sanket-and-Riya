@@ -191,53 +191,78 @@
 // Builder Pattern Example 2: 
 
 
-class Product {
-    #name
-    #price
-    #quantity
+// class Product {
+//     #name
+//     #price
+//     #quantity
 
-    constructor(builder){
-        this.#name = builder.name;
-        if(builder.price>0){
-            this.#price = builder.price
-        }else{
-            return {}
-        }
-        this.#price = builder.price;
-        this.#quantity = builder.quantity;
-    }
+//     constructor(builder){
+//         this.#name = builder.name;
+//         if(builder.price>0){
+//             this.#price = builder.price
+//         }else{
+//             return {}
+//         }
+//         this.#price = builder.price;
+//         this.#quantity = builder.quantity;
+//     }
 
-    displayProduct(){
-        console.log(this.#name, this.#price, this.#quantity)
-    }
-    static get Builder(){
-        class Builder {
-            constructor(){
-                this.name = "";
-                this.price = 0;
-                this.quantity = 1;
-            }
-            setName(newname){
-                this.name = newname
-                return this
-            }
-            setPrice(newprice){
-                this.price = newprice
-                return this
-            }
-            setQuantity(newquantity){
-                this.quantity = newquantity
-                return this
-            }
-            build(){
-                return new Product(this)
-            }
-        }
+//     displayProduct(){
+//         console.log(this.#name, this.#price, this.#quantity)
+//     }
+//     static get Builder(){
+//         class Builder {
+//             constructor(){
+//                 this.name = "";
+//                 this.price = 0;
+//                 this.quantity = 1;
+//             }
+//             setName(newname){
+//                 this.name = newname
+//                 return this
+//             }
+//             setPrice(newprice){
+//                 this.price = newprice
+//                 return this
+//             }
+//             setQuantity(newquantity){
+//                 this.quantity = newquantity
+//                 return this
+//             }
+//             build(){
+//                 return new Product(this)
+//             }
+//         }
 
-        return Builder;
-    }
-}
+//         return Builder;
+//     }
+// }
 
-const iPhone = new Product.Builder()
-iPhone.setName('IPhone').setPrice(150000).setQuantity(10)
-console.log(iPhone)
+// const iPhone = new Product.Builder()
+// iPhone.setName('IPhone').setPrice(150000).setQuantity(10)
+// console.log(iPhone)
+
+// Example for object destructuring: 
+// const product = {name: 'Iphone',price:80000,quantity:30}
+// const {name:nameee,price,quantity} = product
+
+// console.log(nameee)
+// console.log(price)
+// console.log(quantity)
+
+// const productData = {review : 'Its very Costly', description: 'The Phone is Very Good But Very Costly' ,  ...product}
+// console.log(productData)
+
+// const product = {name: 'Iphone',price:80000,quantity:30, product_Info: {review : 'Its very Costly', description: 'The Phone is Very Good But Very Costly' }}
+
+// const {product_Info: {review,description}} = product
+// console.log(review)
+// console.log(description)
+
+const bioData = {name: 'deepak',surname: 'kumar', address:{location:'odisha', district:'cuttack',area:'CDA', Hobbies:{hobbieOne:'cricket', hobbbieTwo:'Coding', hobbieThree: 'Listening Songs'}}}
+
+
+const {address:{Hobbies:{hobbieThree,hobbieOne,hobbbieTwo}}} = bioData
+console.log(hobbieThree)
+console.log(hobbbieTwo)
+console.log(hobbieOne)

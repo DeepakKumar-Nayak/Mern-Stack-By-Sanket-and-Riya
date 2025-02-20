@@ -402,3 +402,41 @@ const Iphone = new Product({
 console.log(Iphone.getDetails())
 
 // so now the code is looking even more good then the previous one they way i have created an object during calling this is called builder design pattern
+
+Object Destructuring: 
+----------------------
+// Example for object destructuring: 
+const product = {name: 'Iphone',price:80000,quantity:30}
+
+// changing the keyname for name so now we can aceess by using nameee not name. 
+const {name:nameee,price,quantity} = product
+
+console.log(nameee)
+console.log(price)
+console.log(quantity)
+
+Using Spread Operator in Objects Destructuring: 
+-----------------------------------------------
+const productData = {review : 'Its very Costly', description: 'The Phone is Very Good But Very Costly', ...product}
+console.log(productData)
+
+so i can also use spread operator like this in Object destructuring
+
+// how to access nested objects on Object Destructuring: 
+---------------------------------------------------------
+const product = {name: 'Iphone',price:80000,quantity:30, product_Info: {review : 'Its very Costly', description: 'The Phone is Very Good But Very Costly' }}
+
+const {product_Info: {review,description}} = product
+console.log(review)
+console.log(description)
+
+// Another Example: 
+const bioData = {name: 'deepak',surname: 'kumar', address:{location:'odisha', district:'cuttack',area:'CDA', Hobbies:{hobbieOne:'cricket', hobbbieTwo:'Coding', hobbieThree: 'Listening Songs'}}}
+
+// How to access hobbieThree
+const {address:{hobbies:{hobbieThree}}} = bioData
+
+const {address:{Hobbies:{hobbieThree,hobbieOne,hobbbieTwo}}} = bioData
+console.log(hobbieThree) : Listening Songs
+console.log(hobbbieTwo)  : Coding
+console.log(hobbieOne)   : cricket
