@@ -492,3 +492,47 @@ m.bookEvents('movies')
 . aggar mein es example mein dekhun toh kya bookEvents object mein available hai.. nahi hai.. 
 . kya book event movie pe available hai .. nahi hai 
 . kya book event Events pe available hai haan hai.
+
+// So Above example mein i used classes to show thw example of inheritance now we will do without classes by the helo of call, apply, bind in Javascript. 
+
+
+Call: 
+-----
+the call function tells us that where is my this is now pointing t0.
+
+    const product = {
+        name : 'Iphone',
+        productInfo : function(){
+            console.log(this.name)
+        }
+    }
+    
+    const productTwo = {
+        name : 'Audi car'
+    }
+    product.productInfo.call() // undefined
+
+    if i want my this to attach with another object (productTwo) so for that i can write. 
+    product.product_Info.call(productTwo) // Audi Car.
+
+    if i want to pass some extra parameter then also i can do it like: 
+    product.product_Info.call(productTwo, 'parameter','parameter')
+
+
+Apply: 
+-----
+By the help of apply also i can do the same thing , doing the same thing mean pointing this to some other function.
+    const product = {
+        name : 'Iphone',
+        productInfo : function(price){
+            console.log(this.name, 'and the price is',price)
+        }
+    }
+    
+    const productTwo = {
+        name : 'Samsung Galaxy'
+    }
+    
+    product.productInfo.apply(productTwo, [120000])
+
+if i want to pass some arguments then i can pass it but i have to pass it inside the square brackets they way i have passed it in an the above example

@@ -304,19 +304,47 @@
 // p.display()
 
 
-class Events {
-    bookEvents(name){
-        this.name = name
-        console.log('Event Booking Done for',this.name)
+// class Events {
+//     bookEvents(name){
+//         this.name = name
+//         console.log('Event Booking Done for',this.name)
+//     }
+// }
+
+// class Movie extends Events {
+//     showTime(){
+//         console.log('movie-show')
+//     }
+// }
+
+// const m = new Movie()
+// m.showTime()
+// m.bookEvents('movies')
+
+// Uisng Call / Apply / Bind: 
+
+// const product = {
+//     name : 'Iphone',
+//     productInfo : function(){
+//         console.log(this.name)
+//     }
+// }
+
+// const productTwo = {
+//     name : 'Audi car'
+// }
+
+// product.productInfo.call(productTwo)
+
+const product = {
+    name : 'Iphone',
+    productInfo : function(price){
+        console.log(this.name, 'and the price is',price)
     }
 }
 
-class Movie extends Events {
-    showTime(){
-        console.log('movie-show')
-    }
+const productTwo = {
+    name : 'Samsung Galaxy'
 }
 
-const m = new Movie()
-m.showTime()
-m.bookEvents('movies')
+product.productInfo.apply(productTwo, [120000])
