@@ -440,3 +440,9 @@ const {address:{Hobbies:{hobbieThree,hobbieOne,hobbbieTwo}}} = bioData
 console.log(hobbieThree) : Listening Songs
 console.log(hobbbieTwo)  : Coding
 console.log(hobbieOne)   : cricket
+
+
+Three Dot Operator: 
+-------------------
+in objects we use spread operator as it upacks key value pair.
+and the rest parameter packs into one unit. 

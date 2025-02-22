@@ -18,7 +18,7 @@ class Product {
         this.#quantity = builder.quantity;
     }
 
-    // if i use the approach of creating a product without conatructor then i will face a number of problems like i will not be able to do the validatuon before object creation. suppose u got a senario where before object creation you have to do some validatons aur aggar apka validation fulfill nahi hua then apka object creation bandh ho jaega and ham getter and setter bhi nahi use kar paenge toh dono issue hamko solvbe karna hai
+    // if i use the approach of creating a product without conatructor then i will face a number of problems like i will not be able to do the validatuon before object creation. suppose u got a senario where before object creation you have to do some validatons aur aggar apka validation fulfill nahi hua then apka object creation bandh ho jaega and ham getter and setter bhi nahi use kar paenge toh dono issue hamko solve karna hai
 
     displayProduct(){
         console.log(this.#name, this.#price, this.#quantity)
@@ -26,12 +26,9 @@ class Product {
 
     // this is what i have done 
     static get Builder(){
+
         class Builder {
-            constructor(){
-                this.name = "";
-                this.price = 0;
-                this.quantity = 1;
-            }
+            
             setName(newname){
                 this.name = newname
                 return this
@@ -45,15 +42,17 @@ class Product {
                 return this
             }
             build(){
+                //console.log(this)
                 return new Product(this)
-                console.log(this)
+                
             }
         }
-
-        return Builder;
+        return new Builder();
     }
 }
 
-const iPhone = new Product.Builder()
-iPhone.setName('IPhone').setPrice(150000).setQuantity(10)
-iPhone.build()
+const iPhone = Product.Builder
+.setName('Iphone')
+.setPrice(12000)
+.setQuantity(12)
+console.log(iPhone)

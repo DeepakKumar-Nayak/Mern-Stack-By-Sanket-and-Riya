@@ -259,10 +259,33 @@
 // console.log(review)
 // console.log(description)
 
-const bioData = {name: 'deepak',surname: 'kumar', address:{location:'odisha', district:'cuttack',area:'CDA', Hobbies:{hobbieOne:'cricket', hobbbieTwo:'Coding', hobbieThree: 'Listening Songs'}}}
+// const bioData = {name: 'deepak',surname: 'kumar', address:{location:'odisha', district:'cuttack',area:'CDA', Hobbies:{hobbieOne:'cricket', hobbbieTwo:'Coding', hobbieThree: 'Listening Songs'}}}
 
 
-const {address:{Hobbies:{hobbieThree,hobbieOne,hobbbieTwo}}} = bioData
-console.log(hobbieThree)
-console.log(hobbbieTwo)
-console.log(hobbieOne)
+// const {address:{Hobbies:{hobbieThree,hobbieOne,hobbbieTwo}}} = bioData
+// console.log(hobbieThree)
+// console.log(hobbbieTwo)
+// console.log(hobbieOne)
+
+// just for more details how does the builder pattern works
+// class Product {
+//     static get Builder(){
+//         class Builder {
+            
+//             setName(inc){
+//                 this.name = inc
+//                 return this
+//             }
+//             setPrice(pc){
+//                 this.price = pc
+//                 return this
+
+//             }
+//         }
+//         return new Builder()
+//     }
+
+// }
+
+// const product = Product.Builder.setName('deepak').setPrice(12000)
+// console.log(product)
