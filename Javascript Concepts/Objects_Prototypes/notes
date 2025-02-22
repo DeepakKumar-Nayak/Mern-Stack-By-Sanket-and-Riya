@@ -437,7 +437,10 @@ const bioData = {name: 'deepak',surname: 'kumar', address:{location:'odisha', di
 const {address:{hobbies:{hobbieThree}}} = bioData
 
 const {address:{Hobbies:{hobbieThree,hobbieOne,hobbbieTwo}}} = bioData
-console.log(hobbieThree) : Listening Songs
+console.log(hobbieThree) : Li
+
+
+ˀstening Songs
 console.log(hobbbieTwo)  : Coding
 console.log(hobbieOne)   : cricket
 
@@ -446,3 +449,46 @@ Three Dot Operator:
 -------------------
 in objects we use spread operator as it upacks key value pair.
 and the rest parameter packs into one unit. 
+
+
+Prototype:
+----------
+Is JavaScript is a Object Oriented Programming Language.. The answer is No Its a Object Linked to an Object Kind of Language because of prototype
+
+
+Prototype ek aisa mechanism hai javascript mein jiske help se ek object aur ek object ko apna properties share kar sakhta hai
+
+One Object can share its Properties to Another Object
+
+ 
+
+const p = new Product('Iphone',12000)
+
+// jaise ki yahan jab bhi mera constructor execute karta hai kya mein kabhi yahan pe koi bhi member function ko hit karta hoon nahi na kabhi nahi karta but still mein acess kar pata hoon displayProductDetails() member function ko and woh kaise ho raha hai woh ho raha hai prototype ke vajeh se kyun ki yeah jo hamara member function hai na yeah wala function apko prototype ke andar dekhne ko milega.
+
+jab bhi mein ek object create karta hoon woh pehle ek empty object banaega and banane ke baad woh constructor ko call karega par aap ek baat dekhna kabhi bhi member function ko hit karega hi nahi.
+
+. data member ka access de raha hoon par function ka access nahin de raha hoon.
+
+Prototypes Example: 
+-------------------
+class Events {
+    bookEvents(name){
+        this.name = name
+        console.log('Event Booking Done for',this.name)
+    }
+}
+
+class Movie extends Events {
+    showTime(){
+        console.log('movie-show')
+    }
+}
+
+const m = new Movie()
+m.showTime()
+m.bookEvents('movies')
+
+. aggar mein es example mein dekhun toh kya bookEvents object mein available hai.. nahi hai.. 
+. kya book event movie pe available hai .. nahi hai 
+. kya book event Events pe available hai haan hai.

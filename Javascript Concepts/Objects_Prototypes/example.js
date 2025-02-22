@@ -289,3 +289,34 @@
 
 // const product = Product.Builder.setName('deepak').setPrice(12000)
 // console.log(product)
+
+// class Product {
+//     constructor(name,price){
+//         this.name = name;
+//         this.price = price
+//     }
+// }
+// Product.prototype.display = function(){
+//     console.log(this.name)
+// }
+
+// const p = new Product('Iphone',12000)
+// p.display()
+
+
+class Events {
+    bookEvents(name){
+        this.name = name
+        console.log('Event Booking Done for',this.name)
+    }
+}
+
+class Movie extends Events {
+    showTime(){
+        console.log('movie-show')
+    }
+}
+
+const m = new Movie()
+m.showTime()
+m.bookEvents('movies')
