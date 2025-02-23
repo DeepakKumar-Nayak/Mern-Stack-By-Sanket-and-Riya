@@ -519,6 +519,43 @@ the call function tells us that where is my this is now pointing t0.
     product.product_Info.call(productTwo, 'parameter','parameter')
 
 
+    // call example how to pass argument
+
+    const product_one = {
+        name : 'Iphone',
+        getInfo : function(price){
+            console.log(this.name,'price is',price)
+            // so here i am passing a parameter as price in getInfo function
+        }
+    }
+
+    const productTwo = {
+        name : 'Macbook'
+        
+    }
+
+    //product_one.getInfo(50000)
+    product_one.getInfo.call(productTwo, 67000)
+    // 67000 mein esliye pass kar raha hoon kyun ki getinfo ko ek parameter chahiye and woh parameter aise hi paas hogi after comma and more than one ham pass kar sakhte hein. 
+
+
+    // One more example with call: 
+    var name = "Earpods"
+    const obj = {
+        name : "Iphone",
+        getInfo : function(){
+            console.log(this.name)
+        }
+    }
+
+    const newObj = {
+        name :'Macbook'
+    }
+
+    obj.getInfo.call()
+    aggar mein kuch bhi object provide nahi kar raha hoon then hame this jo hai point out karega global ko (window) and global mein  
+    this.name = "Earpods"
+
 Apply: 
 -----
 By the help of apply also i can do the same thing , doing the same thing mean pointing this to some other function.
@@ -536,3 +573,28 @@ By the help of apply also i can do the same thing , doing the same thing mean po
     product.productInfo.apply(productTwo, [120000])
 
 if i want to pass some arguments then i can pass it but i have to pass it inside the square brackets they way i have passed it in an the above example
+
+So in Apply i can take two arguments one is the object and the other one is the arguments that too inside the array and we can take number of arguments but have to write it inside the array for example.
+
+product.product_Info.apply(newObj, [arg1, ar2, ar3, arg4])
+
+see i am passing 4 arguments and i have written that inside an array.
+
+Bind:
+------
+var name = "Earpods"
+const obj = {
+    name : "Iphone",
+    getInfo : function(){
+        console.log(this.name)
+    }
+}
+
+const newObj = {
+    name :'Macbook'
+}
+
+const f = obj.getInfo.bind(newObj)
+console.log(f)
+
+. bind return us a modified function of getInfo. the original getInfo function mein koi changes nahi hoga but ek naya  modified function milega because of bind

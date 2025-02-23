@@ -336,15 +336,49 @@
 
 // product.productInfo.call(productTwo)
 
-const product = {
-    name : 'Iphone',
-    productInfo : function(price){
-        console.log(this.name, 'and the price is',price)
+// const product = {
+//     name : 'Iphone',
+//     productInfo : function(price){
+//         console.log(this.name, 'and the price is',price)
+//     }
+// }
+
+// const productTwo = {
+//     name : 'Samsung Galaxy'
+// }
+
+// product.productInfo.apply(productTwo, [120000])
+
+// // call example
+
+// const product_one = {
+//     name : 'Iphone',
+//     getInfo : function(price){
+//         console.log(this.name,'price is',price)
+//         // so here i am passing a parameter as price in getInfo function
+//     }
+// }
+
+// const productTwo = {
+//     name : 'Macbook'
+    
+// }
+
+// //product_one.getInfo(50000)
+// product_one.getInfo.call(productTwo, 67000)
+// // 67000 mein esliye pass kar raha hoon kyun ki getinfo ko ek parameter chahiye and woh parameter aise hi paas hogi after comma and more than one ham pass kar sakhte hein. 
+
+var name = "Earpods"
+const obj = {
+    name : "Iphone",
+    getInfo : function(){
+        console.log(this.name)
     }
 }
 
-const productTwo = {
-    name : 'Samsung Galaxy'
+const newObj = {
+    name :'Macbook'
 }
 
-product.productInfo.apply(productTwo, [120000])
+const f = obj.getInfo.bind(newObj)
+console.log(f)
