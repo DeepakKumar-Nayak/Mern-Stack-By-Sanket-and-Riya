@@ -665,5 +665,50 @@ my phone name is Macbook and its price is 12000
     const cir = new Circus('The Circus Show')
     cir.bookEvent('Circus')
     
+   // how to do the same tyhing with class:
+
+        class Events {
+            constructor(dateofEvent) {
+                this.dateofEvent = dateofEvent
+            }
+            bookEvent(eventname) {
+                if (eventname === 'Movie' || 'movie') {
+                    console.log('Congratulations Ticket Booked Successfully for', this.name)
+                } else if (eventname === 'Comedy' || 'comedy') {
+                    console.log('Congratulations Ticket Booked Successfully for', this.name)
+                } else {
+                    console.log('Congratulations Ticket Booked Successfully for', this.name)
+                }
+            }
+        }
+        
+        class Movie extends Events {
+            constructor(name, date) {
+                super(date) // call the events constructor
+                this.name = name
+            }
+        }
+        
+        class Comedy extends Events {
+            constructor(name,date){
+                super(date) // this is right always use super before this
+                this.name = name
+                //super(date) cannot access this before super
+            }
+        }
+        
+        const m = new Movie('KGF', '19-02-2025')
+        //m.bookEvent('movie')
+        
+        const c = new Comedy('Kapil Sharma Show', '19-02-25')
+        c.bookEvent('comedy') 
     
-    
+   
+Some Important Notes: 
+---------------------
+what does super is actually doing here...
+    when we want to access the properties of parent class inside the child then at that time we have to use super and in javascript whule exteding a class we must use super, and we have to class super before accessing this inside the child constructor otherrwise we will get an error as: 
+
+Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+
+and if we have any logic or if we have defined any member function then javascript also allows the member function to execute from the parent function.

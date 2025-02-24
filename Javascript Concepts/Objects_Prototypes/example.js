@@ -9,7 +9,7 @@
 //     quantity
 
 //     // writing some member functions
- 
+
 
 //     addToCart(){
 //         console.log('product added to the cart')
@@ -118,7 +118,7 @@
 //     }
 
 //     // how to writer a actual setter and getter function by using set and get so i have done this by using get and set keyword
-    
+
 //     set price(p){
 //         if(p > this.price){
 //             this.price = p
@@ -169,7 +169,7 @@
 //         }else{
 //             return null
 //         }
-        
+
 //     }
 
 //     getDetails(){
@@ -271,7 +271,7 @@
 // class Product {
 //     static get Builder(){
 //         class Builder {
-            
+
 //             setName(inc){
 //                 this.name = inc
 //                 return this
@@ -361,7 +361,7 @@
 
 // const productTwo = {
 //     name : 'Macbook'
-    
+
 // }
 
 // //product_one.getInfo(50000)
@@ -385,41 +385,76 @@
 
 // Acheiving Inheritance without class: 
 
-function Events(date){
-    this.date = date
-}
-Events.prototype.bookEvent = function(eventname){
-    if(eventname === 'Movie'){
-        console.log('Congratulations Ticket Book Successfully for',this.name)
-    }else if(eventname === 'Comedy'){
-        console.log('Congratulations Ticket Book Successfully for',this.name)
-    }else{
-        console.log('Congratulations Ticket Book Successfully for',this.name)
+// function Events(date){
+//     this.date = date
+// }
+// Events.prototype.bookEvent = function(eventname){
+//     if(eventname === 'Movie'){
+//         console.log('Congratulations Ticket Book Successfully for',this.name)
+//     }else if(eventname === 'Comedy'){
+//         console.log('Congratulations Ticket Book Successfully for',this.name)
+//     }else{
+//         console.log('Congratulations Ticket Book Successfully for',this.name)
+//     }
+// }
+
+// function Movie(name){
+//     this.name = name
+// }
+
+// function Comedy(name){
+//     this.name = name
+// }
+// function Circus(name){
+//     this.name = name
+// }
+
+// Movie.prototype.__proto__ = Events.prototype
+// Comedy.prototype.__proto__ = Events.prototype
+// Circus.prototype.__proto__ = Events.prototype
+
+// const m = new Movie('KGF')
+// //m.bookEvent('Movie')
+
+// const c = new Comedy('Kapil Sharma Show')
+// //c.bookEvent('Comedy')
+
+// const cir = new Circus('The Circus Show')
+// cir.bookEvent('Circus')
+
+// How to do the same thing using class
+
+class Events {
+    constructor(dateofEvent) {
+        this.dateofEvent = dateofEvent
+    }
+    bookEvent(eventname) {
+        if (eventname === 'Movie' || 'movie') {
+            console.log('Congratulations Ticket Booked Successfully for', this.name)
+        } else if (eventname === 'Comedy' || 'comedy') {
+            console.log('Congratulations Ticket Booked Successfully for', this.name)
+        } else {
+            console.log('Congratulations Ticket Booked Successfully for', this.name)
+        }
     }
 }
 
-function Movie(name){
-    this.name = name
+class Movie extends Events {
+    constructor(name, date) {
+        super(date)
+        this.name = name
+    }
 }
 
-function Comedy(name){
-    this.name = name
+class Comedy extends Events {
+    constructor(name,date){
+        super(date)
+        this.name = name
+    }
 }
-function Circus(name){
-    this.name = name
-}
 
-Movie.prototype.__proto__ = Events.prototype
-Comedy.prototype.__proto__ = Events.prototype
-Circus.prototype.__proto__ = Events.prototype
+const m = new Movie('KGF', '19-02-2025')
+//m.bookEvent('movie')
 
-const m = new Movie('KGF')
-//m.bookEvent('Movie')
-
-const c = new Comedy('Kapil Sharma Show')
-//c.bookEvent('Comedy')
-
-const cir = new Circus('The Circus Show')
-cir.bookEvent('Circus')
-
-
+const c = new Comedy('Kapil Sharma Show', '19-02-25')
+c.bookEvent('comedy')
