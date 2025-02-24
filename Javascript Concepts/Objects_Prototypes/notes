@@ -617,3 +617,49 @@ data('12000')
 Output:
 -------
 my phone name is Macbook and its price is 12000
+
+// Example of prototype without using class how to do it with function
+    function Events(date){
+        this.date = date
+    }
+    Events.prototype.bookEvent = function(eventname){
+        if(eventname === 'Movie'){
+            console.log('Congratulations Ticket Book Successfully for',this.name)
+        }else if(eventname === 'Comedy'){
+            console.log('Congratulations Ticket Book Successfully for',this.name)
+        }else{
+            console.log('Congratulations Ticket Book Successfully for',this.name)
+        }
+    }
+    
+    function Movie(name){
+        this.name = name
+    }
+    
+    function Comedy(name){
+        this.name = name
+    }
+    function Circus(name){
+        this.name = name
+    }
+    
+    // this will connect movie with events
+    Movie.prototype.__proto__ = Events.prototype
+
+    // this will connect comedy with events
+    Comedy.prototype.__proto__ = Events.prototype
+
+    // this will connect circus with events
+    Circus.prototype.__proto__ = Events.prototype
+    
+    const m = new Movie('KGF')
+    m.bookEvent('Movie')
+    
+    const c = new Comedy('Kapil Sharma Show')
+    c.bookEvent('Comedy')
+    
+    const cir = new Circus('The Circus Show')
+    cir.bookEvent('Circus')
+    
+    
+    
