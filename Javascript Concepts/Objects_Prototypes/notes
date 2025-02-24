@@ -618,7 +618,7 @@ Output:
 -------
 my phone name is Macbook and its price is 12000
 
-// Example of prototype without using class how to do it with function
+// Example of prototype without using class how to do it with function.
     function Events(date){
         this.date = date
     }
@@ -650,7 +650,11 @@ my phone name is Macbook and its price is 12000
     Comedy.prototype.__proto__ = Events.prototype
 
     // this will connect circus with events
-    Circus.prototype.__proto__ = Events.prototype
+    //Circus.prototype.__proto__ = Events.prototype
+
+    You can try something like: 
+    This will do the same thing i think this is easy and clean so we should follow this one.
+    Circus.porototype = Objects.create(Events.prototype)
     
     const m = new Movie('KGF')
     m.bookEvent('Movie')
