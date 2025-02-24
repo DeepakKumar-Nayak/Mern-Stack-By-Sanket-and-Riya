@@ -368,17 +368,58 @@
 // product_one.getInfo.call(productTwo, 67000)
 // // 67000 mein esliye pass kar raha hoon kyun ki getinfo ko ek parameter chahiye and woh parameter aise hi paas hogi after comma and more than one ham pass kar sakhte hein. 
 
-var name = "Earpods"
-const obj = {
-    name : "Iphone",
-    getInfo : function(){
-        console.log(this.name)
+// var name = "Earpods"
+// const obj = {
+//     name : "Iphone",
+//     getInfo : function(){
+//         console.log(this.name)
+//     }
+// }
+
+// const newObj = {
+//     name :'Macbook'
+// }
+
+// const f = obj.getInfo.bind(newObj)
+// console.log(f)
+
+// Acheiving Inheritance without class: 
+
+function Events(date){
+    this.date = date
+}
+Events.prototype.bookEvent = function(eventname){
+    if(eventname === 'Movie'){
+        console.log('Congratulations Ticket Book Successfully for',this.name)
+    }else if(eventname === 'Comedy'){
+        console.log('Congratulations Ticket Book Successfully for',this.name)
+    }else{
+        console.log('Congratulations Ticket Book Successfully for',this.name)
     }
 }
 
-const newObj = {
-    name :'Macbook'
+function Movie(name){
+    this.name = name
 }
 
-const f = obj.getInfo.bind(newObj)
-console.log(f)
+function Comedy(name){
+    this.name = name
+}
+function Circus(name){
+    this.name = name
+}
+
+Movie.prototype.__proto__ = Events.prototype
+Comedy.prototype.__proto__ = Events.prototype
+Circus.prototype.__proto__ = Events.prototype
+
+const m = new Movie('KGF')
+//m.bookEvent('Movie')
+
+const c = new Comedy('Kapil Sharma Show')
+//c.bookEvent('Comedy')
+
+const cir = new Circus('The Circus Show')
+cir.bookEvent('Circus')
+
+

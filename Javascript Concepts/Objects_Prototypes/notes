@@ -598,3 +598,22 @@ const f = obj.getInfo.bind(newObj)
 console.log(f)
 
 . bind return us a modified function of getInfo. the original getInfo function mein koi changes nahi hoga but ek naya  modified function milega because of bind
+
+// Example 2 for bind:
+-----------------------
+const product = {
+    name : "IPhone",
+    getInfo : function(price){
+        console.log('my phone name is',this.name, 'and its price is',price)
+    }
+}
+
+const product2 = {
+    name : "Macbook"
+}
+const data = product.getInfo.bind(product2)
+data('12000')
+
+Output:
+-------
+my phone name is Macbook and its price is 12000
