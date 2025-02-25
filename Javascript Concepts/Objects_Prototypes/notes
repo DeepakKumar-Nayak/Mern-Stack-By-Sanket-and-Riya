@@ -63,13 +63,17 @@ class Product {
 
 // Constructor: 
 ---------------
-. Every class in javascript has one special member function called as constructor which is only executed once at the time of object creation and that too it will be the first method to get execute. 
+. Every class in javascript has one special member function called as constructor which 
+is only executed once at the time of object creation and that too it will be the first method to get execute. 
 
-. whenever we create an object and try to execute it constructor will be first one to get execute out of all the methods and the constructor is the method which get automatically called by JS. 
+. whenever we create an object and try to execute it constructor will be first one to get execute
+out of all the methods and the constructor is the method which get automatically called by JS. 
 
-. Koi bhi class ham banaye usmein bydefault kuch constructor bane banaya milega , already available for any class which is called as default constructor.
+. Koi bhi class ham banaye usmein bydefault kuch constructor bane banaya milega , 
+already available for any class which is called as default constructor.
 
-. Yeah jo constructor hai thoda diffrent hai kyun ki yeah ek hi method hai jo javascript khud se call kar dega baki kisi bhi member function ko javascript khud se call nahi karega 
+. Yeah jo constructor hai thoda diffrent hai kyun ki yeah ek hi method hai jo javascript 
+khud se call kar dega baki kisi bhi member function ko javascript khud se call nahi karega 
 
 
 
@@ -84,7 +88,11 @@ Every time we use new it does four following procedure
 
 1. It creates a brand new absolutely empty object. 
 2. It calls the constructor of the class and passes the newely created object inside a keyword called this. 
-    (constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun ki ham plain object ka access de rahe hein)
+(constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but 
+parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us 
+plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun 
+ki ham plain object ka access de rahe hein)
+
 3. In step 3 new trigger everything we need to be done for prototype.
 
 4. if from a constructor an object is manually returned then this manual returned object is stored in the called variable, 
@@ -186,7 +194,8 @@ let obj = {
 
 obj.fn()
 
-in this example this is referring to the obj and obj here will act as a callsite. this keyword access kar para raha ha obj ko that mean 
+in this example this is referring to the obj and obj here will act as a callsite. 
+this keyword access kar para raha ha obj ko that mean 
 this.x is also same as obj.x
 
 Example 2: 
@@ -203,7 +212,9 @@ let obj = {
     }
 }
 
-In the above example this is referring to z here so thats why this.x will be pointing to 99 but for this.y i will get undefined why because inside z i havn't defined y , i have done that in obj. but here this is referring to z not obj. (callsite iz z not obj)
+In the above example this is referring to z here so thats why this.x will be pointing to 99 
+but for this.y i will get undefined why because inside z i havn't defined y , i have done that in obj. 
+but here this is referring to z not obj. (callsite iz z not obj)
 
 How this is used in arrow function: 
 -----------------------------------
@@ -217,7 +228,9 @@ let obj = {
 
 obj.fn()
 
-so what do you think whm does this is referring to here in the above example if we are using this inside the arrow function then it will never refer it to the callsite so we have to do some changes in arrow function this is defined lexically. 
+so what do you think what does this is referring to here in the above example 
+if we are using this inside the arrow function then it will never refer it to 
+the callsite so we have to do some changes in arrow function  and that is to defined this lexically. 
 
 let obj = {
     x : 10;
@@ -232,9 +245,14 @@ let obj = {
 
 obj.fn()
 
-so how i am getting 10 and 20 here because this is being defined here lexically that mean aggar hame arw ke andar nahi mile the value of x and y toh yeah ek level upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe 
+so how i am getting 10 and 20 here because this is being defined here lexically 
+that mean aggar hame arrow ke andar nahi mile the value of x and y toh yeah ek level
+upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe 
 
-so the point is aggar aap ek arrow function ke andar this ko access karna chahoge then it wont happen par aap us arrow function ko aggar ek normal function mein enclose karoge toh usko this ka value milega kyun ki normal function ke andar this obj ko point out kar raha hai and esliye this.x is same as obj.x thats why we are getting the value as 10
+so the point is aggar aap ek arrow function ke andar this ko access karna chahoge 
+then it wont happen par aap us arrow function ko aggar ek normal function mein enclose 
+karoge toh usko this ka value milega kyun ki normal function ke andar this obj ko point
+out kar raha hai and esliye this.x is same as obj.x thats why we are getting the value as 10
 
 // So how to add data-members without providing value through constructor. 
 class Product {
@@ -252,18 +270,28 @@ data.age = 30
 
 console.log(data)
 
-look at the above program where i am adding some valus but i am not doing that through constructor so this is one way where i can add some values but this is not the right thing to do because just look at the code how i am adding the values after object creation i mean anyone can do some sort of changes even after the object creation without any issues which violates the fundamental princicple of OOPS called as encapsulation that means classes ke bahar ham data members ko update nahi kar sakhte and jo ki usually hota bhi nahi hai.
+look at the above program where i am adding some valus but i am not doing that through constructor 
+so this is one way where i can add some values but this is not the right thing to do because just
+look at the code how i am adding the values after object creation i mean anyone can do some sort
+of changes even after the object creation without any issues which violates the fundamental princicple
+of OOPS called as encapsulation that means classes ke bahar ham data members ko update nahi kar
+sakhte and jo ki usually hota bhi nahi hai.
 
-kyun ki agar aisa hua then koi bhi akke kuch bhi random value pass kar dega and update lar dega which is not required, par es sab chiz ko ham resolve bhi kar sakhte hein but not simply allowing your data members from being accessible outside the class and is to be done only inside the class (update and accessible)
+kyun ki agar aisa hua then koi bhi akke kuch bhi random value pass kar dega and 
+update lar dega which is not required, par es sab chiz ko ham resolve bhi kar 
+sakhte hein but not simply allowing your data members from being accessible 
+outside the class and is to be done only inside the class (update and accessible)
 
-so we can make private to the data members so that it can be accessible/updatable only inside the class not from outside. and how to make the datamembers prive just to add # before declaring the datamember for example: 
+so we can make private to the data members so that it can be accessible/updatable 
+only inside the class not from outside. and how to make the datamembers prive just to 
+add # before declaring the datamember for example: 
 
 class Product {
     #name; this is a private data member
     #age; this private data member
 }
 
-// so now theese datamembers cannot be access outside the class neither can be updateable outside the class
+// so now theese data-members cannot be access outside the class neither can be updateable outside the class
 Example: 
 
 class Product {
@@ -287,9 +315,16 @@ console.log(productOne)
 
 // Product { review: 'Good One', price: 67000 }
 
-// see though i have make it private so iam unable to acess it from outside node js runtime mein apko basi yahi dikhai de raha hai aggar mein same chiz ko browser mein check karunga toh mujhe thoda allag sa result aega like asia esliye aa raha kyun ki dono ka kam karne ka tarika allag hai browser and nodejs: 
+// see though i have make it private so iam unable to acess it from outside node js runtime
+mein apko basi yahi dikhai de raha hai aggar mein same chiz ko browser mein check karunga toh 
+mujhe thoda allag sa result aega like asia esliye aa raha kyun ki dono ka kam karne ka tarika allag hai browser and nodejs: 
 
-// Product {review: 'Good One', price: 67000, #name: 'hp-laptop', #quantity: '14', #rating: '4.2'} but you can clearly see that apko kuch data members mein #name , #quantity, #rating aur woh esliye kyun ki meine en data-members ko private jo banaya tha aur haan aggar mein enko update karna chahun toh bhi nahi kar sakhta jo jo data-members meine private banaya hai uska value kabhi change nahi hoga par ek naya allag se name ban jaega jo ki private hoga hi nahi par jo private hai us mein koi bhi changes nahi hoga infact ek naya ban jaega for example: 
+// Product {review: 'Good One', price: 67000, #name: 'hp-laptop', #quantity: '14', #rating: '4.2'} 
+but you can clearly see that apko kuch data members mein #name , #quantity, #rating aur woh esliye kyun ki 
+meine en data-members ko private jo banaya tha aur haan aggar mein enko update karna chahun toh bhi nahi 
+kar sakhta jo jo data-members meine private banaya hai uska value kabhi change nahi hoga par ek naya allag 
+se name ban jaega jo ki private hoga hi nahi par jo private hai us mein koi bhi changes nahi hoga infact 
+ek naya ban jaega for example: 
 
 productOne.name = "hp"
 Product { review: 'Good One', price: 67000, name: 'hp' }
