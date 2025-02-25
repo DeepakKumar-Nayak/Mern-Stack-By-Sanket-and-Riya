@@ -653,8 +653,7 @@ my phone name is Macbook and its price is 12000
     //Circus.prototype.__proto__ = Events.prototype
 
     You can try something like: 
-    This will do the same thing i think this is easy and clean so we should follow this one.
-    Circus.porototype = Objects.create(Events.prototype)
+    Circus.porototype = Object.create(Events.prototype)
     
     const m = new Movie('KGF')
     m.bookEvent('Movie')
@@ -665,7 +664,7 @@ my phone name is Macbook and its price is 12000
     const cir = new Circus('The Circus Show')
     cir.bookEvent('Circus')
     
-   // how to do the same tyhing with class:
+// how to do the same trying with class:
 
         class Events {
             constructor(dateofEvent) {
@@ -706,7 +705,7 @@ my phone name is Macbook and its price is 12000
    
 Some Important Notes: 
 ---------------------
-what does super is actually doing here...
+what super is actually doing here...
     when we want to access the properties of parent class inside the child then at that time we have to use super and in javascript whule exteding a class we must use super, and we have to class super before accessing this inside the child constructor otherrwise we will get an error as: 
 
 Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor

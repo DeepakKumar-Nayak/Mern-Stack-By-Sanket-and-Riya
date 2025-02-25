@@ -424,37 +424,64 @@
 
 // How to do the same thing using class
 
-class Events {
-    constructor(dateofEvent) {
-        this.dateofEvent = dateofEvent
-    }
-    bookEvent(eventname) {
-        if (eventname === 'Movie' || 'movie') {
-            console.log('Congratulations Ticket Booked Successfully for', this.name)
-        } else if (eventname === 'Comedy' || 'comedy') {
-            console.log('Congratulations Ticket Booked Successfully for', this.name)
-        } else {
-            console.log('Congratulations Ticket Booked Successfully for', this.name)
-        }
-    }
+// class Events {
+//     constructor(dateofEvent) {
+//         this.dateofEvent = dateofEvent
+//     }
+//     bookEvent(eventname) {
+//         if (eventname === 'Movie' || 'movie') {
+//             console.log('Congratulations Ticket Booked Successfully for', this.name)
+//         } else if (eventname === 'Comedy' || 'comedy') {
+//             console.log('Congratulations Ticket Booked Successfully for', this.name)
+//         } else {
+//             console.log('Congratulations Ticket Booked Successfully for', this.name)
+//         }
+//     }
+// }
+
+// class Movie extends Events {
+//     constructor(name, date) {
+//         super(date)
+//         this.name = name
+//     }
+// }
+
+// class Comedy extends Events {
+//     constructor(name,date){
+//         super(date)
+//         this.name = name
+//     }
+// }
+
+// const m = new Movie('KGF', '19-02-2025')
+// //m.bookEvent('movie')
+
+// const c = new Comedy('Kapil Sharma Show', '19-02-25')
+// c.bookEvent('comedy')
+
+
+// Now lets do the same thing again with function 
+// But remember one thing super is not used in function
+
+function Events(eventDate){
+    this.eventDate = eventDate
+}
+Events.prototype.BookEvent = function(eventname){
+    console.log('Event Booked Successfully for',eventname)
 }
 
-class Movie extends Events {
-    constructor(name, date) {
-        super(date)
-        this.name = name
-    }
+function Movie(name,date){
+    Events.call(this,date)
+    this.name = name
+}
+Movie.prototype.setMovie = function(){
+    console.log('movie')
 }
 
-class Comedy extends Events {
-    constructor(name,date){
-        super(date)
-        this.name = name
-    }
-}
 
-const m = new Movie('KGF', '19-02-2025')
-//m.bookEvent('movie')
 
-const c = new Comedy('Kapil Sharma Show', '19-02-25')
-c.bookEvent('comedy')
+Movie.prototype = Object.create(Events.prototype)
+
+const m = new Movie('kgf', '12-10-25')
+m.BookEvent('Movie')
+
