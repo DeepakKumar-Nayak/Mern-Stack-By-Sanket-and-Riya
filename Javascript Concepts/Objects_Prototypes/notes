@@ -87,7 +87,9 @@ Every time we use new it does four following procedure
     (constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun ki ham plain object ka access de rahe hein)
 3. In step 3 new trigger everything we need to be done for prototype.
 
-4. if from a constructor an object is manually returned then this manual returned object is stored in the called variable, otherwise in any other case either we return something or dont return something constructor doesnot care about it and returns the value inside the this key. 
+4. if from a constructor an object is manually returned then this manual returned object is stored in the called variable, 
+otherwise in any other case either we return something or dont return something constructor doesnot care about 
+it and returns the value inside the this key. 
 
 for example :
 
@@ -118,7 +120,9 @@ for example :
    
 Explanation in Hindi Point4:
 -----------------------------
-aggar aap constructor se koi object manually return kar rahe ho toh apko wohi object milega as a result par aggar aap koi aur chiz return kar rahe ho (Look at the code above for more clear understanding meine eske liye bhi examples likha hai) so tab mujhe hamara actual product milega jo this ko pointout kar raha ho. 
+aggar aap constructor se koi object manually return kar rahe ho toh apko wohi object milega as a 
+result par aggar aap koi aur chiz return kar rahe ho (Look at the code above for more clear 
+understanding meine eske liye bhi examples likha hai) so tab mujhe hamara actual product milega jo this ko pointout kar raha ho. 
 
 Program/; 
 --------
