@@ -336,7 +336,8 @@ productOne.#name = "hp"
 
 and yes they way we are making data-members private these are the old school technique.
 
-// So its very Crystal Clear that aap bahar se change nahi kar sakhte private-members ko par aap class ke andar kar sakhte ho and lets see with an example how to do ..  with the help of getter and setter functions
+// So its very Crystal Clear that aap bahar se change nahi kar sakhte private-members ko par aap class 
+ke andar kar sakhte ho and lets see with an example how to do ..  with the help of getter and setter functions
 
     class Product {
         #name;
@@ -386,13 +387,18 @@ and yes they way we are making data-members private these are the old school tec
         }
     
     }
-    
+                                arg1     arg2      arg3
     const data = new Product('laptop','hp-laptop',78999)
     data.displayProductDetails()
 
     // Output : laptop hp-laptop 78999
 
-// ek chiz apne notice kiya ki class anur abhi jo meine likha hai kaise mein new Product banata hun arguments pass karke dono mein same hai class main apko ek constructor banana padhta par yahan koi banane ki jarurat nahi hai  aur yana pe mein koi class bhi define nahi kar raha hoon and yeahi hai woh traditional tarika jisse pehle class keyword introduce hone se pehle ham essi tarah blueprinting kari jati thi and yahan pe private members ki koi bhi faciity nahi thi 
+Note:
+-----
+ek chiz apne notice kiya ki class aur abhi jo meine function likha hai kaise mein new Product banata hun arguments 
+pass karke dono actual mein same hai but class mein  apko ek constructor banana padhta par function mein  koi  class banane ki 
+jarurat nahi hai  yahi hai woh traditional tarika jisse  pehle class keyword introduce hone se pehle ham essi tarah 
+blueprinting kari jati thi and function mein private members ki koi bhi faciity nahi thi 
 
 
 Static Members: 
