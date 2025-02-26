@@ -2,8 +2,11 @@ Class:
 ------- 
 Classes are just like blueprint. 
 classes are going to represent how an entity should look and behave. 
+
 when i say how do they look that mean the property they posses and when i say how do they behave that mean action they perform 
+
 Lets talk about the propery they posses which are otherwise known as the Data Members for examle: 
+
 Just take an example of a Product Class so what are the properties of a product.
 
 price,
@@ -60,17 +63,13 @@ class Product {
 
 // Constructor: 
 ---------------
-. Every class in javascript has one special member function called as constructor which 
-is only executed once at the time of object creation and that too it will be the first method to get execute. 
+. Every class in javascript has one special member function called as constructor which is only executed once at the time of object creation and that too it will be the first method to get execute. 
 
-. whenever we create an object and try to execute it constructor will be first one to get execute
-out of all the methods and the constructor is the method which get automatically called by JS. 
+. whenever we create an object and try to execute it constructor will be first one to get execute out of all the methods and the constructor is the method which get automatically called by JS. 
 
-. Koi bhi class ham banaye usmein bydefault kuch constructor bane banaya milega , 
-already available for any class which is called as default constructor.
+. Koi bhi class ham banaye usmein bydefault kuch constructor bane banaya milega , already available for any class which is called as default constructor.
 
-. Yeah jo constructor hai thoda diffrent hai kyun ki yeah ek hi method hai jo javascript 
-khud se call kar dega baki kisi bhi member function ko javascript khud se call nahi karega 
+. Yeah jo constructor hai thoda diffrent hai kyun ki yeah ek hi method hai jo javascript khud se call kar dega baki kisi bhi member function ko javascript khud se call nahi karega 
 
 
 
@@ -85,16 +84,10 @@ Every time we use new it does four following procedure
 
 1. It creates a brand new absolutely empty object. 
 2. It calls the constructor of the class and passes the newely created object inside a keyword called this. 
-(constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but 
-parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us 
-plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun 
-ki ham plain object ka access de rahe hein)
-
+    (constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun ki ham plain object ka access de rahe hein)
 3. In step 3 new trigger everything we need to be done for prototype.
 
-4. if from a constructor an object is manually returned then this manual returned object is stored in the called variable, 
-otherwise in any other case either we return something or dont return something constructor doesnot care about 
-it and returns the value inside the this key. 
+4. if from a constructor an object is manually returned then this manual returned object is stored in the called variable, otherwise in any other case either we return something or dont return something constructor doesnot care about it and returns the value inside the this key. 
 
 for example :
 
@@ -125,9 +118,7 @@ for example :
    
 Explanation in Hindi Point4:
 -----------------------------
-aggar aap constructor se koi object manually return kar rahe ho toh apko wohi object milega as a 
-result par aggar aap koi aur chiz return kar rahe ho (Look at the code above for more clear 
-understanding meine eske liye bhi examples likha hai) so tab mujhe hamara actual product milega jo this ko pointout kar raha ho. 
+aggar aap constructor se koi object manually return kar rahe ho toh apko wohi object milega as a result par aggar aap koi aur chiz return kar rahe ho (Look at the code above for more clear understanding meine eske liye bhi examples likha hai) so tab mujhe hamara actual product milega jo this ko pointout kar raha ho. 
 
 Program/; 
 --------
@@ -191,15 +182,8 @@ let obj = {
 
 obj.fn()
 
-<<<<<<< HEAD
 in this example this is referring to the obj and obj here will act as a callsite. we can also access the same thing using obj.x , so here
 in thie example this is actualy referring to callsite which is obj
-=======
-in this example this is referring to the obj and obj here will act as a callsite. 
-this keyword access kar para raha ha obj ko that mean 
-this.x is also same as obj.x
-
->>>>>>> fa941b1e5e40634d14a8f16d346f34620ef1a2d1
 Example 2: 
 ----------
 
@@ -214,9 +198,7 @@ let obj = {
     }
 }
 
-In the above example this is referring to z here so thats why this.x will be pointing to 99 
-but for this.y i will get undefined why because inside z i havn't defined y , i have done that in obj. 
-but here this is referring to z not obj. (callsite iz z not obj)
+In the above example this is referring to z here so thats why this.x will be pointing to 99 but for this.y i will get undefined why because inside z i havn't defined y , i have done that in obj. but here this is referring to z not obj. (callsite iz z not obj)
 
 How this is used in arrow function: 
 -----------------------------------
@@ -230,9 +212,7 @@ let obj = {
 
 obj.fn()
 
-so what do you think what does this is referring to here in the above example 
-if we are using this inside the arrow function then it will never refer it to 
-the callsite so we have to do some changes in arrow function  and that is to defined this lexically. 
+so what do you think whm does this is referring to here in the above example if we are using this inside the arrow function then it will never refer it to the callsite so we have to do some changes in arrow function this is defined lexically. 
 
 let obj = {
     x : 10;
@@ -247,20 +227,9 @@ let obj = {
 
 obj.fn()
 
-<<<<<<< HEAD
 so how i am getting 10 and 20 here because this is being defined here lexically that mean aggar hame arw ke andar nahi mile the value of x and y toh yeah ek level upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe and obj is the call site
 
-so the point is aggar aap ek arrow function ke andar this ko access karna chahoge then it wont happen par aap us arrow function ko aggar ek normal function mein enclose karoge toh usko this ka value milega kyun ki normal function ke andar this callsite ko point out karta hai which is obj here in this example and thats why we are getting the value as 10,20 
-=======
-so how i am getting 10 and 20 here because this is being defined here lexically 
-that mean aggar hame arrow ke andar nahi mile the value of x and y toh yeah ek level
-upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe 
-
-so the point is aggar aap ek arrow function ke andar this ko access karna chahoge 
-then it wont happen par aap us arrow function ko aggar ek normal function mein enclose 
-karoge toh usko this ka value milega kyun ki normal function ke andar this obj ko point
-out kar raha hai and esliye this.x is same as obj.x thats why we are getting the value as 10
->>>>>>> fa941b1e5e40634d14a8f16d346f34620ef1a2d1
+so the point is aggar aap ek arrow function ke andar this ko access karna chahoge then it wont happen par aap us arrow function ko aggar ek normal function mein enclose karoge toh usko this ka value milega kyun ki normal function ke andar this callsite ko point out karta hai which is obj here in this example and thats why we are getting the value as 10,20
 
 // So how to add data-members without providing value through constructor. 
 class Product {
@@ -278,28 +247,18 @@ data.age = 30
 
 console.log(data)
 
-look at the above program where i am adding some valus but i am not doing that through constructor 
-so this is one way where i can add some values but this is not the right thing to do because just
-look at the code how i am adding the values after object creation i mean anyone can do some sort
-of changes even after the object creation without any issues which violates the fundamental princicple
-of OOPS called as encapsulation that means classes ke bahar ham data members ko update nahi kar
-sakhte and jo ki usually hota bhi nahi hai.
+look at the above program where i am adding some valus but i am not doing that through constructor so this is one way where i can add some values but this is not the right thing to do because just look at the code how i am adding the values after object creation i mean anyone can do some sort of changes even after the object creation without any issues which violates the fundamental princicple of OOPS called as encapsulation that means classes ke bahar ham data members ko update nahi kar sakhte and jo ki usually hota bhi nahi hai.
 
-kyun ki agar aisa hua then koi bhi akke kuch bhi random value pass kar dega and 
-update lar dega which is not required, par es sab chiz ko ham resolve bhi kar 
-sakhte hein but not simply allowing your data members from being accessible 
-outside the class and is to be done only inside the class (update and accessible)
+kyun ki agar aisa hua then koi bhi akke kuch bhi random value pass kar dega and update lar dega which is not required, par es sab chiz ko ham resolve bhi kar sakhte hein but not simply allowing your data members from being accessible outside the class and is to be done only inside the class (update and accessible)
 
-so we can make private to the data members so that it can be accessible/updatable 
-only inside the class not from outside. and how to make the datamembers prive just to 
-add # before declaring the datamember for example: 
+so we can make private to the data members so that it can be accessible/updatable only inside the class not from outside. and how to make the datamembers prive just to add # before declaring the datamember for example: 
 
 class Product {
     #name; this is a private data member
     #age; this private data member
 }
 
-// so now theese data-members cannot be access outside the class neither can be updateable outside the class
+// so now theese datamembers cannot be access outside the class neither can be updateable outside the class
 Example: 
 
 class Product {
@@ -323,16 +282,9 @@ console.log(productOne)
 
 // Product { review: 'Good One', price: 67000 }
 
-// see though i have make it private so iam unable to acess it from outside node js runtime
-mein apko basi yahi dikhai de raha hai aggar mein same chiz ko browser mein check karunga toh 
-mujhe thoda allag sa result aega like asia esliye aa raha kyun ki dono ka kam karne ka tarika allag hai browser and nodejs: 
+// see though i have make it private so iam unable to acess it from outside node js runtime mein apko basi yahi dikhai de raha hai aggar mein same chiz ko browser mein check karunga toh mujhe thoda allag sa result aega like asia esliye aa raha kyun ki dono ka kam karne ka tarika allag hai browser and nodejs: 
 
-// Product {review: 'Good One', price: 67000, #name: 'hp-laptop', #quantity: '14', #rating: '4.2'} 
-but you can clearly see that apko kuch data members mein #name , #quantity, #rating aur woh esliye kyun ki 
-meine en data-members ko private jo banaya tha aur haan aggar mein enko update karna chahun toh bhi nahi 
-kar sakhta jo jo data-members meine private banaya hai uska value kabhi change nahi hoga par ek naya allag 
-se name ban jaega jo ki private hoga hi nahi par jo private hai us mein koi bhi changes nahi hoga infact 
-ek naya ban jaega for example: 
+// Product {review: 'Good One', price: 67000, #name: 'hp-laptop', #quantity: '14', #rating: '4.2'} but you can clearly see that apko kuch data members mein #name , #quantity, #rating aur woh esliye kyun ki meine en data-members ko private jo banaya tha aur haan aggar mein enko update karna chahun toh bhi nahi kar sakhta jo jo data-members meine private banaya hai uska value kabhi change nahi hoga par ek naya allag se name ban jaega jo ki private hoga hi nahi par jo private hai us mein koi bhi changes nahi hoga infact ek naya ban jaega for example: 
 
 productOne.name = "hp"
 Product { review: 'Good One', price: 67000, name: 'hp' }
@@ -344,8 +296,7 @@ productOne.#name = "hp"
 
 and yes they way we are making data-members private these are the old school technique.
 
-// So its very Crystal Clear that aap bahar se change nahi kar sakhte private-members ko par aap class 
-ke andar kar sakhte ho and lets see with an example how to do ..  with the help of getter and setter functions
+// So its very Crystal Clear that aap bahar se change nahi kar sakhte private-members ko par aap class ke andar kar sakhte ho and lets see with an example how to do ..  with the help of getter and setter functions
 
     class Product {
         #name;
@@ -383,9 +334,7 @@ ke andar kar sakhte ho and lets see with an example how to do ..  with the help 
     console.log(productOne.price)
     console.log(productOne)
 
-// So classes jo hai woh pehle nahi hua karta tha classes toh newely implement hua tha but ussse pehle bhi without classes
-ham function ke help se bhi same chiz kar pate they , this is known as function constructor javascript mein aggar mein class 
-ko use nahi karunga but still class jaise functionality mujhe chahiye toh uske liye mein function constructor use kar sakhta hoon
+// So classes jo hai woh pehle nahi hua karta tha classes toh newely implement hua tha but ussse pehle bhi without classes ham function ke help se bhi same chiz kar pate they , this is known as function constructor javascript mein aggar mein class ko use nahi karunga but still class jaise functionality mujhe chahiye toh uske liye mein function constructor use kar sakhta hoon
 
     function Product(n,d,p){
         this.name = n;
@@ -397,18 +346,13 @@ ko use nahi karunga but still class jaise functionality mujhe chahiye toh uske l
         }
     
     }
-                                arg1     arg2      arg3
+    
     const data = new Product('laptop','hp-laptop',78999)
     data.displayProductDetails()
 
     // Output : laptop hp-laptop 78999
 
-Note:
------
-ek chiz apne notice kiya ki class aur abhi jo meine function likha hai kaise mein new Product banata hun arguments 
-pass karke dono actual mein same hai but class mein  apko ek constructor banana padhta par function mein  koi  class banane ki 
-jarurat nahi hai  yahi hai woh traditional tarika jisse  pehle class keyword introduce hone se pehle ham essi tarah 
-blueprinting kari jati thi and function mein private members ki koi bhi faciity nahi thi 
+// ek chiz apne notice kiya ki class anur abhi jo meine likha hai kaise mein new Product banata hun arguments pass karke dono mein same hai class main apko ek constructor banana padhta par yahan koi banane ki jarurat nahi hai  aur yana pe mein koi class bhi define nahi kar raha hoon and yeahi hai woh traditional tarika jisse pehle class keyword introduce hone se pehle ham essi tarah blueprinting kari jati thi and yahan pe private members ki koi bhi faciity nahi thi 
 
 
 Static Members: 
@@ -509,21 +453,21 @@ and the rest parameter packs into one unit.
 Prototype:
 ----------
 Is JavaScript is a Object Oriented Programming Language.. The answer is No Its a Object Linked to an Object Kind of Language because of prototype
+
+
 Prototype ek aisa mechanism hai javascript mein jiske help se ek object aur ek object ko apna properties share kar sakhta hai
+
 One Object can share its Properties to Another Object
 
  
 
 const p = new Product('Iphone',12000)
 
-// jaise ki yahan jab bhi mera constructor execute karta hai kya mein kabhi yahan pe koi bhi member function ko hit karta 
-hoon nahi na kabhi nahi karta but still mein acess kar pata hoon displayProductDetails() member function ko and woh kaise 
-ho raha hai woh ho raha hai prototype ke vajeh se kyun ki yeah jo hamara member function hai na yeah wala function apko 
-prototype ke andar dekhne ko milega.
+// jaise ki yahan jab bhi mera constructor execute karta hai kya mein kabhi yahan pe koi bhi member function ko hit karta hoon nahi na kabhi nahi karta but still mein acess kar pata hoon displayProductDetails() member function ko and woh kaise ho raha hai woh ho raha hai prototype ke vajeh se kyun ki yeah jo hamara member function hai na yeah wala function apko prototype ke andar dekhne ko milega.
 
-jab bhi mein ek object create karta hoon woh pehle ek empty object banaega and banane ke baad woh 
-constructor ko call karega par aap ek baat dekhna kabhi bhi member function ko hit karega hi nahi.
-and mein data member ka access de raha hoon par function ka access nahin de raha hoon.
+jab bhi mein ek object create karta hoon woh pehle ek empty object banaega and banane ke baad woh constructor ko call karega par aap ek baat dekhna kabhi bhi member function ko hit karega hi nahi.
+
+. data member ka access de raha hoon par function ka access nahin de raha hoon.
 
 Prototypes Example: 
 -------------------
@@ -761,10 +705,8 @@ my phone name is Macbook and its price is 12000
 Some Important Notes: 
 ---------------------
 what super is actually doing here...
-
-when we want to access the properties of parent class inside the child then at that time we have to 
-use super and in javascript while exteding a class we must use super, and we have to use super 
-before accessing this inside the child constructor otherrwise we will get an error as: 
+    when we want to access the properties of parent class inside the child then at that time we have to use super and in javascript whule exteding a class we must use super, and we have to class super before accessing this inside the child constructor otherrwise we will get an error as: 
 
 Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+
 and if we have any logic or if we have defined any member function then javascript also allows the member function to execute from the parent function.
