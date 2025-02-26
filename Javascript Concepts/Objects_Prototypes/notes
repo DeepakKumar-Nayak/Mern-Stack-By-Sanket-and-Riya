@@ -182,9 +182,8 @@ let obj = {
 
 obj.fn()
 
-in this example this is referring to the obj and obj here will act as a callsite. this keyword access kar para raha ha obj ko that mean 
-this.x is also same as obj.x
-
+in this example this is referring to the obj and obj here will act as a callsite. we can also access the same thing using obj.x , so here
+in thie example this is actualy referring to callsite which is obj
 Example 2: 
 ----------
 
@@ -228,9 +227,9 @@ let obj = {
 
 obj.fn()
 
-so how i am getting 10 and 20 here because this is being defined here lexically that mean aggar hame arw ke andar nahi mile the value of x and y toh yeah ek level upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe 
+so how i am getting 10 and 20 here because this is being defined here lexically that mean aggar hame arw ke andar nahi mile the value of x and y toh yeah ek level upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe and obj is the call site
 
-so the point is aggar aap ek arrow function ke andar this ko access karna chahoge then it wont happen par aap us arrow function ko aggar ek normal function mein enclose karoge toh usko this ka value milega kyun ki normal function ke andar this obj ko point out kar raha hai and esliye this.x is same as obj.x thats why we are getting the value as 10
+so the point is aggar aap ek arrow function ke andar this ko access karna chahoge then it wont happen par aap us arrow function ko aggar ek normal function mein enclose karoge toh usko this ka value milega kyun ki normal function ke andar this callsite ko point out karta hai which is obj here in this example and thats why we are getting the value as 10,20 
 
 // So how to add data-members without providing value through constructor. 
 class Product {

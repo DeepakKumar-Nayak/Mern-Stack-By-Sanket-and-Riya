@@ -463,25 +463,36 @@
 // Now lets do the same thing again with function 
 // But remember one thing super is not used in function
 
-function Events(eventDate){
-    this.eventDate = eventDate
+// function Events(eventDate){
+//     this.eventDate = eventDate
+// }
+// Events.prototype.BookEvent = function(eventname){
+//     console.log('Event Booked Successfully for',eventname)
+// }
+
+// function Movie(name,date){
+//     Events.call(this,date)
+//     this.name = name
+// }
+// Movie.prototype.setMovie = function(){
+//     console.log('movie')
+// }
+
+
+
+// Movie.prototype = Object.create(Events.prototype)
+
+// const m = new Movie('kgf', '12-10-25')
+// m.BookEvent('Movie')
+
+const data = {
+    x:10,
+    y:20,
+    fn: function(){
+        const arrow = () => {
+            console.log(this.x)
+        }
+        arrow()
+    }
 }
-Events.prototype.BookEvent = function(eventname){
-    console.log('Event Booked Successfully for',eventname)
-}
-
-function Movie(name,date){
-    Events.call(this,date)
-    this.name = name
-}
-Movie.prototype.setMovie = function(){
-    console.log('movie')
-}
-
-
-
-Movie.prototype = Object.create(Events.prototype)
-
-const m = new Movie('kgf', '12-10-25')
-m.BookEvent('Movie')
-
+data.fn()
