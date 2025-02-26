@@ -352,9 +352,19 @@ and yes they way we are making data-members private these are the old school tec
 
     // Output : laptop hp-laptop 78999
 
-// ek chiz apne notice kiya ki class anur abhi jo meine likha hai kaise mein new Product banata hun arguments pass karke dono mein same hai class main apko ek constructor banana padhta par yahan koi banane ki jarurat nahi hai  aur yana pe mein koi class bhi define nahi kar raha hoon and yeahi hai woh traditional tarika jisse pehle class keyword introduce hone se pehle ham essi tarah blueprinting kari jati thi and yahan pe private members ki koi bhi faciity nahi thi 
+// apne ek chiz notice kiya hoga ki class aur function constructor mein jyada kuch diffrence nahi hai pehle jab classes nahi hua karte they tabhi ham function constructor use karte they aur uske help se objects banaya jata tha woh ek tarika tha par abhi toh classes jab se ayya hua hai Javascript mein ham classes ke help se banate hein Objects wahan bhi ham new keyword use karte they aur yahan bhi ham new keyword use karte hein par yahan wahan ham constructor ke andar hamara data members ko pass karte they aur yahan thoda allag class mein ham 
+this.memberfunctions likhne ki jarurat nahi padhti thi par yahan karna padhta hai otherwise objects banane ke tarika toh same hi hai.
 
+here to call this function constructor we do :
+    const data = new Product('laptop','hp-laptop',78999)
 
+And here also the new keyword do the 4things:
+    . creating an empty object
+    . Assign this keyword in the function constructor to the empty new Object and call the constructor
+    . Do prototyping. 
+    . if we are returning the object manually then constructor will return the same else if we dont return anything 
+        manually or a non-object value is returned then constructor will return this. 
+    
 Static Members: 
 ---------------
 Static members woh data-members hote hein jo object ke saath associated nahi hote hein class ke hote hein for example: 
