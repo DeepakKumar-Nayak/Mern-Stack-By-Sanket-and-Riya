@@ -2,11 +2,8 @@ Class:
 ------- 
 Classes are just like blueprint. 
 classes are going to represent how an entity should look and behave. 
-
 when i say how do they look that mean the property they posses and when i say how do they behave that mean action they perform 
-
 Lets talk about the propery they posses which are otherwise known as the Data Members for examle: 
-
 Just take an example of a Product Class so what are the properties of a product.
 
 price,
@@ -375,7 +372,9 @@ ke andar kar sakhte ho and lets see with an example how to do ..  with the help 
     console.log(productOne.price)
     console.log(productOne)
 
-// So classes jo hai woh pehle nahi hua karta tha classes toh newely implement hua tha but ussse pehle bhi without classes ham function ke help se bhi same chiz kar pate they , this is known as function constructor javascript mein aggar mein class ko use nahi karunga but still class jaise functionality mujhe chahiye toh uske liye mein function constructor use kar sakhta hoon
+// So classes jo hai woh pehle nahi hua karta tha classes toh newely implement hua tha but ussse pehle bhi without classes
+ham function ke help se bhi same chiz kar pate they , this is known as function constructor javascript mein aggar mein class 
+ko use nahi karunga but still class jaise functionality mujhe chahiye toh uske liye mein function constructor use kar sakhta hoon
 
     function Product(n,d,p){
         this.name = n;
@@ -499,21 +498,21 @@ and the rest parameter packs into one unit.
 Prototype:
 ----------
 Is JavaScript is a Object Oriented Programming Language.. The answer is No Its a Object Linked to an Object Kind of Language because of prototype
-
-
 Prototype ek aisa mechanism hai javascript mein jiske help se ek object aur ek object ko apna properties share kar sakhta hai
-
 One Object can share its Properties to Another Object
 
  
 
 const p = new Product('Iphone',12000)
 
-// jaise ki yahan jab bhi mera constructor execute karta hai kya mein kabhi yahan pe koi bhi member function ko hit karta hoon nahi na kabhi nahi karta but still mein acess kar pata hoon displayProductDetails() member function ko and woh kaise ho raha hai woh ho raha hai prototype ke vajeh se kyun ki yeah jo hamara member function hai na yeah wala function apko prototype ke andar dekhne ko milega.
+// jaise ki yahan jab bhi mera constructor execute karta hai kya mein kabhi yahan pe koi bhi member function ko hit karta 
+hoon nahi na kabhi nahi karta but still mein acess kar pata hoon displayProductDetails() member function ko and woh kaise 
+ho raha hai woh ho raha hai prototype ke vajeh se kyun ki yeah jo hamara member function hai na yeah wala function apko 
+prototype ke andar dekhne ko milega.
 
-jab bhi mein ek object create karta hoon woh pehle ek empty object banaega and banane ke baad woh constructor ko call karega par aap ek baat dekhna kabhi bhi member function ko hit karega hi nahi.
-
-. data member ka access de raha hoon par function ka access nahin de raha hoon.
+jab bhi mein ek object create karta hoon woh pehle ek empty object banaega and banane ke baad woh 
+constructor ko call karega par aap ek baat dekhna kabhi bhi member function ko hit karega hi nahi.
+and mein data member ka access de raha hoon par function ka access nahin de raha hoon.
 
 Prototypes Example: 
 -------------------
@@ -751,8 +750,10 @@ my phone name is Macbook and its price is 12000
 Some Important Notes: 
 ---------------------
 what super is actually doing here...
-    when we want to access the properties of parent class inside the child then at that time we have to use super and in javascript whule exteding a class we must use super, and we have to class super before accessing this inside the child constructor otherrwise we will get an error as: 
+
+when we want to access the properties of parent class inside the child then at that time we have to 
+use super and in javascript while exteding a class we must use super, and we have to use super 
+before accessing this inside the child constructor otherrwise we will get an error as: 
 
 Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
-
 and if we have any logic or if we have defined any member function then javascript also allows the member function to execute from the parent function.
