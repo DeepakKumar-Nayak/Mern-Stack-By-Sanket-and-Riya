@@ -365,6 +365,13 @@ And here also the new keyword do the 4things:
     . if we are returning the object manually then constructor will return the same else if we dont return anything 
         manually or a non-object value is returned then constructor will return this. 
     
+
+and yes function constructor mein bhi arrow function banane ki koi jarurat nahi hai kyun ki aggar banaoge then wohi same 
+chiz hoga ki function constructor ka existence khatam ho jaega and usko lexically impiliment karna padega and aggar 
+lexically nahi kiya toh toh this uska window koi point our karega so its works same as class. i mean class toh baad mein ayya 
+so us hisab se aggar dekha jaye toh class lagbhag function constructor ki tarah hi kam karta hai.
+
+    
 Static Members: 
 ---------------
 Static members woh data-members hote hein jo object ke saath associated nahi hote hein class ke hote hein for example: 

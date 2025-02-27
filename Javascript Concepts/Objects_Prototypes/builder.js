@@ -12,9 +12,8 @@ class Product {
         if(builder.price>0){
             this.#price = builder.price
         }else{
-            return {}
+            throw new Error ('Price should be greater than 0')
         }
-        this.#price = builder.price;
         this.#quantity = builder.quantity;
     }
 
@@ -28,23 +27,25 @@ class Product {
     static get Builder(){
 
         class Builder {
-            
-            setName(newname){
-                this.name = newname
+            constructor(){
+                this.name = "deepak";
+                this.price = 90000;
+                this.quantity= 10
+            }
+            setName(p){
+                this.name = p
                 return this
             }
-            setPrice(newprice){
-                this.price = newprice
+            setPrice(p){
+                this.price = p;
                 return this
             }
-            setQuantity(newquantity){
-                this.quantity = newquantity
+            setQuantity(q){
+                this.quantity = q;
                 return this
             }
             build(){
-                //console.log(this)
                 return new Product(this)
-                
             }
         }
         return new Builder();
@@ -52,7 +53,9 @@ class Product {
 }
 
 const iPhone = Product.Builder
-.setName('Iphone')
-.setPrice(12000)
-.setQuantity(12)
-console.log(iPhone)
+.setName("iPhone")
+.setPrice(60000)
+.setQuantity(10)
+.build()
+
+iPhone.displayProduct()
