@@ -408,14 +408,18 @@ class Product {
     }
 }
 
-const Iphone = new Product({
+const data = new Product({
     name: 'Iphone',
     modelno : 'Iphone14',
     quantity: 14,
     price : 150000,
 })
 
-console.log(Iphone.getDetails())
+// diffrent ways to access getDetails using prototype.
+Product.prototype.getDetails.call(data) accessing using prototype
+data.__proto__.getDetails.call(data) // accessing using hiddenLink proto
+
+console.log(data.getDetails()) // basic and standard way to call getDetails()
 
 // so now the code is looking even more good then the previous one they way i have created an object during calling this is called builder design pattern
 
@@ -533,6 +537,8 @@ the call function tells us that where is my this is now pointing t0.
 
     if i want to pass some extra parameter then also i can do it like: 
     product.product_Info.call(productTwo, 'parameter','parameter')
+
+    
 
 
     // call example how to pass argument

@@ -1,14 +1,11 @@
-class Product {
-    constructor(name,price,rating){
-        this.name = name;
-        this.price = price
-        this.rating = rating
-    }
-
-    displayDetails(){
-        console.log(this.name, this.price,this.rating)
-    }
+function Product(name,price,rating){
+    this.name = name,
+    this.price = price,
+    this.rating = rating
 }
 
-const data = new Product('IPhone',12000,'4.5')
-const result = data.prototype()
+Product.prototype.getDetails = function(){
+    console.log(this.name, this.price,this.rating)
+}
+
+const data = new Product('Iphone',12000,"4.8")
