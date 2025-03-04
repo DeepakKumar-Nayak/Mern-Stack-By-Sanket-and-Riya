@@ -736,3 +736,63 @@ and if we have any logic or if we have defined any member function then javascri
 
 super is something we have to use its mandatory as we extends parent into child we have to use super, Though we inherit any properties 
 or not that doesn't matter we have to use it. 
+
+if we are not defining any constructor in parent and child then we can also use the method i have defined inside the child class using 
+super().method_name
+
+. when we are using super in the child class what does actually happen when cursor will hit the line where super is defined
+it will immediately go to the one level up, it will always skip the current class and it will mone one level up for example: 
+
+class Grandparent {
+    greet() {
+        console.log("Hello from Grandparent");
+    }
+}
+
+class Parent extends Grandparent {
+    greet() {
+        super.greet(); // ✅ Calls Grandparent’s greet()
+        console.log("Hello from Parent");
+    }
+}
+
+class Child extends Parent {
+    greet() {
+        super.greet(); // ✅ Calls Parent’s greet()
+        console.log("Hello from Child");
+    }
+}
+
+const obj = new Child();
+obj.greet();
+
+see in the above example what im doing creating an object with new Child() and defining a super inside the Child who is extending parent
+what will heppen here is when the cursor will come and hit 761 line super().greet dur to this line it will go to the Parent class and in the 
+Parent class also we are defining super.greet() now again it will go and check inside the Grandparent just because of super() it will skip 
+the current class and it will one level up this is how it works
+
+Explaination in Detail how actually super is working here :
+----------------------------------------------------------
+Step 1️⃣: obj.greet() is called
+	•	JavaScript searches for greet() inside Child.prototype.
+	•	✅ It finds greet() inside Child.prototype and executes it.
+
+Step 2️⃣: super.greet() inside Child.greet()
+	•	super.greet() does NOT look in Child.prototype again.
+	•	Instead, it looks in Parent.prototype.
+	•	✅ Calls Parent.prototype.greet().
+
+Step 3️⃣: super.greet() inside Parent.greet()
+	•	Again, super.greet() skips Parent.prototype and looks in Grandparent.prototype.
+	•	✅ Calls Grandparent.prototype.greet().
+
+Step 4️⃣: Execution Ends at Grandparent
+	•	Since Grandparent.greet() doesn’t use super, execution stops there.
+	•	Now, JavaScript unwinds the stack, and execution returns to Parent, then Child.
+
+
+// in this example this will be always referring to Child Only and calling super() will never change 
+the value of this, infact this will always remain same super.greet() only looks up the method in the parent class, 
+but this remains the same!
+
+Arrow functions cannot use super because super relies on this, and arrow functions don’t have their own this!
