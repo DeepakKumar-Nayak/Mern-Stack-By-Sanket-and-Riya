@@ -728,8 +728,11 @@ my phone name is Macbook and its price is 12000
 Some Important Notes: 
 ---------------------
 what super is actually doing here...
-    when we want to access the properties of parent class inside the child then at that time we have to use super and in javascript whule exteding a class we must use super, and we have to class super before accessing this inside the child constructor otherrwise we will get an error as: 
+    when we want to access the properties of parent class inside the child then at that time we have to use super and in javascript while exteding a class we must use super, and we have to use super before accessing this inside the child constructor otherrwise we will get an error as: 
 
 Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
 
 and if we have any logic or if we have defined any member function then javascript also allows the member function to execute from the parent function.
+
+super is something we have to use its mandatory as we extends parent into child we have to use super, Though we inherit any properties 
+or not that doesn't matter we have to use it. 
