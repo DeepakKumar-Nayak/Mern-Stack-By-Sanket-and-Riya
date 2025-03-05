@@ -676,6 +676,10 @@ my phone name is Macbook and its price is 12000
 
     You can try something like: 
     Circus.porototype = Object.create(Events.prototype)
+
+    Note:
+    Object.create() ka kam hi hai ki woh movie.prototype and event.prototype 
+    ke beech ek connecton establish karta hai
     
     const m = new Movie('KGF')
     m.bookEvent('Movie')

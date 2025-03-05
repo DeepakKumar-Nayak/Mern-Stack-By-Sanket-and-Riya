@@ -1,9 +1,15 @@
-var name = "deepak"
-let obj = {
-    name : "deepak_kumar",
-    greet : function(){
-        console.log(hello, this.name)
-    }
+function Events(){
+    
+}   
+Events.prototype.BookEvent = function(){
+    console.log('Event Booking Done Succssfully')
 }
 
-obj.greet()
+function BookmovieTicket(){
+
+}
+
+BookmovieTicket.prototype = Object.create(Events.prototype)
+const d = new BookmovieTicket()
+d.BookEvent()
+
