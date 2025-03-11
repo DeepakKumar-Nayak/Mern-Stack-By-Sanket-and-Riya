@@ -49,7 +49,7 @@ Javascript jo hai hamara bahut hi basic language hai , aab Javascript ko modern 
 
 jaise ki javascript ko files read karna nahi atta hai, javascript ko timer run karna nahi atta, Javascript ko html ke saath kaise interact karna nahi atta and also javascript ko nwtwork ke saath bhi interact karna nahi atta hai insort javascript ko bahut sare chiz nahi atta hai jo aaj kal modern applications mein use hote hain
 
-aur aggar hame woh sare ke sare fearues ko run karna hai toh uske liye Javascript ko ek sutitable environment ki jarurat hai jahan javascript apni capabilities se agge badh kar kuch kar paye and aise environment ko ham bolte hein runtime environment . 
+aur aggar hame woh sare ke sare features ko run karna hai toh uske liye Javascript ko ek sutitable environment ki jarurat hai jahan javascript apni capabilities se agge badh kar kuch kar paye and aise environment ko ham bolte hein runtime environment . 
 
 runtime environment ek software hai jo Javascript ko help karta hain naye naye requirements ko poora karne ke liye.
 
@@ -157,7 +157,7 @@ aur hamara promise object poore lifetime ke sirf ek baar hi state change kar sak
 if inside the executor callback we called resolver function then pending se fulfilled state mein aa jaega 
 
 if inside the executor we called rejector function then pending se rejected state mein aa jaega.
-whenever we create a promise bydefault the state will remain pending but the value will remain undefined 
+whenever we create a promise bydefault the state will remain pending but the value will  remain undefined 
 example: 
 
 const pr = new Promise((res,rej)=>{
@@ -226,5 +226,82 @@ Like i can do the same thing with .then and .catch also like
 
 But there is a diffrence between using .then .catch and using try and catch so basically try and catch are used for async/await operations and we can use .then and .catch while working with promises
 
-.then and .catch are directly used on promises Obhects
+.then and .catch are directly used on promises Objects
 try and catch are used inside the async operations
+
+-------------------------------------------------------------------------
+// kaise Promise help karta hai IOC mein explanation with example
+function getBalance(userId, callback) {
+    setTimeout(() => {
+        console.log("Fetching balance from DB...");
+        let balance = 4000;  // Assume user has ₹4000
+        callback(balance);  // 🔥 Callback function ko call kiya, balance pass kiya
+    }, 2000);
+}
+
+// ✅ Yahan pe hum ek function pass kar rahe hain `callback` ke jagah
+getBalance(123, function (balance) { 
+    if (balance > 5000) {
+        console.log("✅ Transaction Allowed");
+    } else {
+        console.log("❌ Transaction Denied: Low Balance");
+    }
+});
+
+•	getBalance() ke paas pura control hai!
+•	Agar getBalance() callback call na kare, ya kisi galti se galat balance bhej de, toh transaction fail ho sakta hai!
+•	Humare haath me kuch nahi hai, jo function karega woh hoga.
+•	Koi error handling bhi nahi hai agar database error de de.
+
+
+Solution: Promises Fix IoC Problem
+Ab hum Promises use karenge taaki execution control wapas le sakein! 🚀
+--
+function getBalance(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Fetching balance from DB...");
+            let balance = 4000; // Assume user has ₹4000
+            
+            if (balance !== undefined) {
+                resolve(balance); // ✅ Control return to caller
+            } else {
+                reject("❌ Database Error: Balance not found");
+            }
+        }, 2000);
+    });
+}
+
+// ✅ Caller now has full control!
+getBalance(123)
+    .then((balance) => {
+        if (balance > 5000) {
+            console.log("✅ Transaction Allowed");
+        } else {
+            console.log("❌ Transaction Denied: Low Balance");
+        }
+    })
+    .catch((error) => {
+        console.log("Error:", error); // Error handle kar sakte hain!
+    });
+
+How Promises Solve IoC?
+---
+Problem with Callbacks
+-----------------------
+getBalance() callback ke control mein tha
+Agar callback call na ho, toh kuch nahi kar sakte
+Koi proper error handling nahi
+
+Solution with Promises
+-----------------------
+getBalance() sirf resolve() ya reject() karega, but control .then() ke paas hoga!
+.then() caller ke haath me hai, woh decide karega ki kya karna hai!
+catch() se error ko properly handle kar sakte hain!
+
+
+IoC ka problem yeh hai ki hum execution control kisi aur ke haath de dete hain.
+✔ Promises se hum execution ka control wapas le aate hain!
+✔ Ab .then() aur .catch() se hum decide kar sakte hain ki kab kya execute hoga.
+✔ Jo kaam pehle callback kar raha tha, woh ab resolve() aur reject() kar raha hai, par control user ke paas hai!
+
