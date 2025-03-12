@@ -305,3 +305,25 @@ IoC ka problem yeh hai ki hum execution control kisi aur ke haath de dete hain.
 ✔ Ab .then() aur .catch() se hum decide kar sakte hain ki kab kya execute hoga.
 ✔ Jo kaam pehle callback kar raha tha, woh ab resolve() aur reject() kar raha hai, par control user ke paas hai!
 
+The Features which are not a part of Javascript for example setTimeout, setInterval they can be async and can ve sync as well
+i am not talking about specefic features and i just wanted to say that those who are not a part of javascript they can be async 
+and can be sync in nature there will be no boundation for them, But those who are native part of javascript fror example 
+forLoop these are always sync in nature 
+
+eslite setTimeout jabki javascript ka native feature nahi hai esliye woh uske liye kabhi wait nahi karta
+
+Micro and Macro mein priority hamesha milega Micro ko Macro uske baad execute hoga. 
+setTimeout,setInterval yeah sare functions MacroTask ko belong karta hai and  
+Promises belong karta hai Mirco ko. 
+
+so aggar aap setTimeout and Promise dono saath mein use kar rahe ho toh pehle aggar koi execute hoga toh woh hai Promise
+then setTimeout mein yahan pe priority ki baat kar raha hoon kon pehle hoga kon baad mein. 
+
+jab tak hamara main thread chalu hai tak tak na koi micro ko change milega na koi macro ko kyun ki main thread ka execution 
+ko hinder koi nahi kar sakhta bhale hi setTimeout ka timer khatam ho gaya hai woh jake rahega macro mein wait karega 
+jab tak main thread empty na ho tab tak wait karega uske baad jake execute hoga par koi bhi main thread ka execution ko 
+hinder karega hi nahi.
+
+Event loop hamesha check karega ki kya hamara main thread block hai ya empty hai aggar block hai toh kisi ko chodega nahi 
+excecute hone ke liye aggar block nahi hai toh check karega ki kya koi macro task mein kuch pada hua hai ya microtask mein 
+kuch pada hua hai aggar pada hua hai toh priorioty ke hisab se execute hone ke liye one by one chodega . 
