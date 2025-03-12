@@ -77,6 +77,10 @@ jab mein kuch return kar raha hoon that means woh chiz gayab ho jaega callstack 
 
 and what about those variables which are not used like a, i am not accessing anywhere not even in the inner function so its simple that ki woh memory mein se hat jaega, aap usko use krna chahte ho toh aap kar sakhte ho but aggar aap nahi kar rahe ho use that means hat jaega memory se. 
 
+Closure execution ke time dikhta hai matlab phase two mein.
+Jab function execute hone ke baad bhi ham parent variables ko access kar sakhte hein tab jake banta hai closure.
+Closure apne parent ke scope ko retain bhi kar sakta hai (execution ke baad bhi variables yaad rehte hain)
+
 
 --------
 so we are talking about callback hell and inversion of control, so callback hell is a readibility problem which is not a big prpblem eventually but inversion of control is a very big probelm because when you pass your callback to another function that means you are giving aap kisi aur ko woh hak de rahe ho call karne ke liye usko execute karne ke liye, callback impliment toh apne kiya tha but execute karne ke liye aap kisi aur ko de rahe ho par woh execute hogi bhi ya nahi ya phir kitni bar hogi execute iska control aap kisi aur ko de rahe ho and aisa bhi ho sakhta hai ki apka function ko woh galat tarike se use kar sakhta hai kyun ki function toh apka tha implimentation toh apka tha but apne control toh kisi aur ko diya hai na aur woh kuch bhi kare woh apke haath mein hai hi nahi aggar apne apke pass control rakha tha toh accha hota par abhi toh apne kisi aur ko de diya hai na control so yeah ek bahut bada problem hai 
