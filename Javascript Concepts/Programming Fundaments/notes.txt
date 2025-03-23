@@ -15,3 +15,12 @@ Declaring a Variables:
 ----------------------
 Javascript allow us to declare Variables in three diffrent ways like (var, let and const)
 but all of them work very diffrently in javascript. 
+
+var name = "deepak"
+let name = "deepak"
+const name = "deepak"
+
+we will study later during learning scope that how all of these are work diffrently in Javascript. 
+
+Datatype:
+----------
