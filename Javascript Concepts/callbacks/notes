@@ -323,7 +323,7 @@ Promises belong karta hai Mirco ko.
 so aggar aap setTimeout and Promise dono saath mein use kar rahe ho toh pehle aggar koi execute hoga toh woh hai Promise
 then setTimeout mein yahan pe priority ki baat kar raha hoon kon pehle hoga kon baad mein. 
 
-jab tak hamara main thread chalu hai tak tak na koi micro ko change milega na koi macro ko kyun ki main thread ka execution 
+jab tak hamara main thread chalu hai tab tak na koi micro ko change milega na koi macro ko kyun ki main thread ka execution 
 ko hinder koi nahi kar sakhta bhale hi setTimeout ka timer khatam ho gaya hai woh jake rahega macro mein wait karega 
 jab tak main thread empty na ho tab tak wait karega uske baad jake execute hoga par koi bhi main thread ka execution ko 
 hinder karega hi nahi.
@@ -331,3 +331,21 @@ hinder karega hi nahi.
 Event loop hamesha check karega ki kya hamara main thread block hai ya empty hai aggar block hai toh kisi ko chodega nahi 
 excecute hone ke liye aggar block nahi hai toh check karega ki kya koi macro task mein kuch pada hua hai ya microtask mein 
 kuch pada hua hai aggar pada hua hai toh priorioty ke hisab se execute hone ke liye one by one chodega . 
+
+Notes::
+--------
+Jab mein bol raha hoon ki .then registration karta hai that mean mein onFullfillment and onRejection ki baat kar raha hoon 
+.then registration karta hai eska matlab hai ki jitne bhi sare function hai woh sare jake onFullfillment and onRgeistration 
+mein jake store hote hein ek array ke andar and esko bolte hei registration 
+
+jo internally hota hai its not visible publically and wahan se function depend karta hai Promise pe ki kya promise 
+Resolve hota hai ya Reject hota hai kyun ki aggar Resolve Hua then onFullFillment ke function execute hoga aur woh kasie hoga 
+jitne bhi sare function OnFullFillment mein hoga woh jaega Micrtotask Queue mein aur wahan se event loop apna kam start karega aggar hamara callstack empty mein toh event loop wahan se function ko leke jake run karta hai. 
+
+
+---
+
+Gork Ai Clear Explanation: 
+----
+Jab .then likhta hoon, to onFulfilled aur onRejected handlers Promise ke internal list mein store hote hain—ise registration kehte hain. Ye list publically visible nahi hoti. Agar Promise resolve hota hai, to onFulfilled handlers microtask queue mein jate hain, aur agar reject hota hai, to onRejected handlers jate hain. Event loop tab kaam karta hai jab call stack empty hota hai, aur queue se functions utha ke chalata hai.
+

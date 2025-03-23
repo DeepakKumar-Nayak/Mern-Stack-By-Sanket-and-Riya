@@ -1,0 +1,17 @@
+Variables:
+-----------
+Variables are used as a container in javascript where we can store our data/values and values can be 
+string,numbers and other datatypes.
+
+There are some rules how to declare a variables Like: 
+    1. we cannot use special characters to declare a variable like(#,$)
+    2. its good to use camalCase while declaring a variable. 
+    3. we can declare variable using var, let, cont. 
+    4. Vriables ka start digit se nahi ho sakhta
+    5. cannot declare variables using (let, var, const) 
+        let var = "name" => this is wrong
+
+Declaring a Variables:
+----------------------
+Javascript allow us to declare Variables in three diffrent ways like (var, let and const)
+but all of them work very diffrently in javascript. 
