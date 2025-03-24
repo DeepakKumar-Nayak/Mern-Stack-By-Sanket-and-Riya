@@ -8,8 +8,18 @@ There are some rules how to declare a variables Like:
     2. its good to use camalCase while declaring a variable. 
     3. we can declare variable using var, let, cont. 
     4. Vriables ka start digit se nahi ho sakhta
+        var name1 = "deepak" (right)
+        var 1name = "deepak" (wrong)
+
     5. cannot declare variables using (let, var, const) 
         let var = "name" => this is wrong
+
+    6. we can use _ but cannot use - 
+        let user_name = "deepak" (right)
+        let user-name = "deepak" (wrong)
+
+    7. Variable names are case sensitive
+    8. we cannot declare a variable with keywords(if, else for, let, var, const)
 
 Declaring a Variables:
 ----------------------
@@ -24,3 +34,27 @@ we will study later during learning scope that how all of these are work diffren
 
 Datatype:
 ----------
+number, string, undefined, boolean
+Null : Variable declared and defined but with an empty value. let y = null;
+
+Short Circuting in Javascipt:
+------------------------------
+And Operator: 
+-------------
+False False False
+False True False
+True False False 
+True True True
+
+Aggar pehla operand false hai toh dusra operand ko check nahi karega woh hamesha pehle operator ko hi return kare dega 
+Aggar peh;e operand true hai then check hoga dusra kya hai jo bhi hoga dusrna wohi return hoga chahe woh true ho ya false .
+
+
+
+
+Or Operator:
+-------------
+True False True 
+True True True 
+False True True 
+False False False
