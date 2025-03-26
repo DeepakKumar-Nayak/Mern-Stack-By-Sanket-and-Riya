@@ -1,3 +1,6 @@
+console.log() as per the official documentation it is not the native part of Javascipt in the official doc we cannot find that this belong
+to javascript it is being provided by browsers/nodejs for debugging purpose
+
 Variables:
 -----------
 Variables are used as a container in javascript where we can store our data/values and values can be 
@@ -69,3 +72,105 @@ Abstract Equality : es mein conversion hota hein for example
     convert hone ke baad dono equal ho gaye so the answer will be False. 
 
     console.log("10" !== 10) this is Strict Equality operator aur yahan pe koi conversion nahi hoga and the answer will be as usual True.
+
+
+Function: 
+----------
+Agar hame ek set of logics ko bar bar likhne ki jarurat pad rahi hai so instead of writting the sane logic 
+again and again we can write that set of logics inside an function and we can call that function whenever / wherever 
+we want. 
+
+write a program to check the number is even or odd:
+---------------------------------------------------
+function isEvenorOdd(number){
+    if(number % 2 ==0){
+        console.log('The number is even',number)
+    }else{
+        console.log('The number is Odd')
+    }
+}
+
+isEvenorOdd(20)
+Points to Remember:
+-------------------
+20 => is called argument passing during function calling,
+number => is called parameter
+isEvenorOdd() => here we are defining a function . 
+isEvenorOdd(20) => here we are calling a function.
+
+// write the same program where we are returning the output
+function isEvenorOdd(number){
+    if(number % 2 ==0){
+        return `${number} is even`
+    }else{
+        return `${number} is odd`
+    }
+}
+
+console.log(isEvenorOdd(20)) // return kar raha hai esliye console ke ander likh raha hoon otherwise we can write like
+const data = isEvenorOdd(20)
+console.log(data)
+
+. function mein manually aggar ham kuch return nahi karenge toh hame output mein undefined milega. 
+function returnData(){
+    let x = 30;
+}
+
+const data = returnData()
+console.log(data)
+
+aggar console kar rahe ho toh woh toh allag baat hai par aggar return nahi kar rahe manually toh milega undefined;
+
+// writting function with default parameter: 
+    aggar aap default parameter use kar rahe ho then woh pehle check karega ki kya apne koi argument pass
+    kiya hai ya nahi aggar nahi kiya hai toh jo value apbe default parameter ko diya hoga wohi wala le lega 
+    but aggar apne pass kiya hai toh woh wohi wala lega jo apne pass kiya hai. 
+
+    function getData(x,y=20){
+        return(x+y)
+    }
+    console.log(getData(10)) // 
+    Output=> 30 
+
+    function getData(x,y=20){
+        return(x+y)
+        // es example mein apne default bhi pass kiya hai aur argument bhi pass kiya hai y ke liye so uska pehle priority
+        jo apne function call ke waqt jo argument pass kiya hai wohi wala hoga. 
+    }
+    console.log(getData(10,90)) // 
+    Output => 100
+
+One more Example:
+-----------------
+function getData(x,y=20,z){
+    console.log(x) //10
+    console.log(y) //20
+    console.log(z) //undefined 
+}
+console.log(getData(10))
+
+function getData(x,y=20,z){
+    console.log(x) //10
+    console.log(y) //39
+    console.log(z) //undefined 
+}
+console.log(getData(10,39))
+
+// so from this it is pretty clear that we have to pass value for z and we can pass after 39 but if we are not passig any value 
+then yes we will get undefined for that, though we have passed a value that too a default value for y , still we have to pass value for z
+there is no way that 39 will automatically go and store inside the z, we have to pass it manually.
+
+// using rest parameter in function. 
+rest parameter(...) are used during function defination and spread(...) are used during function calling.
+
+Example:
+--------
+function getData(...values){
+    return values
+}
+console.log(getData(10,20,30,40,50,60))
+
+
+
+
+
