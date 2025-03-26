@@ -222,6 +222,7 @@ let obj = {
             console.log(this.x, this.y)
             // 10 , 20
         }
+        arw()
     }
 }
 
@@ -800,3 +801,123 @@ the value of this, infact this will always remain same super.greet() only looks 
 but this remains the same!
 
 Arrow functions cannot use super because super relies on this, and arrow functions don’t have their own this!
+
+
+var name = "deepak_kumar"
+const obj = {
+    name : 'deepak',
+    getData : ()=> {
+        console.log(this.name)
+        console.log(name) // deepak_kumar
+   }
+}
+
+obj.getData();
+
+aggar aap yeah some code ko chaloage ek js file ke through like node example.js terminal mein toh apko undefined milega kyun ki 
+ek toh apne likhe hai arrow function ke andar ki apko this.name chahiye jo ki hai nahi kyun ki this.name jo hai woh global ko 
+point out karta hai in nodejs and apne var name = "deepak" jab likha haitoh eska matlab hai ki yeah ek module scope mein milega 
+i mean module ke local scope mein 
+
+kyun ki har js file ka ek module hota hai aur aap jab likhte ho var name = "deepak" toh eska matlab yeah jaega module local scope
+mein na ki global scope mein (global and moduke scope allag allag hai) and esliye apko name ka value mil nahi raha hai kyun ki apne arrow function mein this.name likha hai aur arrow function ka khud ka this hota hi nahi yeah apne parent scope se dekhega that mean in global and global scope mein kahin bhi name ko apne define nahi kiya hai. 
+
+kyun ki woh present hai module ke local scope mein rehte hein
+
+explanation from gork.ai
+-------------------------
+1. Node.js mein har .js file ek module hoti hai:
+---------------------------------------------
+Jab tu node test.js karta hai, Node.js is file ko ek module ke roop mein treat karta hai. Har module ka apna alag scope hota hai, jo global scope se thoda alag hota hai.
+Yani test.js ke andar jo bhi code hai, woh us module ke apne scope mein execute hota hai, directly global object mein nahi.
+
+2. var name = "deepak" kahan rahta hai:
+-----------------------------------
+Jab tu var name = "deepak" likhta hai, yeh variable module ke scope mein declare hota hai. Node.js ke module system mein, var wale variables module ke local scope mein rehte hai, na ki global object (global) mein.
+Matlab, name module ke andar ek variable ban jata hai, lekin yeh global.name ke roop mein automatically set nahi hota (jaise browser mein window.name hota hai var se).
+
+3. Arrow function ka this kahan point karta hai:
+----------------------------------------------    
+Tera code mein getData: () => { console.log(this.name) } hai. Arrow function apna this lexical scope se leta hai.
+File ke top-level pe, arrow function ka this global object ko point karta hai (Node.js mein global).
+Lekin global.name undefined hai, kyunki var name = "deepak" ne global object mein kuch set nahi kiya, sirf module scope mein name banaya.
+
+4. Output kyun undefined:
+--------------------------
+Jab tu obj.getData() call karta hai, this.name check hota hai global object pe, aur wahan name property nahi hai. Isliye undefined print hota hai.
+
+5.Toh name kahan hai?
+---------------------
+name module ke scope mein hai, lekin global mein nahi.
+Agar tu module ke andar console.log(name) karega directly (bina this ke), toh "deepak" milega, kyunki module scope mein name available hai. Yeh dekho:
+
+var name = "deepak" module ke andar ek variable bana deta hai, lekin yeh global tak nahi jata jab tu file chala raha hai. Arrow function ka this global ko dekhta hai, aur global.name undefined hai. Isliye tujhe undefined mil raha hai. Agar tu name ko directly access karega (bina this ke), toh module scope se "deepak" mil jayega.
+
+    var name = "deepak";
+    const obj = {
+        name: 'deepak',
+        getData: () => {
+            console.log(this.name); // undefined
+            console.log(name); // "deepak"
+        }
+    };
+    
+    obj.getData();
+
+    Arre bhai, yeh ek zabardast sawal hai! Chalo tera wahi code browser ke context mein dekhte hai aur samajhte hai ki wahan kyun alag behave karta hai:
+
+Tera code yeh hai:
+
+```javascript
+var name = "deepak";
+const obj = {
+    name: 'deepak',
+    getData: () => {
+        console.log(this.name);
+    }
+};
+
+obj.getData();
+```
+
+### Browser mein kya hota hai:
+Jab tu yeh code browser mein chalaayega (jaise ek `<script>` tag ke andar HTML file mein ya browser ke console mein), toh output **"deepak"** aayega, jabki Node.js mein (file ke case mein) `undefined` aata hai. Yeh difference kyun? Chalo break down karte hai:
+
+1. **`var` ka behavior browser mein**:
+   - Browser mein, jab tu `var name = "deepak"` likhta hai, yeh variable global scope mein jata hai **aur** `window` object (jo browser ka global object hai) mein ek property ban jata hai. Yani:
+     ```javascript
+     var name = "deepak"; // Yeh same hai as window.name = "deepak"
+     ```
+   - Toh browser mein `window.name` ab "deepak" ho jata hai.
+
+2. **Arrow function ka `this` browser mein**:
+   - Arrow function apna `this` lexical scope se inherit karta hai. Yahan `getData` top-level pe define hua hai, toh uska lexical scope global scope hai.
+   - Browser mein global scope ka `this` `window` object ko point karta hai. Toh `this.name` actually `window.name` ko refer karta hai.
+   - Chunki `var name = "deepak"` ne `window.name` set kar diya, isliye `this.name` "deepak" return karega.
+
+3. **Output**:
+   - Jab tu `obj.getData()` call karta hai browser mein, `console.log(this.name)` `window.name` ko print karta hai, jo "deepak" hai. Toh output "deepak" aata hai.
+
+### Node.js vs Browser ka fark:
+- **Node.js (file mein)**: `var name = "deepak"` module scope mein rehta hai, `global.name` set nahi hota (module system ki wajah se). Arrow function ka `this` `global` ko point karta hai, aur `global.name` undefined hota hai. Toh output `undefined`.
+- **Browser**: `var name = "deepak"` `window.name` set karta hai. Arrow function ka `this` `window` ko point karta hai, aur `window.name` "deepak" hota hai. Toh output "deepak".
+
+### Test in Browser:
+Agar tu browser ke console mein yeh code paste karega ya ek HTML file mein `<script>` tag ke andar run karega, toh yeh hoga:
+```html
+<script>
+var name = "deepak";
+const obj = {
+    name: 'deepak',
+    getData: () => {
+        console.log(this.name);
+    }
+};
+obj.getData(); // "deepak"
+</script>
+```
+
+### Hinglish mein baat:
+
+Bhai, browser mein `var` seedha `window` object mein property daal deta hai, aur arrow function ka `this` `window` ko dekhta hai, isliye "deepak" milta hai. Node.js mein module scope ka chakkar hai, isliye `global` tak baat nahi jati aur `undefined` aata hai. Samajh gaya na? Browser aur Node ka yeh difference thoda tricky hai, lekin ab clear ho gaya hoga! Koi aur sawal?
+

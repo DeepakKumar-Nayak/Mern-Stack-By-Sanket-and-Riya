@@ -47,7 +47,7 @@ True False False
 True True True
 
 Aggar pehla operand false hai toh dusra operand ko check nahi karega woh hamesha pehle operator ko hi return kare dega 
-Aggar peh;e operand true hai then check hoga dusra kya hai jo bhi hoga dusrna wohi return hoga chahe woh true ho ya false .
+Aggar pehl e operand true hai then check hoga dusra kya hai jo bhi hoga dusra wohi return hoga chahe woh true ho ya false .
 
 
 
@@ -58,3 +58,14 @@ True False True
 True True True 
 False True True 
 False False False
+
+Aggar pehle operand True hai then it doesnot check the second i will return True; 
+If the first operand is false then it return the second operand whether it is true or false it doenot matter. if the second is true then it will return true if the second in false then it will return false. 
+
+Abstract Equality(!=) and Strict Abstract Equality (!==):
+----------------------------------------------------------
+Abstract Equality : es mein conversion hota hein for example 
+    console.log("10" != 10) Yahan hamara dusra no jo right side mein hi woh convert ho jaega into string and 
+    convert hone ke baad dono equal ho gaye so the answer will be False. 
+
+    console.log("10" !== 10) this is Strict Equality operator aur yahan pe koi conversion nahi hoga and the answer will be as usual True.
