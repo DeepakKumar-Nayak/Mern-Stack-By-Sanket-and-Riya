@@ -170,7 +170,37 @@ function getData(...values){
 }
 console.log(getData(10,20,30,40,50,60))
 
+In Javascipt Functions are first class citizens and why lets discuss it .
+    1. function can be returned from a function and function can be passed to another function. 
 
+    Example for passing a function as an argument to another function:
+    ------------------------------------------------------------------
+    function getData(getinfo){
+        getinfo()
+        console.log('passing function as an argument to another function')
+    }
 
+    getData(function getInfo(){
+        console.log('My name is "deepak"')
+    })
 
+    Example for function can be returned from another function: 
+    ------------------------------------------------------------
+    function outerfunction(x){
+        function innerFunction(y){
+            return x+y
+        }
+        return innerFunction(20)
+    }
+    console.log(outerfunction(20))
+
+    One More Example for passing a function as an argment in another function
+    --------------------------------------------------------------------------
+    function greetFunction(welcome){
+        welcome('Deepak','whats Your Plan for Today')
+    }      
+
+    greetFunction(function welcomeFunction(name,msg){
+        console.log('hello my name is',name,msg)
+    })  
 

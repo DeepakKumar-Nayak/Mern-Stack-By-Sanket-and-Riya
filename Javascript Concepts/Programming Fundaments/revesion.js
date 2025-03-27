@@ -1,4 +1,7 @@
-function getData(...sanket){
-    return sanket
+function greetFunction(welcome){
+    welcome('Deepak','whats Your Plan for Today')
 }
-console.log(getData(10,20,30,40,50,60))
+
+greetFunction(function welcomeFunction(name,msg){
+    console.log('hello my name is',name,msg)
+})  
