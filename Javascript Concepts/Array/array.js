@@ -56,4 +56,29 @@ const datav = mapData.map(function multiplyNumbers(elem){
     return elem*10
 })
 
-console.log(datav)
+//console.log(datav)
+
+const foreachData = [10,20,30,40]
+foreachData.forEach(function getData(elem){
+    //console.log(elem)
+})
+
+// Join In Javascript
+const arr = ['deepak','kumar','nayak']
+//console.log(arr.join(" "))
+//console.log(arr.join(" || "))
+
+// Every on Javscript (aggar har condition passs hua then we will get true otherwise false)
+
+const arrOne = [10,20,30,40]
+const result = arrOne.every(function findSolution(elem){
+    return elem % 2 == 0
+})
+//console.log(result)
+
+// Some in Javascript: 
+const array11 = [10,20,30,40,77]
+const d = array11.some((elem)=>{
+    return elem % 2 ==0
+})
+console.log(d)
