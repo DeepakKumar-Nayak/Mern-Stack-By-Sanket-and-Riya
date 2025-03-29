@@ -17,4 +17,4 @@ function isPrime(number){
         console.log(number,'is a prime number')
     }
 }
-isPrime(8)
+isPrime(49)
