@@ -1,0 +1,73 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+#calcutator-container{
+    width: 400px;
+    height: 500px;
+    border: 1px solid rgb(211, 205, 205);
+    padding: 10px;
+    margin: 10px;
+    background-color: #1e272e;
+}
+
+input[type="text"]{
+    width:100%;
+    height: 60px;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    background-color: aliceblue;
+    border:none
+}
+input:focus {
+    outline: none; /* Removes default browser outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.row-one,
+.row-two,
+.row-three,
+.row-four{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+.row-one button,
+.row-two button,
+.row-three button{
+    padding:30px;
+    margin: 5px;
+    font-size: 15px;
+    border:none;
+    color:white;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.4);
+    background-color: #1e272e;
+}
+
+.row-four button{
+    height: 50px;
+    width: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #1e272e;
+    color:white;
+    border:none;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+.row-four button>:nth-child(3){
+    background-color: white;
+}
+
+#isequalto{
+    background-color: aliceblue;
+    color:black;
+}
+#clear-button{
+    background-color: aliceblue;
+    color:black; 
+}
+

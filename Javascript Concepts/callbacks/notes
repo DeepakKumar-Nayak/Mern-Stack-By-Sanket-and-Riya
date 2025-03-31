@@ -1,0 +1,351 @@
+Higher Order Function :- A function which accept another function as an argument is known as Higher Order Function .. 
+
+Callback Function : A function which is being passed to another function as an argument is known as callback function 
+
+Higher order function accepts it. and callback is passed into an function that too as an argument. 
+
+for example: 
+------------
+arrayOne = [10,20,30,40,50]
+
+const data = arrayOne.map(function getElement(element){
+    return element*2
+})
+
+console.log(data)
+
+so here map is a higher order function. 
+getElement is an callback function. 
+
+
+Callback Hell: 
+--------------
+callback hell is known for its dis-advantage instead of advantages because callback hell is a readibility problem which is a minor problem , because there is something else which is much more bigger problem then this readibility problem and that is known as inversion of control where we are going the give power to someone else to the third person which will eventually create a big problem. 
+
+Callbacks heavily used hote hein Async Programming mein . And Async programming mein 2 types ke hote hein 
+
+1. Sync Programming - jo line by line execute hoga for example aggar hamare pass 3line of code hai toh kya hoga 1st line execute hone ke baad hi 2nd wala line execute hoga then 3rd hoga so har ek chiz line by line hoga. 
+
+2. Async Programming - jaise ki hamaare pass 5 line of code hein toh hamara 1st line of code execute hone ke baad 2nd line backend mein execute ho raha hoga but khatam nahi hua hoga and 3rd line ko chala gaya and 3rd line execute ho gaya and so on and baad mein kabhi 2nd line ho gaya execute so yahan pe kuch bhi line by line nahi hota hain. Async mein line by line execute hoga kabhi bhi aisa 1st line ke baad 3rd ko nahi jaega and baad mein kabhi 2nd wala line execute hogaya yeah sab Sync mien nahi hota hein. 
+
+
+So jo ham javascripr ka code likhte hein kya woh async hai ya sync hai .. the answer is any native peice of javascript code matlab javascript ka jitna bhi apna khud ka code hai woh sare ke sare Sync nature ke hote hein, aur baki sab async hein 
+
+for example for loop javascript ka khud ka code hai, woh hamesha sync nature ka hai ek for loop execute hoga uske baad dusra execute hoga ek ke baad hi dusra hoga. 
+
+for example: 
+for(let i=0; i<=10; i++){
+    // console i 
+}
+
+for(let i=0; i<=20; i++){
+    // console i
+}
+
+console.log('its over')
+
+
+Javascript jo hai hamara bahut hi basic language hai , aab Javascript ko modern capabilites ke saath use karne ke liye bahut sare features lagte hein 
+
+jaise ki javascript ko files read karna nahi atta hai, javascript ko timer run karna nahi atta, Javascript ko html ke saath kaise interact karna nahi atta and also javascript ko nwtwork ke saath bhi interact karna nahi atta hai insort javascript ko bahut sare chiz nahi atta hai jo aaj kal modern applications mein use hote hain
+
+aur aggar hame woh sare ke sare features ko run karna hai toh uske liye Javascript ko ek sutitable environment ki jarurat hai jahan javascript apni capabilities se agge badh kar kuch kar paye and aise environment ko ham bolte hein runtime environment . 
+
+runtime environment ek software hai jo Javascript ko help karta hain naye naye requirements ko poora karne ke liye.
+
+jaise ki browser, woh bhi ek software hai jo javascript ke naye naye features ko run karne ke liye help karta hein
+
+and aur ek jo ki hai nodejs so nodejs ke help se bhi main bahut sare functionality use kar paenga aur yeah jo capabilities hai woh javascript ka part nahi nahi woh nodejs, browser ka part hai   
+
+
+Closure
+--------
+Closure is a mechanism using which any inner function remembers all those variables which are defined in the outer function scope even when the outer function scope executon is completed. for example: 
+
+    function func(a,c){
+        let m = 10
+        function gun(){
+            console.log(m,c)
+        }
+        return gun;
+    }
+    
+    const g = func(10,20)
+    g()
+
+jab mein kuch return kar raha hoon that means woh chiz gayab ho jaega callstack se es mein g mein function func hai and woh function gayab ho jaega callstack se and still gayab hone ke baad bhi gun ko m and c ka values yaad hai and that is because of closure. 
+
+and what about those variables which are not used like a, i am not accessing anywhere not even in the inner function so its simple that ki woh memory mein se hat jaega, aap usko use krna chahte ho toh aap kar sakhte ho but aggar aap nahi kar rahe ho use that means hat jaega memory se. 
+
+Closure execution ke time dikhta hai matlab phase two mein.
+Jab function execute hone ke baad bhi ham parent variables ko access kar sakhte hein tab jake banta hai closure.
+Closure apne parent ke scope ko retain bhi kar sakta hai (execution ke baad bhi variables yaad rehte hain)
+
+
+--------
+so we are talking about callback hell and inversion of control, so callback hell is a readibility problem which is not a big prpblem eventually but inversion of control is a very big probelm because when you pass your callback to another function that means you are giving aap kisi aur ko woh hak de rahe ho call karne ke liye usko execute karne ke liye, callback impliment toh apne kiya tha but execute karne ke liye aap kisi aur ko de rahe ho par woh execute hogi bhi ya nahi ya phir kitni bar hogi execute iska control aap kisi aur ko de rahe ho and aisa bhi ho sakhta hai ki apka function ko woh galat tarike se use kar sakhta hai kyun ki function toh apka tha implimentation toh apka tha but apne control toh kisi aur ko diya hai na aur woh kuch bhi kare woh apke haath mein hai hi nahi aggar apne apke pass control rakha tha toh accha hota par abhi toh apne kisi aur ko de diya hai na control so yeah ek bahut bada problem hai 
+
+but es problem ko resolve kaise karte hai uske bare mein baat karte hein jo javascript ne offcialy launch kiya hai woh hai promise , 
+
+Promises jo hai woh Inversion of Control ko end to end solve kar dete hein and callback hell ka bhi but initially promises ko callback ka solution nahi mana jata hai kyun ki promises ka khud ka ek problem hai jisko kehte hein promise hell toh callback hell ko thikkarne ke chakkar mein aap promise hell ko introduce kar sakhte ho kyun ki jaise callback hell ek readibility problem hai waise promises hell bhi ek readibility problem hai (code saf sutra nahi rakhna, padha nahi jata) so promises ko IOC ka full solution and callback hell ka thoda bahut solution mana jata hai 
+
+Promises: 
+Promises is a good elternative for callback, aggar future mein hame kuch kam ko complete karna hai toh uske liye hame promise use kar sakhte hai par usse pehle let me discuss kaise ham promise ko create karenge aur kaise ham promise ko consume karenge
+
+Promise act as a placeholder object for something that is to be completed in the future.
+
+Impliment a set of dummy functions which can mimic the bahaviour of the following functions 
+    1. download -> this function should mimic the download of some content to the file. 
+    2. writefile -> this function should mimic writing of some content to a file. 
+    3. upload -> this function should mimic uploading a file to the server
+
+        function download(url,callback){
+            console.log('downloading data from the url', url)
+            setTimeout(()=>{
+                console.log('downloading data from the url is completed')
+                let Downloaddata = "someData"
+                callback(Downloaddata)
+            },3000)
+        }
+        
+        function writeFile(data, filename, callback){
+            console.log('writting',data,'to the file',filename)
+            setTimeout(()=>{
+                console.log('writting data to the file is over')
+                let status = "successfully"
+                callback(status)
+            },4000)
+        }
+        
+        function upload(filename,link,status, callback){
+            console.log('uploading file to the',link)
+            setTimeout(()=>{
+                console.log('uploaded',filename,status)
+                let msg = "everything done successfully"
+                callback(msg)
+        
+            },5000)
+        }
+        
+        download('www.google.com', function writeData(data){
+            writeFile(data, 'file.txt', function uploadData(status){
+                upload('file.txt', 'googleDriev',status, function Over(msg){
+                    console.log(msg)
+                })  
+            })
+        })
+
+i can write the same function by using promise also.
+
+How to Create a Promise and How To Consume A Promise 
+-----------------------------------------------------
+const pr = new Promise(cb)
+
+new keyword 
+
+Promise -> promise constructor which expects a callback in the argument
+
+cb -> this callback is called executor callback and why it is called as executor callback because when we create a promise object at that point of time our promise constructor will execute this callback that means this callback is executed by the promise constructor immediately. 
+
+// how does this callback looks like 
+new Promise((res,rej)=>{}) This is how it looks like which consist of two parameter .
+
+res stands for resolve and rej stands for reject, we can also use diffrent name but its good to use as resolve and reject for better understanding.
+
+Jab ham ek promise object banaenge hamara promise object 3 states mein se kisi ek state mein hoga and the 3 states are pending, fulfilled and rejected but promise hamesha pending state mein milta hai untill and unless woh fullfill ya toh reject ho . 
+
+Pending se ya toh rejct hoga ya toh fulfilled hoga but bydefault hamesha pending state mein rahega.
+
+aur hamara promise object poore lifetime ke sirf ek baar hi state change kar sakhta hai
+
+if inside the executor callback we called resolver function then pending se fulfilled state mein aa jaega 
+
+if inside the executor we called rejector function then pending se rejected state mein aa jaega.
+whenever we create a promise bydefault the state will remain pending but the value will  remain undefined 
+example: 
+
+const pr = new Promise((res,rej)=>{
+    const randomNumber = Math.floor(Math.random()*100)
+    if (randomNumber % 2 ===0){
+        res(randomNumber)
+    }else{
+        rej(randomNumber)
+    }
+})
+
+const p2 = pr.then(function f(value){
+    return value
+})
+
+console.log(p2)
+
+pr.then only do the registration it doesnot execute. infact it will return a brand new promise.
+
+Note: 
+------
+const pr = new Promise((res,rej)=>{
+    
+    let randomNumber = Math.floor(Math.random()*100)
+    if(randomNumber % 2  ==0){
+        res(randomNumber)
+    }else{
+        rej(randomNumber)
+    }
+
+
+})
+
+async function getResult(){
+try {
+    let result = await pr
+    console.log(result, 'this is an even number')
+}catch(err){
+    console.log(err, 'err occured this is not an even number')
+}
+}
+
+getResult()
+
+To handle the exception  we have to write a function like getresult()
+because rej will only handle the rejection, promise rejection if we will not handle like this then we will get an error message like unhadled rejection now i have handled the rejction with a simple message like 'the number is an even number'
+
+Like i can do the same thing with .then and .catch also like
+
+    const pr = new Promise((res,rej)=>{
+    
+        let randomNumber = Math.floor(Math.random()*100)
+        if(randomNumber % 2  ==0){
+            res(randomNumber)
+        }else{
+            rej(randomNumber)
+        }
+    
+    
+    })
+    pr.then((number)=>{
+        console.log(number,'the number is even')
+    }).catch((number)=>{
+        console.log(number, 'The number is odd')
+    })
+
+But there is a diffrence between using .then .catch and using try and catch so basically try and catch are used for async/await operations and we can use .then and .catch while working with promises
+
+.then and .catch are directly used on promises Objects
+try and catch are used inside the async operations
+
+-------------------------------------------------------------------------
+// kaise Promise help karta hai IOC mein explanation with example
+function getBalance(userId, callback) {
+    setTimeout(() => {
+        console.log("Fetching balance from DB...");
+        let balance = 4000;  // Assume user has ₹4000
+        callback(balance);  // 🔥 Callback function ko call kiya, balance pass kiya
+    }, 2000);
+}
+
+// ✅ Yahan pe hum ek function pass kar rahe hain `callback` ke jagah
+getBalance(123, function (balance) { 
+    if (balance > 5000) {
+        console.log("✅ Transaction Allowed");
+    } else {
+        console.log("❌ Transaction Denied: Low Balance");
+    }
+});
+
+•	getBalance() ke paas pura control hai!
+•	Agar getBalance() callback call na kare, ya kisi galti se galat balance bhej de, toh transaction fail ho sakta hai!
+•	Humare haath me kuch nahi hai, jo function karega woh hoga.
+•	Koi error handling bhi nahi hai agar database error de de.
+
+
+Solution: Promises Fix IoC Problem
+Ab hum Promises use karenge taaki execution control wapas le sakein! 🚀
+--
+function getBalance(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Fetching balance from DB...");
+            let balance = 4000; // Assume user has ₹4000
+            
+            if (balance !== undefined) {
+                resolve(balance); // ✅ Control return to caller
+            } else {
+                reject("❌ Database Error: Balance not found");
+            }
+        }, 2000);
+    });
+}
+
+// ✅ Caller now has full control!
+getBalance(123)
+    .then((balance) => {
+        if (balance > 5000) {
+            console.log("✅ Transaction Allowed");
+        } else {
+            console.log("❌ Transaction Denied: Low Balance");
+        }
+    })
+    .catch((error) => {
+        console.log("Error:", error); // Error handle kar sakte hain!
+    });
+
+How Promises Solve IoC?
+---
+Problem with Callbacks
+-----------------------
+getBalance() callback ke control mein tha
+Agar callback call na ho, toh kuch nahi kar sakte
+Koi proper error handling nahi
+
+Solution with Promises
+-----------------------
+getBalance() sirf resolve() ya reject() karega, but control .then() ke paas hoga!
+.then() caller ke haath me hai, woh decide karega ki kya karna hai!
+catch() se error ko properly handle kar sakte hain!
+
+
+IoC ka problem yeh hai ki hum execution control kisi aur ke haath de dete hain.
+✔ Promises se hum execution ka control wapas le aate hain!
+✔ Ab .then() aur .catch() se hum decide kar sakte hain ki kab kya execute hoga.
+✔ Jo kaam pehle callback kar raha tha, woh ab resolve() aur reject() kar raha hai, par control user ke paas hai!
+
+The Features which are not a part of Javascript for example setTimeout, setInterval they can be async and can ve sync as well
+i am not talking about specefic features and i just wanted to say that those who are not a part of javascript they can be async 
+and can be sync in nature there will be no boundation for them, But those who are native part of javascript fror example 
+forLoop these are always sync in nature 
+
+eslite setTimeout jabki javascript ka native feature nahi hai esliye woh uske liye kabhi wait nahi karta
+
+Micro and Macro mein priority hamesha milega Micro ko Macro uske baad execute hoga. 
+setTimeout,setInterval yeah sare functions MacroTask ko belong karta hai and  
+Promises belong karta hai Mirco ko. 
+
+so aggar aap setTimeout and Promise dono saath mein use kar rahe ho toh pehle aggar koi execute hoga toh woh hai Promise
+then setTimeout mein yahan pe priority ki baat kar raha hoon kon pehle hoga kon baad mein. 
+
+jab tak hamara main thread chalu hai tab tak na koi micro ko change milega na koi macro ko kyun ki main thread ka execution 
+ko hinder koi nahi kar sakhta bhale hi setTimeout ka timer khatam ho gaya hai woh jake rahega macro mein wait karega 
+jab tak main thread empty na ho tab tak wait karega uske baad jake execute hoga par koi bhi main thread ka execution ko 
+hinder karega hi nahi.
+
+Event loop hamesha check karega ki kya hamara main thread block hai ya empty hai aggar block hai toh kisi ko chodega nahi 
+excecute hone ke liye aggar block nahi hai toh check karega ki kya koi macro task mein kuch pada hua hai ya microtask mein 
+kuch pada hua hai aggar pada hua hai toh priorioty ke hisab se execute hone ke liye one by one chodega . 
+
+Notes::
+--------
+Jab mein bol raha hoon ki .then registration karta hai that mean mein onFullfillment and onRejection ki baat kar raha hoon 
+.then registration karta hai eska matlab hai ki jitne bhi sare function hai woh sare jake onFullfillment and onRgeistration 
+mein jake store hote hein ek array ke andar and esko bolte hei registration 
+
+jo internally hota hai its not visible publically and wahan se function depend karta hai Promise pe ki kya promise 
+Resolve hota hai ya Reject hota hai kyun ki aggar Resolve Hua then onFullFillment ke function execute hoga aur woh kasie hoga 
+jitne bhi sare function OnFullFillment mein hoga woh jaega Micrtotask Queue mein aur wahan se event loop apna kam start karega aggar hamara callstack empty mein toh event loop wahan se function ko leke jake run karta hai. 
+
+
+---
+
+Gork Ai Clear Explanation: 
+----
+Jab .then likhta hoon, to onFulfilled aur onRejected handlers Promise ke internal list mein store hote hain—ise registration kehte hain. Ye list publically visible nahi hoti. Agar Promise resolve hota hai, to onFulfilled handlers microtask queue mein jate hain, aur agar reject hota hai, to onRejected handlers jate hain. Event loop tab kaam karta hai jab call stack empty hota hai, aur queue se functions utha ke chalata hai.
+

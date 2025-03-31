@@ -1,0 +1,923 @@
+Class: 
+------- 
+Classes are just like blueprint. 
+classes are going to represent how an entity should look and behave. 
+
+when i say how do they look that mean the property they posses and when i say how do they behave that mean action they perform 
+
+Lets talk about the propery they posses which are otherwise known as the Data Members for examle: 
+
+Just take an example of a Product Class so what are the properties of a product.
+
+price,
+quantity,
+productName,
+reviews
+
+Now lets talk about the actions they perform that mean which are otherwise known as Member Functions: 
+
+We can Display the details of the product
+We can buy a Product
+we can wishlist a product
+we can rate a product
+adding review to a product
+adding product to the cart
+
+// How to make a class in Javascript 
+with the help of class keyword we can make a class in Javascript. 
+
+class Product {
+    // here we can add some data member and member functions
+}
+
+Example: 
+--------
+class Product {
+
+    // writting some data members: 
+
+    name
+    price
+    category
+    description
+    quantity
+
+    // writing some member functions
+ 
+
+    addToCart(){
+        console.log('product added to the cart')
+    }
+
+    DisplayDetails(){
+        console.log('display details of the product')
+    }
+
+
+}
+
+// no need of writting function while creating a member function we  can just write simply name of the member function
+
+    . function addToCart() - not required
+    . addToCart() - this is great
+
+// Constructor: 
+---------------
+. Every class in javascript has one special member function called as constructor which is only executed once at the time of object creation and that too it will be the first method to get execute. 
+
+. whenever we create an object and try to execute it constructor will be first one to get execute out of all the methods and the constructor is the method which get automatically called by JS. 
+
+. Koi bhi class ham banaye usmein bydefault kuch constructor bane banaya milega , already available for any class which is called as default constructor.
+
+. Yeah jo constructor hai thoda diffrent hai kyun ki yeah ek hi method hai jo javascript khud se call kar dega baki kisi bhi member function ko javascript khud se call nahi karega 
+
+
+
+Objects:
+-------
+The physical Realisation of the class are called Objects
+To create an Object in JS we use a keyword called new
+
+// How new works: 
+-----------------
+Every time we use new it does four following procedure
+
+1. It creates a brand new absolutely empty object. 
+2. It calls the constructor of the class and passes the newely created object inside a keyword called this. 
+    (constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun ki ham plain object ka access de rahe hein)
+3. In step 3 new trigger everything we need to be done for prototype.
+
+4. if from a constructor an object is manually returned then this manual returned object is stored in the called variable, otherwise in any other case either we return something or dont return something constructor doesnot care about it and returns the value inside the this key. 
+
+for example :
+
+    class Product{
+        constructor(){
+        return 10
+        }
+    }
+    const data = new Product()
+    console.log(data)
+
+    data = this i.e the Product
+    
+    if i do like this then i will get the the whole product where this will be pointing i.e the product object. 
+
+    class Product{
+        constructor(){
+        return {name: 'deepak'}
+        }
+    }
+    const data = new Product()
+    console.log(data)
+    but here i will get {name : 'deepak'}
+
+    data = {name: 'deepak'}
+ 
+
+   
+Explanation in Hindi Point4:
+-----------------------------
+aggar aap constructor se koi object manually return kar rahe ho toh apko wohi object milega as a result par aggar aap koi aur chiz return kar rahe ho (Look at the code above for more clear understanding meine eske liye bhi examples likha hai) so tab mujhe hamara actual product milega jo this ko pointout kar raha ho. 
+
+Program/; 
+--------
+
+class Product {
+    name;
+    category;
+    quantity;
+    description;
+    rating;
+
+    constructor(productName, productCategory, productQuantity, productDescription, productRating){
+
+        this.name = productName; // Laptop
+        this.category = productCategory; // Electronics
+        this.quantity = productQuantity; // 12
+        this.description = productDescription; // Hp Laptop
+        this.rating = productRating // 4.0
+
+        addToCart(){
+            console.log('product added to the cart')
+        }
+
+    }
+}
+
+const productOne = new Product('Laptop','Electronics',12, 'Hp Laptop', '4.0')
+// aggar apko new data members add karna hai toh aap object ke help se kar sakhte ho called variable ko leke for example; 
+productOne.color = "black"
+console.log(productOne)
+
+Product {
+  name: 'Laptop',
+  category: 'Electronics',
+  quantity: 12,
+  description: 'Hp Laptop',
+  rating: '4.0',
+  color: 'black'
+}
+
+Note: 
+-----
+aggar mein data member nahi bhi define karun aur directly constructor ke andar define karun like 
+this.name = product_name
+then also its okay we will not get any error infact when we console productOne then i will get the actual product.
+i can also access the productname like console.log(productOne.name)
+
+
+This keyword in Javascript:
+----------------------------
+This keyword works very diffrently in compare to other languages. 
+lets get to know more with help of an examples : 
+
+let obj = {
+    x : 10;
+    y : 20;
+    fn : function(){
+        console.log(this.x, this.y)
+    }
+}
+
+obj.fn()
+
+in this example this is referring to the obj and obj here will act as a callsite. we can also access the same thing using obj.x , so here
+in thie example this is actualy referring to callsite which is obj
+Example 2: 
+----------
+
+let obj = {
+    x : 10;
+    y : 20;
+    z : {
+        x : 99;
+        fn : function(){
+            console.log(this.x, this.y)
+        }
+    }
+}
+
+In the above example this is referring to z here so thats why this.x will be pointing to 99 but for this.y i will get undefined why because inside z i havn't defined y , i have done that in obj. but here this is referring to z not obj. (callsite iz z not obj)
+
+How this is used in arrow function: 
+-----------------------------------
+let obj = {
+    x : 10;
+    y : 20;
+    fn : ()=>{
+        console.log(this.x, this.y)
+    }
+}
+
+obj.fn()
+
+so what do you think whm does this is referring to here in the above example if we are using this inside the arrow function then it will never refer it to the callsite so we have to do some changes in arrow function this is defined lexically. 
+
+let obj = {
+    x : 10;
+    y : 20;
+    fn : function(){
+        const arw = () => {
+            console.log(this.x, this.y)
+            // 10 , 20
+        }
+        arw()
+    }
+}
+
+obj.fn()
+
+so how i am getting 10 and 20 here because this is being defined here lexically that mean aggar hame arw ke andar nahi mile the value of x and y toh yeah ek level upar jaega that mean inside fn kya fn ke andar this defined hai haan par kaise callsite pe and obj is the call site
+
+so the point is aggar aap ek arrow function ke andar this ko access karna chahoge then it wont happen par aap us arrow function ko aggar ek normal function mein enclose karoge toh usko this ka value milega kyun ki normal function ke andar this callsite ko point out karta hai which is obj here in this example and thats why we are getting the value as 10,20
+
+// So how to add data-members without providing value through constructor. 
+class Product {
+    name;
+    age;
+
+    constructor(){
+
+    }
+}
+
+const data = new Product()
+data.name = "deepak"
+data.age = 30
+
+console.log(data)
+
+look at the above program where i am adding some valus but i am not doing that through constructor so this is one way where i can add some values but this is not the right thing to do because just look at the code how i am adding the values after object creation i mean anyone can do some sort of changes even after the object creation without any issues which violates the fundamental princicple of OOPS called as encapsulation that means classes ke bahar ham data members ko update nahi kar sakhte and jo ki usually hota bhi nahi hai.
+
+kyun ki agar aisa hua then koi bhi akke kuch bhi random value pass kar dega and update lar dega which is not required, par es sab chiz ko ham resolve bhi kar sakhte hein but not simply allowing your data members from being accessible outside the class and is to be done only inside the class (update and accessible)
+
+so we can make private to the data members so that it can be accessible/updatable only inside the class not from outside. and how to make the datamembers prive just to add # before declaring the datamember for example: 
+
+class Product {
+    #name; this is a private data member
+    #age; this private data member
+}
+
+// so now theese datamembers cannot be access outside the class neither can be updateable outside the class
+Example: 
+
+class Product {
+    #name;
+    #quantity;
+    #rating;
+    review;
+    price;
+
+    constructor(productName, productQuantity, productRating, productReview, productPrice){
+        this.#name = productName;                   
+        this.#quantity = productQuantity;
+        this.#rating = productRating;
+        this.review = productReview;
+        this.price = productPrice;
+    }
+
+}
+const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
+console.log(productOne)
+
+// Product { review: 'Good One', price: 67000 }
+
+// see though i have make it private so iam unable to acess it from outside node js runtime mein apko basi yahi dikhai de raha hai aggar mein same chiz ko browser mein check karunga toh mujhe thoda allag sa result aega like asia esliye aa raha kyun ki dono ka kam karne ka tarika allag hai browser and nodejs: 
+
+// Product {review: 'Good One', price: 67000, #name: 'hp-laptop', #quantity: '14', #rating: '4.2'} but you can clearly see that apko kuch data members mein #name , #quantity, #rating aur woh esliye kyun ki meine en data-members ko private jo banaya tha aur haan aggar mein enko update karna chahun toh bhi nahi kar sakhta jo jo data-members meine private banaya hai uska value kabhi change nahi hoga par ek naya allag se name ban jaega jo ki private hoga hi nahi par jo private hai us mein koi bhi changes nahi hoga infact ek naya ban jaega for example: 
+
+productOne.name = "hp"
+Product { review: 'Good One', price: 67000, name: 'hp' }
+this is what it will happpen but it wont be changing the value which i have made private.
+
+productOne.#name = "hp"
+//Property '#name' is not accessible outside class 'Product' because it has a private identifier.
+// but aggar mein yeah same chiz browser se karunga toh change ho jaega but terminal se nahi hoga.
+
+and yes they way we are making data-members private these are the old school technique.
+
+// So its very Crystal Clear that aap bahar se change nahi kar sakhte private-members ko par aap class ke andar kar sakhte ho and lets see with an example how to do ..  with the help of getter and setter functions
+
+    class Product {
+        #name;
+        #quantity;
+        #rating;
+        review;
+        price;
+    
+        constructor(productName, productQuantity, productRating, productReview, productPrice){
+            this.#name = productName;                   
+            this.#quantity = productQuantity;
+            this.#rating = productRating;
+            this.review = productReview;
+            this.price = productPrice;
+        }
+    
+        // how to writer a actual setter and getter function by using set and get so i have done this by using get and set keyword
+        
+        set price(p){
+            if(p > this.price){
+                this.price = p
+            }else{
+                console.log('please choose a higher/updated price')
+            }
+        }
+        get price(){
+            return this.price
+        }
+    
+    }
+    const productOne = new Product('hp-laptop','14','4.2','Good One',67000)
+    
+    //productOne.setName('HP')
+    productOne.price = 90000;
+    console.log(productOne.price)
+    console.log(productOne)
+
+// So classes jo hai woh pehle nahi hua karta tha classes toh newely implement hua tha but ussse pehle bhi without classes ham function ke help se bhi same chiz kar pate they , this is known as function constructor javascript mein aggar mein class ko use nahi karunga but still class jaise functionality mujhe chahiye toh uske liye mein function constructor use kar sakhta hoon
+
+    function Product(n,d,p){
+        this.name = n;
+        this.description = d;
+        this.price = p;
+    
+        this.displayProductDetails = function(){
+            console.log(this.name,this.description,this.price)
+        }
+    
+    }
+    
+    const data = new Product('laptop','hp-laptop',78999)
+    data.displayProductDetails()
+
+    // Output : laptop hp-laptop 78999
+
+// apne ek chiz notice kiya hoga ki class aur function constructor mein jyada kuch diffrence nahi hai pehle jab classes nahi hua karte they tabhi ham function constructor use karte they aur uske help se objects banaya jata tha woh ek tarika tha par abhi toh classes jab se ayya hua hai Javascript mein ham classes ke help se banate hein Objects wahan bhi ham new keyword use karte they aur yahan bhi ham new keyword use karte hein par yahan wahan ham constructor ke andar hamara data members ko pass karte they aur yahan thoda allag class mein ham 
+this.memberfunctions likhne ki jarurat nahi padhti thi par yahan karna padhta hai otherwise objects banane ke tarika toh same hi hai.
+
+here to call this function constructor we do :
+    const data = new Product('laptop','hp-laptop',78999)
+
+And here also the new keyword do the 4things:
+    . creating an empty object
+    . Assign this keyword in the function constructor to the empty new Object and call the constructor
+    . Do prototyping. 
+    . if we are returning the object manually then constructor will return the same else if we dont return anything 
+        manually or a non-object value is returned then constructor will return this. 
+    
+
+and yes function constructor mein bhi arrow function banane ki koi jarurat nahi hai kyun ki aggar banaoge then wohi same 
+chiz hoga ki function constructor ka existence khatam ho jaega and usko lexically impiliment karna padega and aggar 
+lexically nahi kiya toh toh this uska window koi point our karega so its works same as class. i mean class toh baad mein ayya 
+so us hisab se aggar dekha jaye toh class lagbhag function constructor ki tarah hi kam karta hai.
+
+    
+Static Members: 
+---------------
+Static members woh data-members hote hein jo object ke saath associated nahi hote hein class ke hote hein for example: 
+
+
+class Product {
+    static x = 10; 
+    constructor(name, price){
+        this.name = name
+        this.price = price
+    }
+}
+const p1 = new Product('Iphone',1500000)
+console.log(p1.x) // you are trying to access static member and that too with the help of an Object but static members are not associated with Objects
+
+console.log(Product.x)
+// so here you can access it, it is accessible outside the class and here we are accessing with the help of an class
+
+// Code Improvisation
+---------------------
+class Product {
+    
+    constructor(obj){
+        this.name = obj.name;
+        this.modelno= obj.modelno;
+        this.quantity = obj.quantity;
+        this.price = obj.price
+    }
+
+    getDetails(){
+        return `
+        ${this.name}, ${this.modelno},${this.quantity}, ${this.price}
+        `
+    }
+}
+
+const data = new Product({
+    name: 'Iphone',
+    modelno : 'Iphone14',
+    quantity: 14,
+    price : 150000,
+})
+
+// diffrent ways to access getDetails using prototype.
+Product.prototype.getDetails.call(data) accessing using prototype
+data.__proto__.getDetails.call(data) // accessing using hiddenLink proto
+
+console.log(data.getDetails()) // basic and standard way to call getDetails()
+
+// so now the code is looking even more good then the previous one they way i have created an object during calling this is called builder design pattern
+
+Object Destructuring: 
+----------------------
+// Example for object destructuring: 
+const product = {name: 'Iphone',price:80000,quantity:30}
+
+// changing the keyname for name so now we can aceess by using nameee not name. 
+const {name:nameee,price,quantity} = product
+
+console.log(nameee)
+console.log(price)
+console.log(quantity)
+
+Using Spread Operator in Objects Destructuring: 
+-----------------------------------------------
+const productData = {review : 'Its very Costly', description: 'The Phone is Very Good But Very Costly', ...product}
+console.log(productData)
+
+so i can also use spread operator like this in Object destructuring
+
+// how to access nested objects on Object Destructuring: 
+---------------------------------------------------------
+const product = {name: 'Iphone',price:80000,quantity:30, product_Info: {review : 'Its very Costly', description: 'The Phone is Very Good But Very Costly' }}
+
+const {product_Info: {review,description}} = product
+console.log(review)
+console.log(description)
+
+// Another Example: 
+const bioData = {name: 'deepak',surname: 'kumar', address:{location:'odisha', district:'cuttack',area:'CDA', Hobbies:{hobbieOne:'cricket', hobbbieTwo:'Coding', hobbieThree: 'Listening Songs'}}}
+
+// How to access hobbieThree
+const {address:{hobbies:{hobbieThree}}} = bioData
+
+const {address:{Hobbies:{hobbieThree,hobbieOne,hobbbieTwo}}} = bioData
+console.log(hobbieThree) : Li
+
+
+ˀstening Songs
+console.log(hobbbieTwo)  : Coding
+console.log(hobbieOne)   : cricket
+
+
+Three Dot Operator: 
+-------------------
+in objects we use spread operator as it upacks key value pair.
+and the rest parameter packs into one unit. 
+
+
+Prototype:
+----------
+Is JavaScript is a Object Oriented Programming Language.. The answer is No Its a Object Linked to an Object Kind of Language because of prototype
+
+
+Prototype ek aisa mechanism hai javascript mein jiske help se ek object aur ek object ko apna properties share kar sakhta hai
+
+One Object can share its Properties to Another Object
+
+ 
+
+const p = new Product('Iphone',12000)
+
+// jaise ki yahan jab bhi mera constructor execute karta hai kya mein kabhi yahan pe koi bhi member function ko hit karta hoon nahi na kabhi nahi karta but still mein acess kar pata hoon displayProductDetails() member function ko and woh kaise ho raha hai woh ho raha hai prototype ke vajeh se kyun ki yeah jo hamara member function hai na yeah wala function apko prototype ke andar dekhne ko milega.
+
+jab bhi mein ek object create karta hoon woh pehle ek empty object banaega and banane ke baad woh constructor ko call karega par aap ek baat dekhna kabhi bhi member function ko hit karega hi nahi.
+
+. data member ka access de raha hoon par function ka access nahin de raha hoon.
+
+Prototypes Example: 
+-------------------
+class Events {
+    bookEvents(name){
+        this.name = name
+        console.log('Event Booking Done for',this.name)
+    }
+}
+
+class Movie extends Events {
+    showTime(){
+        console.log('movie-show')
+    }
+}
+
+const m = new Movie()
+m.showTime()
+m.bookEvents('movies')
+
+. aggar mein es example mein dekhun toh kya bookEvents object mein available hai.. nahi hai.. 
+. kya book event movie pe available hai .. nahi hai 
+. kya book event Events pe available hai haan hai.
+
+// So Above example mein i used classes to show thw example of inheritance now we will do without classes by the helo of call, apply, bind in Javascript. 
+
+
+Call: 
+-----
+the call function tells us that where is my this is now pointing t0.
+
+    const product = {
+        name : 'Iphone',
+        productInfo : function(){
+            console.log(this.name)
+        }
+    }
+    
+    const productTwo = {
+        name : 'Audi car'
+    }
+    product.productInfo.call() // undefined
+
+    if i want my this to attach with another object (productTwo) so for that i can write. 
+    product.product_Info.call(productTwo) // Audi Car.
+
+    if i want to pass some extra parameter then also i can do it like: 
+    product.product_Info.call(productTwo, 'parameter','parameter')
+
+    
+
+
+    // call example how to pass argument
+
+    const product_one = {
+        name : 'Iphone',
+        getInfo : function(price){
+            console.log(this.name,'price is',price)
+            // so here i am passing a parameter as price in getInfo function
+        }
+    }
+
+    const productTwo = {
+        name : 'Macbook'
+        
+    }
+
+    //product_one.getInfo(50000)
+    product_one.getInfo.call(productTwo, 67000)
+    // 67000 mein esliye pass kar raha hoon kyun ki getinfo ko ek parameter chahiye and woh parameter aise hi paas hogi after comma and more than one ham pass kar sakhte hein. 
+
+
+    // One more example with call: 
+    var name = "Earpods"
+    const obj = {
+        name : "Iphone",
+        getInfo : function(){
+            console.log(this.name)
+        }
+    }
+
+    const newObj = {
+        name :'Macbook'
+    }
+
+    obj.getInfo.call()
+    aggar mein kuch bhi object provide nahi kar raha hoon then hame this jo hai point out karega global ko (window) and global mein  
+    this.name = "Earpods"
+
+Apply: 
+-----
+By the help of apply also i can do the same thing , doing the same thing mean pointing this to some other function.
+    const product = {
+        name : 'Iphone',
+        productInfo : function(price){
+            console.log(this.name, 'and the price is',price)
+        }
+    }
+    
+    const productTwo = {
+        name : 'Samsung Galaxy'
+    }
+    
+    product.productInfo.apply(productTwo, [120000])
+
+if i want to pass some arguments then i can pass it but i have to pass it inside the square brackets they way i have passed it in an the above example
+
+So in Apply i can take two arguments one is the object and the other one is the arguments that too inside the array and we can take number of arguments but have to write it inside the array for example.
+
+product.product_Info.apply(newObj, [arg1, ar2, ar3, arg4])
+
+see i am passing 4 arguments and i have written that inside an array.
+
+Bind:
+------
+var name = "Earpods"
+const obj = {
+    name : "Iphone",
+    getInfo : function(){
+        console.log(this.name)
+    }
+}
+
+const newObj = {
+    name :'Macbook'
+}
+
+const f = obj.getInfo.bind(newObj)
+console.log(f)
+
+. bind return us a modified function of getInfo. the original getInfo function mein koi changes nahi hoga but ek naya  modified function milega because of bind
+
+// Example 2 for bind:
+-----------------------
+const product = {
+    name : "IPhone",
+    getInfo : function(price){
+        console.log('my phone name is',this.name, 'and its price is',price)
+    }
+}
+
+const product2 = {
+    name : "Macbook"
+}
+const data = product.getInfo.bind(product2)
+data('12000')
+
+Output:
+-------
+my phone name is Macbook and its price is 12000
+
+// Example of prototype without using class how to do it with function.
+    function Events(date){
+        this.date = date
+    }
+    Events.prototype.bookEvent = function(eventname){
+        if(eventname === 'Movie'){
+            console.log('Congratulations Ticket Book Successfully for',this.name)
+        }else if(eventname === 'Comedy'){
+            console.log('Congratulations Ticket Book Successfully for',this.name)
+        }else{
+            console.log('Congratulations Ticket Book Successfully for',this.name)
+        }
+    }
+    
+    function Movie(name){
+        this.name = name
+    }
+    
+    function Comedy(name){
+        this.name = name
+    }
+    function Circus(name){
+        this.name = name
+    }
+    
+    // this will connect movie with events
+    Movie.prototype.__proto__ = Events.prototype
+
+    // this will connect comedy with events
+    Comedy.prototype.__proto__ = Events.prototype
+
+    // this will connect circus with events
+    //Circus.prototype.__proto__ = Events.prototype
+
+    You can try something like: 
+    Circus.porototype = Object.create(Events.prototype)
+
+    Note:
+    Object.create() ka kam hi hai ki woh movie.prototype and event.prototype 
+    ke beech ek connecton establish karta hai
+    
+    const m = new Movie('KGF')
+    m.bookEvent('Movie')
+    
+    const c = new Comedy('Kapil Sharma Show')
+    c.bookEvent('Comedy')
+    
+    const cir = new Circus('The Circus Show')
+    cir.bookEvent('Circus')
+    
+// how to do the same trying with class:
+
+        class Events {
+            constructor(dateofEvent) {
+                this.dateofEvent = dateofEvent
+            }
+            bookEvent(eventname) {
+                if (eventname === 'Movie' || 'movie') {
+                    console.log('Congratulations Ticket Booked Successfully for', this.name)
+                } else if (eventname === 'Comedy' || 'comedy') {
+                    console.log('Congratulations Ticket Booked Successfully for', this.name)
+                } else {
+                    console.log('Congratulations Ticket Booked Successfully for', this.name)
+                }
+            }
+        }
+        
+        class Movie extends Events {
+            constructor(name, date) {
+                super(date) // call the events constructor
+                this.name = name
+            }
+        }
+        
+        class Comedy extends Events {
+            constructor(name,date){
+                super(date) // this is right always use super before this
+                this.name = name
+                //super(date) cannot access this before super
+            }
+        }
+        
+        const m = new Movie('KGF', '19-02-2025')
+        //m.bookEvent('movie')
+        
+        const c = new Comedy('Kapil Sharma Show', '19-02-25')
+        c.bookEvent('comedy') 
+    
+   
+Some Important Notes: 
+---------------------
+what super is actually doing here...
+    when we want to access the properties of parent class inside the child then at that time we have to use super and in javascript while exteding a class we must use super, and we have to use super before accessing this inside the child constructor otherrwise we will get an error as: 
+
+Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+
+and if we have any logic or if we have defined any member function then javascript also allows the member function to execute from the parent function.
+
+super is something we have to use its mandatory as we extends parent into child we have to use super, Though we inherit any properties 
+or not that doesn't matter we have to use it. 
+
+if we are not defining any constructor in parent and child then we can also use the method i have defined inside the child class using 
+super().method_name
+
+. when we are using super in the child class what does actually happen when cursor will hit the line where super is defined
+it will immediately go to the one level up, it will always skip the current class and it will mone one level up for example: 
+
+class Grandparent {
+    greet() {
+        console.log("Hello from Grandparent");
+    }
+}
+
+class Parent extends Grandparent {
+    greet() {
+        super.greet(); // ✅ Calls Grandparent’s greet()
+        console.log("Hello from Parent");
+    }
+}
+
+class Child extends Parent {
+    greet() {
+        super.greet(); // ✅ Calls Parent’s greet()
+        console.log("Hello from Child");
+    }
+}
+
+const obj = new Child();
+obj.greet();
+
+see in the above example what im doing creating an object with new Child() and defining a super inside the Child who is extending parent
+what will heppen here is when the cursor will come and hit 761 line super().greet dur to this line it will go to the Parent class and in the 
+Parent class also we are defining super.greet() now again it will go and check inside the Grandparent just because of super() it will skip 
+the current class and it will one level up this is how it works
+
+Explaination in Detail how actually super is working here :
+----------------------------------------------------------
+Step 1️⃣: obj.greet() is called
+	•	JavaScript searches for greet() inside Child.prototype.
+	•	✅ It finds greet() inside Child.prototype and executes it.
+
+Step 2️⃣: super.greet() inside Child.greet()
+	•	super.greet() does NOT look in Child.prototype again.
+	•	Instead, it looks in Parent.prototype.
+	•	✅ Calls Parent.prototype.greet().
+
+Step 3️⃣: super.greet() inside Parent.greet()
+	•	Again, super.greet() skips Parent.prototype and looks in Grandparent.prototype.
+	•	✅ Calls Grandparent.prototype.greet().
+
+Step 4️⃣: Execution Ends at Grandparent
+	•	Since Grandparent.greet() doesn’t use super, execution stops there.
+	•	Now, JavaScript unwinds the stack, and execution returns to Parent, then Child.
+
+
+// in this example this will be always referring to Child Only and calling super() will never change 
+the value of this, infact this will always remain same super.greet() only looks up the method in the parent class, 
+but this remains the same!
+
+Arrow functions cannot use super because super relies on this, and arrow functions don’t have their own this!
+
+
+var name = "deepak_kumar"
+const obj = {
+    name : 'deepak',
+    getData : ()=> {
+        console.log(this.name)
+        console.log(name) // deepak_kumar
+   }
+}
+
+obj.getData();
+
+aggar aap yeah some code ko chaloage ek js file ke through like node example.js terminal mein toh apko undefined milega kyun ki 
+ek toh apne likhe hai arrow function ke andar ki apko this.name chahiye jo ki hai nahi kyun ki this.name jo hai woh global ko 
+point out karta hai in nodejs and apne var name = "deepak" jab likha haitoh eska matlab hai ki yeah ek module scope mein milega 
+i mean module ke local scope mein 
+
+kyun ki har js file ka ek module hota hai aur aap jab likhte ho var name = "deepak" toh eska matlab yeah jaega module local scope
+mein na ki global scope mein (global and moduke scope allag allag hai) and esliye apko name ka value mil nahi raha hai kyun ki apne arrow function mein this.name likha hai aur arrow function ka khud ka this hota hi nahi yeah apne parent scope se dekhega that mean in global and global scope mein kahin bhi name ko apne define nahi kiya hai. 
+
+kyun ki woh present hai module ke local scope mein rehte hein
+
+explanation from gork.ai
+-------------------------
+1. Node.js mein har .js file ek module hoti hai:
+---------------------------------------------
+Jab tu node test.js karta hai, Node.js is file ko ek module ke roop mein treat karta hai. Har module ka apna alag scope hota hai, jo global scope se thoda alag hota hai.
+Yani test.js ke andar jo bhi code hai, woh us module ke apne scope mein execute hota hai, directly global object mein nahi.
+
+2. var name = "deepak" kahan rahta hai:
+-----------------------------------
+Jab tu var name = "deepak" likhta hai, yeh variable module ke scope mein declare hota hai. Node.js ke module system mein, var wale variables module ke local scope mein rehte hai, na ki global object (global) mein.
+Matlab, name module ke andar ek variable ban jata hai, lekin yeh global.name ke roop mein automatically set nahi hota (jaise browser mein window.name hota hai var se).
+
+3. Arrow function ka this kahan point karta hai:
+----------------------------------------------    
+Tera code mein getData: () => { console.log(this.name) } hai. Arrow function apna this lexical scope se leta hai.
+File ke top-level pe, arrow function ka this global object ko point karta hai (Node.js mein global).
+Lekin global.name undefined hai, kyunki var name = "deepak" ne global object mein kuch set nahi kiya, sirf module scope mein name banaya.
+
+4. Output kyun undefined:
+--------------------------
+Jab tu obj.getData() call karta hai, this.name check hota hai global object pe, aur wahan name property nahi hai. Isliye undefined print hota hai.
+
+5.Toh name kahan hai?
+---------------------
+name module ke scope mein hai, lekin global mein nahi.
+Agar tu module ke andar console.log(name) karega directly (bina this ke), toh "deepak" milega, kyunki module scope mein name available hai. Yeh dekho:
+
+var name = "deepak" module ke andar ek variable bana deta hai, lekin yeh global tak nahi jata jab tu file chala raha hai. Arrow function ka this global ko dekhta hai, aur global.name undefined hai. Isliye tujhe undefined mil raha hai. Agar tu name ko directly access karega (bina this ke), toh module scope se "deepak" mil jayega.
+
+    var name = "deepak";
+    const obj = {
+        name: 'deepak',
+        getData: () => {
+            console.log(this.name); // undefined
+            console.log(name); // "deepak"
+        }
+    };
+    
+    obj.getData();
+
+    Arre bhai, yeh ek zabardast sawal hai! Chalo tera wahi code browser ke context mein dekhte hai aur samajhte hai ki wahan kyun alag behave karta hai:
+
+Tera code yeh hai:
+
+```javascript
+var name = "deepak";
+const obj = {
+    name: 'deepak',
+    getData: () => {
+        console.log(this.name);
+    }
+};
+
+obj.getData();
+```
+
+### Browser mein kya hota hai:
+Jab tu yeh code browser mein chalaayega (jaise ek `<script>` tag ke andar HTML file mein ya browser ke console mein), toh output **"deepak"** aayega, jabki Node.js mein (file ke case mein) `undefined` aata hai. Yeh difference kyun? Chalo break down karte hai:
+
+1. **`var` ka behavior browser mein**:
+   - Browser mein, jab tu `var name = "deepak"` likhta hai, yeh variable global scope mein jata hai **aur** `window` object (jo browser ka global object hai) mein ek property ban jata hai. Yani:
+     ```javascript
+     var name = "deepak"; // Yeh same hai as window.name = "deepak"
+     ```
+   - Toh browser mein `window.name` ab "deepak" ho jata hai.
+
+2. **Arrow function ka `this` browser mein**:
+   - Arrow function apna `this` lexical scope se inherit karta hai. Yahan `getData` top-level pe define hua hai, toh uska lexical scope global scope hai.
+   - Browser mein global scope ka `this` `window` object ko point karta hai. Toh `this.name` actually `window.name` ko refer karta hai.
+   - Chunki `var name = "deepak"` ne `window.name` set kar diya, isliye `this.name` "deepak" return karega.
+
+3. **Output**:
+   - Jab tu `obj.getData()` call karta hai browser mein, `console.log(this.name)` `window.name` ko print karta hai, jo "deepak" hai. Toh output "deepak" aata hai.
+
+### Node.js vs Browser ka fark:
+- **Node.js (file mein)**: `var name = "deepak"` module scope mein rehta hai, `global.name` set nahi hota (module system ki wajah se). Arrow function ka `this` `global` ko point karta hai, aur `global.name` undefined hota hai. Toh output `undefined`.
+- **Browser**: `var name = "deepak"` `window.name` set karta hai. Arrow function ka `this` `window` ko point karta hai, aur `window.name` "deepak" hota hai. Toh output "deepak".
+
+### Test in Browser:
+Agar tu browser ke console mein yeh code paste karega ya ek HTML file mein `<script>` tag ke andar run karega, toh yeh hoga:
+```html
+<script>
+var name = "deepak";
+const obj = {
+    name: 'deepak',
+    getData: () => {
+        console.log(this.name);
+    }
+};
+obj.getData(); // "deepak"
+</script>
+```
+
+### Hinglish mein baat:
+
+Bhai, browser mein `var` seedha `window` object mein property daal deta hai, aur arrow function ka `this` `window` ko dekhta hai, isliye "deepak" milta hai. Node.js mein module scope ka chakkar hai, isliye `global` tak baat nahi jati aur `undefined` aata hai. Samajh gaya na? Browser aur Node ka yeh difference thoda tricky hai, lekin ab clear ho gaya hoga! Koi aur sawal?
+

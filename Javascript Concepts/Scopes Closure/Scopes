@@ -1,0 +1,383 @@
+Scopes: Scopes ka matkab hai ki kahan pe hamara function or hamara variable accessible hai ya toh visible hai. 
+its a concept to figure out where is our function or our variable is accessible or visible. 
+
+But before learning about Scope lets learn how does our Scoping Mechanism Works: 
+Javascript ka Scoping mechanism bahut diffrent hai baki languages se , So Scoping Mechanism 
+samajhne se pehle kuch aur bhi samajhna bahut jaruri hai jaise ki Complied Languages kya hai Interpreted Language kya hai .
+
+Par Actual mein Javascript kis type ka language hai Complied Language hai ya interpreted language hai. 
+so lets deep dive into Complied language and Interpreted Language. 
+
+Complied Language: So complied language ko run karne ke liye ek software ki jarurat hai jisse ham bolte hein 
+compiler, so compiler will take the whole code , analyses it for errors, pura ka pura code leke eror kr liye check karega 
+aggar koi error nahi hai toh bhai thik hai bahut badiya esse ham ek executable binary mein convert kar denge and ham us executable 
+binary ko run kar sakhte hein , par aggar koi bhi error show karega then hame koi bhi executable binary file milega nahi and hame error 
+throw kar dega. 
+
+Interpreted Language: Interpreted Languages ke bhi example hai jaise ki Bash .. Interpreted Languages are those languages which execute our code line by line, if any line has en error then everything before properly gets executed the moment we detect the first error our execution stops and will throw us an error , aggar koi code bhi hai tab bhi execute nahi hoga. 
+
+Hybrid Language: This is a kind of language which uses both complitaion and interpretation for final execution of the code. 
+example Java, JS, Python. 
+
+aggar koi apko yeah bole ki javascript purely interpreted language hai toh yeah technically correct hai hi nahi . lets get into an example 
+
+console.log("hello")
+function getData(){
+    le = name
+}
+
+so if it is an interpreted language then obviously javascript will be able print 'hello' but print toh hoga hi nahi kyun nahi hoga 
+kyun k hamne function ko galat likha hua hai syntax error hai us function mein and syntax error kon check karta hai compiler check karta hai(that means complier exist in javascript) and complier ko pata kab chalta hai parsing phase mein, kyun ki pehle parsing phase hota hai then code execution phase hota hai aggar parsing successfully complete ho gaya then only code execution phase hoga acche se . 
+
+compiler exist karta hai eska matlab yeah nahi ki javascipt ek complied language hai.. Javascript is an Hybrid language that means it combines the process of both compilation and interpretation.
+
+Note:
+----
+Javascript never check for semantic error during parsing phase and compilation phase it check for syntac error and other kinds of error but not semantic error and the sematic error never stops the flow of program unlike syntax error
+
+Javascript 2 phase mein chalta hai 
+1. Memory Phase 
+2. Code Execution phase
+
+Objects Methods and Immutability:
+---------------------------------
+const info = {
+    name :'deepak',
+    fullname : 'deepak kumar nayak',
+    gmail : 'deepak@gmail.com',
+    working: 'Fullstack Developer / Mern Stack Developer'
+}
+
+
+//console.log(Object.keys(info))
+//console.log(Object.values(info))
+//console.log(Object.entries(info))
+
+
+Mutability and Immutability:
+-----------------------------
+if we can modify something for example 
+var a = 10;
+a= 99
+
+console.log(a) // 99
+This mechanism where we can modify the value of a is known as mutable. And immutable means where we cannot do the modifications.
+
+so if we initialize a variable with const then we can make it immutable because const never allow us to modify it.
+aur jab bhi ham const variable banaenge hame us mein kuch na kuch value dena hi padega ham usko khali nahi chod sakhte jaise ki ..
+
+const name; // this will give us syntax error that missing initializer in const declaration
+const name = "deepak" // this is absolutely correct. 
+
+const z = undefined // this will work.
+
+Handling Immutability In Objects:
+-----------------------------------
+const info = {
+    name :'deepak',
+    fullname : 'deepak kumar nayak',
+    gmail : 'deepak@gmail.com',
+    working: 'Fullstack Developer / Mern Stack Developer'
+}
+
+though i have created an object with const still i can change its values like: 
+
+info.name = "rahul" // this is allowed
+info.fulllname = "kl rahul
+
+console.log(info)
+{
+  name: 'rahul',
+  fullname: 'kl rahul',
+  gmail: 'deepak@gmail.com',
+  working: 'Fullstack Developer / Mern Stack Developer'
+}
+
+But
+---
+const name = {
+    name : 'virat'
+    // this is not allowed
+    // TypeError assignment to a const variable
+}
+
+so what const is actually doing here . const is basically stopping the reassignment, i can also add more key value pairs, but reassigning is not allowed. 
+
+when i am creating an object with some key and value pair , a varaible bucket is stored in the stack and the object is created in the heap memory (heap is a collection of unstructured memory), so the reference is already stored in the variable bucket so if we try to reassign an new object then we are changing the refernce which is not allowed.
+
+so reassign nahi hoga but internally aggar kuch value jaise ki info mein aggar apko name, username, gmail change karna hai toh aap kar sakhte ho .. but kya ham objects ko purely Mutable kar sakhte hein .. The answer is Yes, now lets learn how to do it , so there are some methods called 
+
+    const data = { name : 'deepak', username : 'deepak_user' }
+    Object.freeze(data) 
+    delete data.name => performs delete operation
+    data.name = "deepak_kumar" => performs update operation 
+    data.gmail = "deepak@gmail.com" performs adding new element to data object.
+
+    1. Objects.freeze() => update , adding new element, deteing data, all these are not allowed 
+    2. Objects.seal() => update is allowed, adding new element, deleting data is not allowed
+    3. Object.preventExtensions() => update, deleting data is allowed adding new element is not allowed
+    4. Object.defineProperty(data, 'name', {writable:false, configurble:false}) 
+        aab mein name ke saath koi bhi action perform nahi kar paunga jaise ki update, delete baki elements ke saath kar sakhtha hoon par name k saath nahi. 
+
+    so aggar hame ek complete immutable object chahiye then we can use freeze or else we can use 
+    Object.preventExtensions() inclucing Object.defineProperty() and  Object.preventExtensions()
+    with the help  of Object.preventExtensions() i wont be allowed to add new element to an object
+    and with the help of Object.defineProperty() i wont be able to update or delete particular element from an object
+
+    Example: 
+    ---------
+
+    const elements = Object.keys(info)
+    Object.preventExtensions(info) // it will not allow to add any element into the object
+    for(let i=0; i<elements.length; i++){
+        Object.defineProperty(info, elements[i], {writable:false, configurable:false})
+        // this will not allow us to edit or delete the elements
+    }
+    
+    info.name = "rahul" // cant perform
+    info.fullname = "kl rahul" // cant perform
+    info.location = "Odisha" // cant perform
+    
+    console.log(delete info.name) // false
+    console.log(info)
+
+    Output:
+    -------
+    {
+        name: 'deepak',
+        fullname: 'deepak kumar nayak',
+        gmail: 'deepak@gmail.com',
+        working: 'Fullstack Developer / Mern Stack Developer'
+    }
+
+
+Scoping Mechanism Of JS
+-------------------------
+Every Js code run in two phase: 
+    1. Compilation and Scope Resoultion Phase(memory phase)
+    2. Interpretaion and Execution Phase(Code Execution Phase)
+
+Toh hamara jo javacscript code hota hai woh two phases mein chalta hai ek hai complitaion phase and ek hai interpretation phase or code execution phase .. 
+
+So Scope Resolutuon ka matlab hai yeah ki we need to allocate some scope / memory / visibility to each and every variable and functions 
+
+Par Thoda Scope ke bare mein thoda padh lete hein jaise ki kitne types ke scope exist karte hai javascript mein for example :
+    1. Global Scope.
+    2. Function Scope.
+    3. Block Scope. 
+
+Global Scope: Global Scope mein aggar aap kuch define karte ho toh aap usko kahin bhi access kar sakhte ho matlab poore program mein kahin se bhi accessible hoga jaise ki aggar koi program ke andar access karna hai toh kar sakhte hein, aggar koi loop ke andar jaise ki for loop tab bhi ham access kar sakhte hein. 
+
+let x = 10; 
+function fun(){
+    let b = 20 // now it will behave as a function scope
+    console.log(a) // a is accessible access here. 
+    console.log(b) // b is accessible here
+}
+function funOne(){
+    console.log(b) // b is not accessible here
+    console.log(a) // a is also accessible here
+}
+
+
+Function Scope: Function scope mean any variable which is only accessible inside the function not outside the function.. ek function ke andar apne ek variable ko define kiya hai and un function ke andar aap 2-3-4-5 kitne bhi function likho uske andar access ho sakhta hai par bahar access nahi hoga. 
+
+function getName(){
+    let name = "deepak_kumar_nayak"
+
+    function getdataOne(){
+        var surname = "nayak"
+        console.log(name) // can be accessible
+    }
+    function getDatTwo(){
+        let favGame = "Carrom"
+        console.log(name) // can be accessible
+        console.log(surname) // not accessible
+    }
+    function getdataThree(){
+        console.log(favGame) // not accessible
+        console.log(name) // can be accessible
+    }
+    getdataOne()
+    getDatTwo()
+    getdataThree()
+}
+getName()
+
+Look at the above code sala var ko bhi access nahi kar pa rahe ho , baki let and const ki toh baat hi chod do aggar koi bhi variable 
+apne ek function mein banaya hai toh aap usko uske andar hi access kar sakhte ho bahar nahi kar paoge access. aur aisa scope jahan pe variable khali function ke andar visible ho or accessible ho usko ham bolte hain function scope.
+
+Block Scope: Any variable defined inside a block is a block scope variable
+
+Scope of the variable is decided by how it is declared and where it is declared. by using let , const, var i can declare a variable and usko scope bhi us husab se mil jaega. 
+
+var : help us to initialize function scope and global scoped variables.
+let : help us to initialize block scoped variables. 
+const : help us to initialize block scope variable thoda allag hai let se 
+
+Lexical Scoping / Lexical Parsing: 
+-----------------------------------
+In javascript scope resolution is possible due to Lexical Scoping, Lexical Scoping mein scope allocate hote hai variables ko, and variables ko value allocate hote hein execution phase mein, but the scope of the variable is decided is Phase-One eska matlab code execution se pehle bhi sare variables ko scope allocate ho jate hein, 
+
+Var help us to declare global and function scoped variables we cannot make a block scope variable with var. 
+var ka aur ek khasiyat hai ki aap usko declare karne se pehle hi access kar sakhte ho aur apko koi bhi error nahi milega ulta apko milega undefined aur undefined pehle wale stage mein hi matlab in phase one jitne bhi sare variables ya toh function hote hein usko key value pair mein dekhne ko milega jitne bhi variables hai unmein undefined store ho jaega phase Two mein actual value initialize hoga par phase one mein undefined store hoga and thats the reason we are getting undefined not any error 
+...
+
+par same chiz na aggar aap let and const se accept karoge toh nahi milega wahan apko ulta error milega 
+
+function getValue(){
+    console.log(a) // undefined
+    var a = 10
+    console.log(a) // 10
+}
+
+
+
+function getValue(){
+    console.log(a) // referenceError cannot access a before initialization 
+    let a = 10; 
+    
+}  
+
+In dono mein se pehle wale jo meine var se declare kiya hai uske pass function scope hai and doosre wale mein block scope hai aggar kisi varaible ke pass function scope hai then usko ham function mein kahin bhi access kar sakhte hein aur hame error nahi milega kabhi bhi haan undefined mil sakhta hai par error nahi milega aur undefined kab milega aggar mein usko declare karne se pehle access kar raha hoon tab. 
+
+// Note: 
+--------
+aggar mein koi bhi variable declare kar raha hoon with the help of var, let,const then usko ham kahenge formal declaration 
+
+let a = 10 // this is a formal declaration
+var a = 10 // this is a formal declaration
+const a = 10 // this is a formal declaration
+
+a= 10 // this is not a formal declaration
+
+LHS : assigning / value allocate kiya ja raha hai
+RHS : consuming
+
+. Phase one mein compilation hoga/ scope resolution hoga
+. aggar mein pehli bar koi variable ko hit kar raha hoon as LHS aur woh bhi without formal declaration then hamesha woh auto-global banaya jaega matlab usko global mein space mil jaega i.e var variable_name = value; 
+. aggar mein variable ko hit kiya as RHS toh usko auto global banaya nahi jaega aur mujhe mlega error (not-defined wala error milega)
+. So LHS hai toh auto-global banega and RHS hai toh auto-global nahi banega. 
+. aggar aap block scope mein var use karoge toh bhai usko koi farak nahi padne wala woh as a global hi behave karega kyun ki block ke liye let and const hai na bhai usko use karo kyun bekar mein var use karna .
+
+Temporal Dead Zone: This is the region before the declaration of a block scoped variable, A variable declared with let const is said to be in Temporal Dead Zone(TDZ) from the start of the block untill code execution reaches the place where variable is intitialized. 
+
+(woh region jahan aap  variable jo app access karna chahte ho before their declaration usse kehte hai temporal dead zone, yeah ek asia zone hai jahan pe apka variable available nahi hai. A region before the declaration of a block scope variable.)
+
+Function Scope and Block Scope:
+When we say function scope it means no matter what where we declare a variable in the fuction it's available through out the function and we can access it anywhere inside the function
+
+Block Scope: let and const are used to create block scoped variables which are only accessible inside the block we cannot access outside the block. We cannot access those variable before their declaration and if you try to access it then obviously we will get error so we can access them after their declaration
+
+function blockScopeExample(){
+    console.log(x) // error cannot access before their declaration
+    let x = 10; 
+    console.log(x) //10
+}
+
+function functionScopeExample(){ 
+    console.log(x) // undefined
+    var x = 10; 
+    console.log(x) // 10
+}
+
+
+More Facts On Let: 
+-------------------
+let doesn't allow re-declaration and this will get caught in the Phase One. 
+
+let x = 10; 
+console.log(x)
+let x = 20 // not allowed. 
+
+Hoisting: 
+----------
+Hoisting is a consequence of the scoping mechanism, till now in the EcmaScript you will never find any defination of hoisting in MDN also it is written that Hoisting is not a term normatively defined in the ECMAScript specification. 
+
+Because of the fact we know that JS execute our code in two phases , a lot of variables are already known during the phase 1 and then they are accessed in phase 2, so aisa lagta hai ki JS ko pata hota hai kuch function ya toh variables ke bare mein uske declaration se pehle and sahi bhi hai kyun ki phase one mein hi sare fromal declaration ko read kar diya jata hai JS ke duara so JS ko pata chal jata hai variables ke bare mein before execution phase and essi phenomena ko ham bolte hai Hoisting, The word not an actual word present in ECMAScript Docs. 
+
+Function Expression:
+---------------------
+function getData(){
+    // this is called function declaration
+    // where function keyword is mandatory
+}
+
+In JS Functions are the first class citizens 
+    . we can return a function from function.
+    . we can send a function as an argument to another function.
+    . we can store a fuunction in a variable. 
+
+Stroring a function in a variable this is known as function expression for example 
+
+    let data = function getName(){
+        return 'name'
+        // this also called named function expression
+    }
+    
+    console.log(data())
+
+jaise ki apne let mein store kiya hai apne functions ko so aap usko jaise variable ko aap pehle access nahi kar pate the declarations se pehle thik ussi tarah aap yahan bhi function ko access nahi kar paoge and aggar aap karna bhi chahoge toh apko thik ussi tarah error milega that 
+
+" Reference Error : Cannot access 'data' before initialization "
+
+    let anotherExample = function(){
+        // this is also a function expression
+        // this is also called Anonymous Function Expression
+        // a function without any name ans stored in variable anotherExample
+    }
+
+    let anotherexample = () => {
+        // this is called arrow function expression example 
+    }
+
+aggar koi apse puche ki hame dono mein se mera matlab ki hame named function expression and anonymous function expression se konsa wala use karna hai toh uska ans yeah hai ki its actually a pesonal choice but named function expression use karna accha rahega apko debug karne mein easy hoga and anonymous function are hard to use in recursion, let me clear this with an example that how it is helpful for using it in recursion, lets take an example if factorial ... 
+
+recurion mean a function calling itself again and again .. 
+
+    const data = arr.map(function factorial(n){
+        if(n == 1) return 1;
+        return n*factorial(n-1)
+        
+    })
+    
+    console.log(data) // [ 2, 6, 24, 120, 720 ]
+
+named function expression ka matlab a function having a name which is factorial here but aggar mein named function use hi nahi karunga toh usko call kaise karunga yahan es example mein meine jo likha hai (return n*factorial(n-1)) yahin pe sara khel ho raha hai aggar mein usko anonymous function ke help se bauanga toh thoda difficult hoga kyun ki wahan mein factorial likh nahi paunga kyun ki anonymous function hai na function having no name, toh wahan toh bahut dikkat hoga . but still uske like bhi ek solution hai and uske bare mein ham baat nahi karte hein kyun ki woh outdated ho chuka hai aaj kal koi use nahi karta hai usko so in this case named function expression use karna easy hoga instead of using anonymous function expression.
+
+note: function ka aggar koi name hi nahi hoga toh recursion function call kaise hoga.
+
+    const data = arr.map(function(n){
+        if(n == 1) return 1;
+        //return n*(n-1) // aggar name hi nahi hoga toh yahan pe kya likhoge
+        return n * arguments.callee (n-1) // depricated ho gaya hai
+        console.log(data)
+        
+    })
+
+Named function expression improve the readibility of the code, named function exression ke name se pata chal jaega ki ham es particular function ko kis vajah se use kar rahe hein par aggar ham Anonymous function expression use karenge toh jis function ka name hi nahi hai uska readibility kaisa accha ho sakhta hai.
+
+Arrow Functions: 
+-----------------
+In arrow functions this keyword is resolved lexically whereas in other functions this keyword is resolved by callsite. 
+
+arrow function us also used to write concise code mean chota code.
+
+in arrow function there is no need of writting return keyword if we have writtn a oneline logic for example: 
+
+    const square = (x) => x*x       // using arrow function
+    
+    const square = function(x){     // using normal function
+        return x*x
+    }
+
+IIFE: 
+------
+Ek aisa function jisko jaise hi hamne define kiya woh call ho jaega is known as IIFE (Immediately invoked function expression) for example: 
+
+    (function square(x){
+        return x*x
+    })(10)
+
+
+IIFE ko ek bar call kar diya matlab bar bar usko call nahi kar sakhta kyun ki IIFE jo hai na woh call hone ke baad wiped out ho jaega memory se. 
