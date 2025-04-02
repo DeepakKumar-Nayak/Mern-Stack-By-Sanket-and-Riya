@@ -1,4 +1,12 @@
-frequency = {}
-frequency['name'] = "deepak"
+let str = "missippi"
+let freMap = {}
 
-console.log(frequency)
+for(let i of str){
+    if(freMap[i]){
+        freMap[i]+=1
+    }else{
+        freMap[i] = 1;
+    }
+}
+
+console.log(freMap)
