@@ -23,20 +23,20 @@ function findMaxProfit(prices){
     let profit = 0; 
     
     for(let i=1;i<prices.length; i++){
-        
-        // can i got for sell
-        if(prices[i]> currMin){
-            // if it is then we can sell but we have to check that the profit is better than previous or not
-            profit = Math.max(profit, prices[i]- currMin)
-        }
 
         // can i buy
         if(prices[i]<currMin){
             currMin = prices[i]
+        }
+
+        // can i got for sell
+        if(prices[i]> currMin){
+            // if it is then we can sell but we have to check that the profit is better than previous or not
+            profit = Math.max(profit, prices[i]- currMin)
         }
     }
     return profit
     
 }
 
-console.log(findMaxProfit([7,6,4,3,2,1]))
+console.log(findMaxProfit([7,6,4,3,2,1,10]))
