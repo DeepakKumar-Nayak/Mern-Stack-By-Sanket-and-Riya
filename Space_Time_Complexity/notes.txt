@@ -1,0 +1,8 @@
+1. What is called time complexity.? 
+---
+So lets say i have taken a code and i will run that code in two diffrent machines like the old machine and the new one
+suppose in the old machine it takes neraly 10sec and in the new one it takes nearly 5sec. so the actual time taken to complete the 
+execution  of the code like 10sec and 5sec this is known as Time Complexity ... but no this is not actuallu called Time Complexity. 
+
+so the rate at which the time taken increases with respect to the input given is called Time Complexity. It actually depend on the input because if we have 
+given a big input then eventually it will take more time 
