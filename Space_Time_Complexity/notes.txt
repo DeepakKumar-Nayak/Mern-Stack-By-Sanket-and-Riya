@@ -6,3 +6,72 @@ execution  of the code like 10sec and 5sec this is known as Time Complexity ... 
 
 so the rate at which the time taken increases with respect to the input given is called Time Complexity. It actually depend on the input because if we have 
 given a big input then eventually it will take more time 
+
+so lets calculate the time complexity in terms of Big-O notation: 
+- Avoid constants
+- Avoid lower values. 
+- TC - in terms of worst case senario. 
+
+Big-oh(0) worst case. (upper Bound)
+Theta O : Average Complexity;
+Omega O : Lowset Bond 
+
+Big - O is important and will be asked in the interviews.
+
+
+Space Complexity:
+----------------
+Auxiliary Space and Input Space. 
+
+Auxiliary Space: the space that we made to solve the problem and extra space 
+Input Space : space that we took to sotore the problem. 
+
+for example: 
+------------
+let data = a+b 
+data is the auxiliary space. 
+
+lets take two programs and will calculate the time complexity and space complexity:
+
+
+function pattern_One(n){
+    for(let i = 1; i <= n; i++){
+        let result = "";
+        for(let j = 1; j <= n; j++){
+            result += "* ";
+        }
+        console.log(result);
+    }
+}
+
+var patternOne = function(n) {
+    let output = [];
+    for (let i = 1; i <= n; i++) {
+        let result = "";
+        for (let j = 1; j <= n; j++) {
+            result += "* ";
+        }
+        output.push(result.trim());
+    }
+    return output;
+}; 
+
+ek mein ham console kar rahe hein and aur ek mein ek naya array mein usko push kar rahe hain. 
+
+Time Complexity dono mein same aaega 0(n2)
+Space Complexity ek mein aaega 0(n) aur ek mein jis mein ham array mein usko push karke save kar rahe hein us mein aaega O(n2)
+
+Explanation:
+-------------
+Explanation:
+	•	Time Complexity: Dono mein same hai, kyunki dono mein n * n kaam ho raha hai.
+	•	Space Complexity:
+	•	Console.log version mein sirf ek result string banta hai, print hoke khatam ho jaata hai → O(n).
+	•	Return version mein pura output array bana rahe ho jisme n strings hain, aur har string length n ki hai → O(n²).
+
+⸻
+
+
+“Console.log version has time complexity O(n²) and space O(n), because we’re creating a temporary string per line and printing immediately.
+The return array version has the same time complexity O(n²), but space complexity is O(n²) because we’re storing n strings of size n in the output array.”
+
