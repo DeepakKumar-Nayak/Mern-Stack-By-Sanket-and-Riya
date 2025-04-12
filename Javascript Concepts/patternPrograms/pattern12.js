@@ -35,4 +35,29 @@ let pattern12 = function(n){
     return finalResult
 }
 
-console.log(pattern12(4))
+//console.log(pattern12(4))
+
+// another type to reverse the numbers printing
+function anotherOne(n){
+    for(let i=1; i<=n; i++){
+        let result = ""
+        
+        // for numbers
+        for(let j=1; j<=i; j++){
+            result+=j+" "
+        }
+        
+        // for space
+        for(z=1; z<=2*(n-i); z++){
+            result+="_ "
+        } 
+
+
+        for(k=i; k>=1; k--){
+            result+=k+" "
+        }
+        console.log(result)
+    }
+    
+}
+anotherOne(4)
