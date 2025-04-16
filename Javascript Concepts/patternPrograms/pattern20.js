@@ -24,9 +24,9 @@ let pattern20 = function(n){
     let finalresult = "";
     for(let i=1; i<=n*2-1; i++){
         let result = ""
-        if(i>5){
+        if(i>n){
             // for star
-            for(let j=1; j<=(5*2)-i; j++){
+            for(let j=1; j<=(n*2)-i; j++){
                 result+="* "
             }
 
@@ -34,7 +34,7 @@ let pattern20 = function(n){
             for(let k=1; k<=2*(i-n); k++){
                 result+="  "
             }
-            for(let j=1; j<=(5*2)-i; j++){
+            for(let j=1; j<=(n*2)-i; j++){
                 result+="* "
             }
         }else{
