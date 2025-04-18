@@ -1,13 +1,13 @@
-// Single Number 
-// input [2,2,1]
-// Output = 1;
-// let findSingle = function(nums){
-//     let result = 0;
-//     for(let i=0; i<nums.length; i++){
-//         result = result^nums[i]
-//     }
-//     return result
-// }
+//Single Number 
+//input [2,2,1]
+//Output = 1;
+let findSingle = function(nums){
+    let result = 0;
+    for(let i=0; i<nums.length; i++){
+        result = result^nums[i]
+    }
+    return result
+}
 
 //console.log(findSingle([2,2,1]))
 
@@ -31,4 +31,11 @@ let findSingleNumber = function(nums){
     
 }
 
-console.log(findSingleNumber([4,1,2,1,2]))
+//console.log(findSingleNumber([4,1,2,1,2]))
+
+
+
+
+
+
+
