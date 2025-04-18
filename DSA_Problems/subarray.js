@@ -27,7 +27,7 @@ function printSubArrays(arrOne){
     for(let i=0; i<arrOne.length; i++){
         let str=""
         for(let j=i; j<arrOne.length; j++){
-            str+= arrOne[j]
+            str+= arrOne[j] +" "
             console.log(str)
         }
     }
