@@ -11,7 +11,7 @@ function merge(num1, m, num2, n){
         }
         else{
             result[k]=num2[j]
-            k++
+            k++ 
             j++
         }
     }
