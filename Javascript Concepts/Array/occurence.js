@@ -64,3 +64,24 @@ for(let char of str){
         frequency[char] = 1
     }
 }
+function majorityElement(nums){
+    let frequency = {}
+    for(let i of nums){
+        if(frequency[i]){
+            frequency[i]+=1
+        }else{
+            frequency[i] = 1
+        }
+    }
+    console.log(frequency)
+    let majorityElement = 0;
+    for(let i in frequency){
+        console.log(frequency[i])
+        if(frequency[i]>=majorityElement){
+            majorityElement = Number(i)
+        }
+    }
+    return majorityElement;
+}
+    
+console.log(majorityElement([3,2,3]))

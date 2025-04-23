@@ -1,38 +1,16 @@
-function majorityElement(num){
-    let majority_element = -1
-    let frquency=0;
-
-    for(let i=0; i<num.length; i++){
-        if(frquency ==0){
-            majority_element = num[i]
+let majority_element = function(nums){
+    let majorityElement = -1;
+    let count =0; 
+    for(let i=0; i<nums.length; i++){
+        if(count == 0){
+            majorityElement = nums[i];
         }
-        if(majority_element = num[i]){
-            frquency++
+        if(majorityElement == nums[i]){
+            count++
         }else{
-            frquency--
+            count--
         }
     }
-    return majority_element;
-    
-}
-
-console.log(majorityElement([3,2,3,2,1,2]))
-
-function majorityElement(num){
-    let majority_element = -1
-    let frequenry = 0; 
-
-    for(let i=0; i<num.length; i++){
-       if(frequenry ==0){
-        majorityElement= num[i]
-       }
-       if(num[i] == majorityElement){
-        frequenry++
-       }else{
-        frequenry--
-       }
-    }
-    return majority_element
-}
-
-console.log(majorityElement([3,2,3,2,1,2]))
+    return majorityElement;
+} 
+console.log(majority_element([3,2,3]))
