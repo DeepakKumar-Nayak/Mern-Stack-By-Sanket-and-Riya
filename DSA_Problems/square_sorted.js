@@ -29,9 +29,8 @@ console.log(square_sorted([-4, 1, 0, 3, 10]));
 
 // lets do the same problem using sort method 
 let sortedSquare = function (nums){
-    let result = []
     for(let i=0; i<nums.length; i++){
-        result.push(nums[i]**2)
+        nums[i] = nums[i]**2
     }
     result.sort((a,b)=> a-b)
     return result;
