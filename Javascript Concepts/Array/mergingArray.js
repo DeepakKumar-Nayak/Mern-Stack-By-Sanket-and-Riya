@@ -29,4 +29,4 @@ function merge(num1, m, num2, n){
     }
     console.log(num1)
 }
-merge([1,2,3,0,0,0],3,[2,5,6],3)
+    merge([1,2,3,0,0,0],3,[2,5,6],3)
