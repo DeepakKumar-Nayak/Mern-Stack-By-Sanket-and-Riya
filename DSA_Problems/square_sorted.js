@@ -57,3 +57,6 @@ console.log(sortedSquare([-4,-1,0,3,10]))
 
 // 7 - 3 => negative so 7 pehle then 3 
 // ham yahan kisi bhi haal pe decreasing order pe hi elements hame mil raha hai. 
+
+
+//  
