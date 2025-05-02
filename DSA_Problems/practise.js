@@ -54,14 +54,39 @@ function findTwoDiffrentPairs(nums, k) {
     
 }
 
-console.log(findTwoDiffrentPairs([3,1,4,1,5], 2))
+//console.log(findTwoDiffrentPairs([3,1,4,1,5], 2))
 
-// absolute diffrence quesntion - easy 
-function CountNumberOfPairs(nums,k){
-    let i = 0; 
-    let j = 1;
-    
+// consecutive Ones
+// let consecutiveOnes = function(nums){
+//     let consecutive0nes = 0;
+//     let finalAns = 0;
+//     for(let i=0; i<nums.length; i++){
+//         if(nums[i] === 1){
+//             consecutive0nes+=1
+//         }else{
+//             finalAns = Math.max(finalAns, consecutive0nes)
+//             consecutive0nes=0;
+//         }
+//     }
+//     return Math.max(finalAns,consecutive0nes)
+// }
 
+// console.log(consecutiveOnes([1,1,0,1,1,1,1]))
+
+// another solution for consecutive ones
+
+let consecutive_ones = function(nums){
+    let maxOnes = 0;
+    let count = 0;
+
+    for(let i=0; i<nums.length; i++){
+        if(nums[i] === 1){
+            count+=1
+            maxOnes =  Math.max(maxOnes,count)
+        }else{
+            count = 0
+        }
+    }
+    return maxOnes;
 }
-
-console.log(CountNumberOfPairs([1,2,2,1],1))
+console.log(consecutive_ones([1,1,1,0,1,1,0]))
