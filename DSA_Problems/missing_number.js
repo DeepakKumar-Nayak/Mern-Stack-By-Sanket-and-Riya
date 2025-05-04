@@ -32,8 +32,3 @@ let find_missing_numbers = function(nums){
 // 0^0 = 0
 // 1^1 = 0
 
-let missingNumbers = function(nums){
-    for(let )
-}
-
-console.log(missingNumbers([3,0,1]))
