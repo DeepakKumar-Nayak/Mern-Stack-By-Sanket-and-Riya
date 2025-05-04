@@ -43,7 +43,6 @@ let find_longest_sub_array = function (nums, target) {
 //console.log(find_longest_sub_array([2, 5, 1, 7, 10], 14))
 
 // now we can think of going for better approach using two pointer algorithim and sliding window. 
-
 // lets go for a sliding window seize of 1 and r.   
 
 let find_sub_array = function(nums,k){
@@ -71,4 +70,32 @@ let find_sub_array = function(nums,k){
 
 }
 
-console.log(find_sub_array([2,5,1,7,10], 14))
+//console.log(find_sub_array([2,5,1,7,10], 14))
+
+// yeh pattern matlab sare jagah use hota hai aisa striver ne bola sriver dsa playlsit se padh raha hoon mein yeah topic 
+
+// findOut the maximum subArray
+let find_max_subarray = function(nums,k){
+    let l =0;
+    let r =0;
+    let sum =0;
+    let maxLength =0;
+    let result =[]
+
+    while(r<nums.length){
+        sum = sum+nums[r]
+
+        if(sum>k){
+            sum = sum-nums[l]
+            l++
+        }
+
+        if(sum<=k && r-l+1>=maxLength){
+            maxLength = r-l+1
+            result = nums.slice(l,r+1)
+        }
+        r++
+    }
+}
+
+find_max_subarray([2,5,1,7,10],14)
