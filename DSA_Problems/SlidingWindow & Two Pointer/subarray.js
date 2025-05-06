@@ -99,3 +99,18 @@ let find_max_subarray = function(nums,k){
 }
 
 find_max_subarray([2,5,1,7,10],14)
+
+// Explanation: 
+// . pehle sum hoga 5 which is less than k 
+// . ra ka value hai 0 and l ka bhi 0 so r-l+1 = 0-0+1 => 1. maxlength = 1. 
+// . slice ke helo se value le raha hoon result mein (0,1) [2]
+// . r++ => 1
+
+// . again 7 < k hoga 
+// . ra ka value ho gaya hai 1 abhi so r-l+1 = 1-0+1 = 2 and meaxlength updated to 2,
+// . slice karke again result update kar raha hoon which is (0,2) eska mnatlab 0,1 jaega which is [2,5]
+// . r++ 2
+
+// . again 8<k hoga 
+// .   
+
