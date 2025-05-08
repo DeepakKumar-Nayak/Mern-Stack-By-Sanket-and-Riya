@@ -40,7 +40,6 @@ let find_longest_subst = function (nums, k) {
         }
         if(zero<=k){
             length = r-l+1
-            console.log(length,r,l)
             maxlength = Math.max(length,maxlength)
         }
         r++
