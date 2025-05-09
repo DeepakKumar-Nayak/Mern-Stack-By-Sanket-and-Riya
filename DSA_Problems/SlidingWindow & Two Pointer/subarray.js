@@ -114,3 +114,7 @@ find_max_subarray([2,5,1,7,10],14)
 // . again 8<k hoga 
 // .   
 
+// some more important points for this question 
+// so if the question is asekd to find out the subarray then we have to shrink it kyun ki kya pata hame koi aisa subarray mil jaye jo pichle wala se greater hai jaise ki es question mein ho raha hai pehle hame mile [2 5 1] then hame kya mila [2 5 7] and this is the final subarray toh yeah hua na pichle wale se behtar
+
+// and aggar hame maxlength ki jarurat hai toh hame subarray ki tarah nahi sochna hai hame bas update karna hai maxlength jaise ki es problem mein dono cases mein 3 hi hai kyun ki aisa koi subrray hai hi nahi jiska 3 se jyada ho. 
