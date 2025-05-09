@@ -49,22 +49,23 @@
 // now lets do the same thing with two pointer algorithim;
 let find_substr = function(nums, k){
     let l = 0; let r =0; let maxLength =0;
-    let sum =0;
+    let sum =0; let newArray = []
     
     while(r<nums.length){
         sum+=nums[r]
 
-        while(sum>k){
-             sum-=nums[l]
-             l++
+        if(sum>k){
+            sum-=nums[l]
+            l++
         }
 
-        if(sum<=k){
-            let length = r-l+1
-            maxLength = Math.max(length, maxLength)
+        if(sum<=k && r-l+1>=maxLength){
+             maxLength = r-l+1
+             newArray = nums.slice(l, r-l+1)
         }
         r++
     }
     return maxLength;
 }
 console.log(find_substr([2,5,1,7,10], 14))
+

@@ -91,8 +91,8 @@ let find_max_subarray = function(nums,k){
         }
 
         if(sum<=k && r-l+1>=maxLength){
-            maxLength = r-l+1
-            result = nums.slice(l,r+1)
+            maxLength = r-l+1  // this is where i am updating the maxlength
+            result = nums.slice(l,r+1) // this is where i am updating the subarray
         }
         r++
     }
