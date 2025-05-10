@@ -51,7 +51,7 @@ let find_long_substr = function (s) {
         }
     }
 
-    // agar value present nahi hai toh yahan ho raha hai add with index value 1
+    // agar value present nahi hai toh yahan ho raha hai add with index value 0
     map.set(s[r], r)
     maxLength = Math.max(maxLength, r - l + 1)
     r++
