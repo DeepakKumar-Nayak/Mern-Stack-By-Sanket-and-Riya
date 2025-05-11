@@ -169,6 +169,20 @@ let find_maximum_ones = function(nums,k){
     return maxLength;
     
 }
-console.log(find_maximum_ones([1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0],2))
+//console.log(find_maximum_ones([1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0],2))
 
 //=============================================================================
+// 4th Find the longest substring with k distinct characters
+let find_the_substring_with_k = function(nums,k){
+    let left = 0;
+    let right =0; 
+    let maxlength =0;
+    let map = new Map()
+
+
+    while(right<nums.length){
+        map.set(nums[right], (map.get(nums[right]) || 0) +1)
+    }
+}
+
+console.log(find_the_substring_with_k('aaabbccd',2))
