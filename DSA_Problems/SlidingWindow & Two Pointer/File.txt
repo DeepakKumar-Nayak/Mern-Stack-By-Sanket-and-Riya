@@ -37,7 +37,7 @@ Total: 4 Major Patterns 🔥 Two Pointer ke liye
 
 
 
-✅ Sliding Window Patterns
+✅ Sliding Window Patterns.
 
 🔥 Sliding Window ke 2 Core Patterns hote hain:
 	1.	Fixed-size Sliding Window
