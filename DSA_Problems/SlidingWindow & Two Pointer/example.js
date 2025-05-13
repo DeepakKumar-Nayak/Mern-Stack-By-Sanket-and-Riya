@@ -206,4 +206,5 @@ let find_the_substring_with_k = function (nums, k) {
     }
     return result.split("");
 }
-console.log(find_the_substring_with_k('aaabbccd', 2))
+//console.log(find_the_substring_with_k('aaabbccd', 2))
+

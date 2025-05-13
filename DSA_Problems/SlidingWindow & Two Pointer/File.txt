@@ -1,0 +1,47 @@
+Total: 4 Major Patterns 🔥 Two Pointer ke liye
+-----------------------------------------------
+📚 Full Breakdown of Two Pointer Patterns:
+
+✅ 1. Opposite Direction Pointers (Start & End)
+	•	left = 0, right = n - 1
+	•	Compare or merge from both ends
+	•	🔸 Use when array is sorted or needs element pairing
+
+🧪 Examples:
+	•	Two sum (sorted)
+	•	Valid Palindrome
+	•	Container with most water
+
+
+✅ 2. Same Direction Pointers (Both move forward)
+	•	left = 0, right = 0
+	•	Used in most sliding window problems
+	•	Shrink/expand range dynamically
+
+🧪 Examples:
+	•	Longest substring with unique characters
+	•	Minimum window substring
+	•	Subarray with at most K distinct
+
+✅ 3. Fixed Window Size
+	•	Move right until window size hits k, then slide forward
+	•	Constant size window
+
+🧪 Examples:
+	•	Max sum subarray of size k
+	•	Count subarrays of size k with condition
+
+✅ 4. Merge-type Two Pointer
+	•	Used when merging two sorted arrays/lists
+	•	Each pointer tracks a different array/list
+
+
+
+✅ Sliding Window Patterns
+
+🔥 Sliding Window ke 2 Core Patterns hote hain:
+	1.	Fixed-size Sliding Window
+	2.	Variable-size (Dynamic) Sliding Window
+
+And occasionally:
+3. Minimum/Maximum Window Problems (Special case of variable-size)

@@ -13,7 +13,7 @@ let sum =0;
 let maxsum =0
 let result = [];
 let k = 4;
-let l=0;
+let l= 0;
 let r = k-1
 
 for(let i=0; i<k; i++){
