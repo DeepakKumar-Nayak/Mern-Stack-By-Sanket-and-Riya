@@ -208,3 +208,5 @@ let find_the_substring_with_k = function (nums, k) {
 }
 //console.log(find_the_substring_with_k('aaabbccd', 2))
 
+// leet code problem no 560 
+// find the subarray sum equals to k. 

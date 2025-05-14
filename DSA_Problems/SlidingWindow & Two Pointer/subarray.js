@@ -96,6 +96,7 @@ let find_max_subarray = function(nums,k){
         }
         r++
     }
+    return result;
 }
 
 find_max_subarray([2,5,1,7,10],14)
