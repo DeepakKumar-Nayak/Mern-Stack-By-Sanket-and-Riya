@@ -187,16 +187,16 @@ let find_the_substring_with_k = function (nums, k) {
         if (map.size > k) {
             let leftVal = nums[left]
             map.set(leftVal, map.get(leftVal) - 1)
-            if(map.get(leftVal) === 0){
+            if (map.get(leftVal) === 0) {
                 map.delete(leftVal)
             }
             left++
-            
+
         }
-        let length = right-left+1
-        if(length>maxlength){
+        let length = right - left + 1
+        if (length > maxlength) {
             maxlength = length
-            result = nums.slice(left,right+1)
+            result = nums.slice(left, right + 1)
         }
         // if (map.size <= k) {
         //     maxlength = Math.max(maxlength, right-left+1)
@@ -210,3 +210,25 @@ let find_the_substring_with_k = function (nums, k) {
 
 // leet code problem no 560 
 // find the subarray sum equals to k. 
+let find_sub_arr = function (nums, k) {
+    let l = 0;
+    let r = 0;
+    let sum = 0;
+    let result = []
+
+    while (r < nums.length) {
+        sum += nums[r]
+
+        while (sum > k) {
+            sum-=nums[l]
+            l++
+        }
+        if (sum === k) {
+            result.push(nums.slice(l, r + 1))
+        }
+        r++
+    }
+    return result;
+}
+
+console.log(find_sub_arr([1,1,1], 2))

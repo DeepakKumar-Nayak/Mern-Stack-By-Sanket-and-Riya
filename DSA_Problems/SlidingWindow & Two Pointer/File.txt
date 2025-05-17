@@ -45,3 +45,43 @@ Total: 4 Major Patterns 🔥 Two Pointer ke liye
 
 And occasionally:
 3. Minimum/Maximum Window Problems (Special case of variable-size)
+
+
+Patterns Example 1: 
+-------------------
+.Maximum sum we can Obtain by Picking 4 elements Consecutively anmd k=4 
+let arr = [-1, 2, 3, 3, 4, 5, -1]
+k=4 means -1 2 3 3 in total 4 elements which is from 0 - 3 so it will be upto k-1 i.e 4-1 => 3
+
+lets take out the sum of those first 4 elements 
+
+let sum =0;
+let r = k-1;  i.e => 3
+let l=0;
+let maxsum =0
+
+for(let i=0; i<k; i++){
+	sum+=nums[i]
+}
+
+maxSum = sum i.e 7 
+// so now max sum = 7;
+
+while(r<n){
+	sum-=nums[l] i.e 7-(-1) = 8
+
+	l++ => l=1 previously it is 0
+	r++ => i.e r is pointing to 4
+
+	sum= sum+nums[r] i.e 8+4 => 12
+
+	maxSum = Math.max(sum, maxSum) i.e 12 then 15 then it will be 11 
+}
+
+[-1, 2, 3, 3] => 7
+[2, 3, 3, 4] => 12
+[3, 3, 4, 5] >  15  --> this is the maximum
+[3, 4, 5, -1] => 11
+
+Note consecutively kan matlab aisa nahi hai ki 1st se 2 value and 
+last se 2 value aggar value lenge toh bas ek line pe hi lenge 
