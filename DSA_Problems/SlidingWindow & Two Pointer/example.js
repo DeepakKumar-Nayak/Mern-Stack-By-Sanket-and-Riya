@@ -231,4 +231,4 @@ let find_sub_arr = function (nums, k) {
     return result;
 }
 
-console.log(find_sub_arr([1,1,1], 2))
+//console.log(find_sub_arr([1,1,1], 2))

@@ -85,3 +85,12 @@ while(r<n){
 
 Note consecutively kan matlab aisa nahi hai ki 1st se 2 value and 
 last se 2 value aggar value lenge toh bas ek line pe hi lenge 
+
+// now lets go for pattern 2: 
+// here we will find the subarray(longest) with sum<=k
+
+let arr = [2, 5, 1, 7, 10] k = 14
+// Brute force ke liye follow striver videos on Two Pointer and Sliding Video Playlist.
+
+// Two Pointer Solution. 
+
