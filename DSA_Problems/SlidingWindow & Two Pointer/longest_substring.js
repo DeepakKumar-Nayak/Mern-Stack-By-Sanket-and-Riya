@@ -44,7 +44,7 @@ let find_long_substr = function (s) {
             l = map.get(s[r])+1
             // yahan na check ho raha hai ki hamane jo a dekha tha kya woh hai
             // aur aggar hai kya woh >l hai aggar hai toh aap l ko update kar do
-            // jahan apne dekha tha a ko last time so go daya duplicates avoid
+            // jahan apne dekha tha a ko last time so avoid that duplicate
 
             // map['a'] +1 which is d
             // matlab jahan pe dekha tha wahan se +1
