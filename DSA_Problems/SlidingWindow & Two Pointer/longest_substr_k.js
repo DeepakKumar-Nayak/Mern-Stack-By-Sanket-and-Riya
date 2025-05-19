@@ -57,15 +57,13 @@ let find_substring = function(nums,k){
 
         if(map.size<=k){
             maxlength = Math.max(maxlength, right-left+1)
-            
-
-        }
+            }
         right++
     }
     return maxlength;
 }
 
-console.log(find_substring(2 ))
+console.log(find_substring('aaabbccd',2))
 
 // simplified version of this line 
 map.set(nums[right], (map.get(nums[right]) || 0)+1)
@@ -96,12 +94,12 @@ let find_the_substring_with_k = function(nums,k){
                 // map ka size pehle hoga {a: 3} which is one 
                 // then it will be {b:2} which is two 
                 // then it will be {c: 2} which is three
-                // if the see the size its greater than 3 because there are three distinct pairs like (a,b,c)
+                // if the size its greater than 3 because there are three distinct pairs like (a,b,c)
 
                 let leftVal = nums[left]
                 map.set(leftVal, map.get(leftVal)-1)
 
-                // aggar map.size > 2 which is yes it is  > 2 tahn what i woll do i will deduct one "a" 
+                // aggar map.size > 2 which is yes it is  > 2 then what i will do i will deduct one "a" 
                 // from the 1st pair kyun ki left se mujhe minus karne padega na so it will be like 
 
                 //{a:3} now it will be {a:2} eventually will we will come to {a:0}
@@ -138,4 +136,4 @@ let find_the_substring_with_k = function(nums,k){
     return result.split("");
 }
 
-console.log(find_the_substring_with_k('aaabbccd',2))
+console.log(find_the_substring_with_k('aaabbccd'),2)

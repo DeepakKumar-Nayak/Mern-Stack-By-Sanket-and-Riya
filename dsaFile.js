@@ -112,8 +112,10 @@ let find_k_distinct = function (nums, k) {
     let maxlength = 0;
     let map = new Map()
 
-    while (r < nums.length) {
-        map.has(nums[r], (map.get(nums[r]) || 0) + 1)
+    let result ="";
+
+    while (r < nums.length){
+        map.set(nums[r], (map.get(nums[r]) || 0) + 1)
         if (map.size > k) {
             while (map.size > k) {
                 let leftVal = nums[l]
@@ -126,10 +128,48 @@ let find_k_distinct = function (nums, k) {
             }
         }
 
-        if (map.size <= k) {
+        if (map.size <= k && r-l+1>=maxlength) {
             maxlength = Math.max(maxlength, r - l + 1)
+            result = nums.slice(l, r+1)
         }
+        r++
     }
+    return [maxlength, result]
 }
 
-console.log(find_k_distinct('aaabbccd'), 2)
+//console.log(find_k_distinct('aaabbccd',2))
+
+// find the substr with all three characters
+let find_substr = function(nums){
+    let r=0; let l =0;
+    let count =0;
+    let map = new Map()
+    let result = []
+
+    while(r<nums.length){
+        let char = nums[r]
+        map.set(char, (map.get(char) || 0)+1)
+
+        while(map.get(char)>1){
+            let leftChar = nums[l]
+            map.set(leftChar, map.get(leftChar)-1)
+
+            if(map.get(leftChar) === 0){
+                map.delete(leftChar)
+            }
+            l++
+        }
+        
+
+        if(map.size === 3){
+            count++
+            result.push(nums.slice(l, r+1))
+
+
+        }
+        r++
+    }
+    return result
+
+}
+console.log(find_substr('bbacba'))
