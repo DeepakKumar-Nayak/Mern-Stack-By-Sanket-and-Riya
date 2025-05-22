@@ -232,3 +232,30 @@ let find_sub_arr = function (nums, k) {
 }
 
 //console.log(find_sub_arr([1,1,1], 2))
+
+
+// find the longest substring without repeating a character 
+let find_longest_substr = function(nums){
+    let l=0; let r=0;
+    let length = 0;
+    let maxlength =0;
+    let result ="";
+    let map = new Map();
+    
+
+    while(r<nums.length){
+        let char = nums[r]
+        if(map.has(char) && map.get(char)>=l){
+            l = map.get(nums[r])+1
+        }
+        length = r-l+1
+        maxlength = Math.max(length, maxlength)
+        if(length>=maxlength){
+            map.set(char, r)
+            result = nums.slice(l, r+1)
+        }
+        r++
+    }
+    return result;
+}
+//console.log(find_longest_substr('abcdecbeadf'))

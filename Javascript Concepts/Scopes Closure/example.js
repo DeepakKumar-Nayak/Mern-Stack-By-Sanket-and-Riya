@@ -68,25 +68,29 @@
 
 // console.log(data())
 
-const arr = [2,3,4,5,6]
-function CustomMap(arr, fn){
-    let newArray = [];
-    for(let i=0; i<arr.length; i++){
-        newArray.push(fn(arr[i]))
-    }
-    return newArray;
-}
+// const arr = [2,3,4,5,6]
+// function CustomMap(arr, fn){
+//     let newArray = [];
+//     for(let i=0; i<arr.length; i++){
+//         newArray.push(fn(arr[i]))
+//     }
+//     return newArray;
+// }
 
-function fn(element){
-    return element*element
-}   
-//console.log(CustomMap(arr, fn))
+// function fn(element){
+//     return element*element
+// }   
+// //console.log(CustomMap(arr, fn))
 
-const data = arr.map(function factorial(n){
-    if(n == 1) return 1;
-    return n*factorial(n-1)
+// const data = arr.map(function factorial(n){
+//     if(n == 1) return 1;
+//     return n*factorial(n-1)
     
-})
+// })
 
-console.log(data)
+// console.log(data)
+
+
+// longest substring without repeating character
+//abcdecbeadf
 

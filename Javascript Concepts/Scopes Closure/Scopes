@@ -9,7 +9,7 @@ Par Actual mein Javascript kis type ka language hai Complied Language hai ya int
 so lets deep dive into Complied language and Interpreted Language. 
 
 Complied Language: So complied language ko run karne ke liye ek software ki jarurat hai jisse ham bolte hein 
-compiler, so compiler will take the whole code , analyses it for errors, pura ka pura code leke eror kr liye check karega 
+compiler, so compiler will take the whole code , analyses it for errors, pura ka pura code leke eror kr li ye check karega 
 aggar koi error nahi hai toh bhai thik hai bahut badiya esse ham ek executable binary mein convert kar denge and ham us executable 
 binary ko run kar sakhte hein , par aggar koi bhi error show karega then hame koi bhi executable binary file milega nahi and hame error 
 throw kar dega. 
