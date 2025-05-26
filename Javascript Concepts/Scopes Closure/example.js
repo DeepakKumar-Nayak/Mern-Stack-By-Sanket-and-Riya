@@ -91,6 +91,48 @@
 // console.log(data)
 
 
-// longest substring without repeating character
-//abcdecbeadf
+// freeze
+const obj = {
+    name:'deepak',
+    username:'deepak_kumar',
+    gmailid: 'deepak@gmail.com',
+    githubid : 'deepak_DKN',
+    jobid: '123SDE2',
+}
 
+/**
+ * Object. Freeze 
+ * it will make the object fully immutable due to which no changes can be made 
+ * no delete, no update, cannot add new elements nothung can be done
+ * ---
+ * Object.freeze(obj)
+ * obj.location = "mumbai"
+ * delete obj.name
+ * console.log(obj)
+ */ 
+
+/**
+ * Object.seal
+ * seal ke help se aab bas modify kar sakhte ho but you cannnot add and delete
+ * new key value aggar add karna hai then you cant not allowed. 
+ * ---
+ * Object.seal(obj)
+ * obj.name = "deepak_nayak" || allowed
+ * delete obj.name           || not allowed
+ * obj.location = "delhi"    || not allowed
+ */
+
+
+/**
+ * Object.preventExtensions(obj)
+ * obj.name = "kumar"       || this is allowed
+ * obj.location = "Noida"   || adding elements not allowed
+ * delete obj.name          || but yes deletion  is allowed.
+ * 
+ */
+
+// Preventextension and define property
+// seal mean no adding no deletion only updation 
+
+
+// define mein no add 

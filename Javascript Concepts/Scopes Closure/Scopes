@@ -1,3 +1,6 @@
+Javascript uses both Interpretaion and complitaion, and aggar kisi ko yeah lagta hai ki javascript khali ek interpreted language hai toh phit yeah galat hai.par usse pehle ham yeah 
+samajh lete hein ki ki compilation and Interpretaion mein diffrence kya hai.
+
 Scopes: Scopes ka matkab hai ki kahan pe hamara function or hamara variable accessible hai ya toh visible hai. 
 its a concept to figure out where is our function or our variable is accessible or visible. 
 
@@ -171,16 +174,16 @@ Global Scope: Global Scope mein aggar aap kuch define karte ho toh aap usko kahi
 let x = 10; 
 function fun(){
     let b = 20 // now it will behave as a function scope
-    console.log(a) // a is accessible access here. 
+    console.log(x) // a is accessible access here. 
     console.log(b) // b is accessible here
 }
 function funOne(){
     console.log(b) // b is not accessible here
-    console.log(a) // a is also accessible here
+    console.log(x) // a is also accessible here
 }
 
 
-Function Scope: Function scope mean any variable which is only accessible inside the function not outside the function.. ek function ke andar apne ek variable ko define kiya hai and un function ke andar aap 2-3-4-5 kitne bhi function likho uske andar access ho sakhta hai par bahar access nahi hoga. 
+Function Scope: Function scope mean any variable which is only accessible inside the function not outside the function.. ek function ke andar apne ek variable ko define kiya hai and us function ke andar aap 2-3-4-5 kitne bhi function likho uske andar access ho sakhta hai par bahar access nahi hoga. 
 
 function getName(){
     let name = "deepak_kumar_nayak"
