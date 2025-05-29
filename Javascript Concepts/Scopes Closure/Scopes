@@ -388,3 +388,35 @@ Ek aisa function jisko jaise hi hamne define kiya woh call ho jaega is known as 
 
 
 IIFE ko ek bar call kar diya matlab bar bar usko call nahi kar sakhta kyun ki IIFE jo hai na woh call hone ke baad wiped out ho jaega memory se. 
+IIFE also can be useful to avoid naming conflict. for example aggar apne ek nromal function banaya hai and ek IIFE banaya hai with the same function 
+name then there will be no naming conflict and no confusion also like. 
+
+    function square(){
+        return x*x
+    }
+
+    (function square(x){
+        console.log(x)
+        return x*x
+    })(10)
+
+
+supoose upear wala function kisi senior developer ne likha hua hai and niche wala koi ek junior developer ne likha hua hai par yahan kya hoga here we will
+not get any error kyun ki dono bar use ho raha hai na but phir bhi error nahi milega and why it is like that because hamne second wala jo meine lkha hai 
+woh ek IIFE hai ans aise likhne se naming conflict bach gaya
+
+waise aaj kal toh IIFE ka eetna jyada use nahi ho raha hota hein but aggar aap purane code base dekhoge toh wahan IIFE ka jyada use hota tha 
+
+Note: 
+-----
+Ek baad yaad rakhan ki yahan hamne function expression ki bahut sari batey kari hai ki kitni type ki function expression hai uska ek bahut hi 
+important chiz mien bolunga ki aggar ham koi function expression banate hein and usko ek variable mein save karte hein kyun ki aise hi toh banta hai 
+function expression tab kya hita hai ki woh ana ek allag ka scope banata hai uska ek apna variable scope banata hai esliye aggar tum dorectly global
+mein usko dhoodne ki koish karoge toh woh uske andar milega hi nahi kyun ki woh us variable ke scope ke andar hoga for example: 
+
+    let data = function getData(){
+        return 'data'
+    }
+
+data scope ke andar apko milega getData function aap aggar directly aise getData() ko call karoge global scope ke andar toh nahi milega. 
+kyun ki toh data scope ke andar hoga mere bhai 

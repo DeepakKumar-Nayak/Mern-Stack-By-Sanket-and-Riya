@@ -136,3 +136,10 @@ const obj = {
 
 
 // define mein no add 
+let arr = [10,20,44,60]
+
+const data = arr.map(function getNumbers(num){
+    return num **2
+})
+
+console.log(data)
