@@ -1,5 +1,5 @@
 Javascript uses both Interpretaion and complitaion, and aggar kisi ko yeah lagta hai ki javascript khali ek interpreted language hai toh phit yeah galat hai.par usse pehle ham yeah 
-samajh lete hein ki ki compilation and Interpretaion mein diffrence kya hai.
+samajh lete hein ki ki compilation and Interpretation mein diffrence kya hai.
 
 Scopes: Scopes ka matkab hai ki kahan pe hamara function or hamara variable accessible hai ya toh visible hai. 
 its a concept to figure out where is our function or our variable is accessible or visible. 
@@ -152,6 +152,10 @@ so reassign nahi hoga but internally aggar kuch value jaise ki info mein aggar a
         gmail: 'deepak@gmail.com',
         working: 'Fullstack Developer / Mern Stack Developer'
     }
+
+Scope: 
+------
+where we can access a spevefic variable and function in our scope. 
 
 
 Scoping Mechanism Of JS
