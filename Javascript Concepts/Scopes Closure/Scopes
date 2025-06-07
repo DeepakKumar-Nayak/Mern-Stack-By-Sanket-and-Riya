@@ -420,3 +420,5 @@ mein usko dhoodne ki koish karoge toh woh uske andar milega hi nahi kyun ki woh 
 
 data scope ke andar apko milega getData function aap aggar directly aise getData() ko call karoge global scope ke andar toh nahi milega. 
 kyun ki toh data scope ke andar hoga mere bhai 
+
+

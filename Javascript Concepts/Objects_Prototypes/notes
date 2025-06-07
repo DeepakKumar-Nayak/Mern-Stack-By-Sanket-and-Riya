@@ -5,7 +5,7 @@ classes are going to represent how an entity should look and behave.
 
 when i say how do they look that mean the property they posses and when i say how do they behave that mean action they perform 
 
-Lets talk about the propery they posses which are otherwise known as the Data Members for examle: 
+Lets talk about the propery they posses which are otherwise known as the Data Members for example: 
 
 Just take an example of a Product Class so what are the properties of a product.
 
@@ -56,10 +56,20 @@ class Product {
 
 }
 
-// no need of writting function while creating a member function we  can just write simply name of the member function
+// no need of writting function keyword while creating a member function we can just write simply name of the member function and this is also called as function
+
+// member fuction define behaviour jab product banega tab product ke saath kya 
+kya so sakhta hai and kya kar paega.
 
     . function addToCart() - not required
     . addToCart() - this is great
+
+Notes:
+------
+Classes hamesha se exist nahi karta tha javascript mein all these are fake, classes
+se pehle functon se sare kam ho jate they and function se hi blueprint ho jata tha.
+
+
 
 // Constructor: 
 ---------------
@@ -83,9 +93,21 @@ To create an Object in JS we use a keyword called new
 Every time we use new it does four following procedure
 
 1. It creates a brand new absolutely empty object. 
+
 2. It calls the constructor of the class and passes the newely created object inside a keyword called this. 
-    (constructor ko call karega and apne jo empty plain object banaya hoga usko pass karega but parameter ke tarah pass nahi karega constructor ke andar ek this keyword ka access hoga and ham us plain object ka access us this keyword ko de denge, this keywrod ko aceess kaise mil raha hai kyun ki ham plain object ka access de rahe hein)
-3. In step 3 new trigger everything we need to be done for prototype.
+    # Person.call(obj, "Deepak")
+aggar mein esko exaplain karun then apne jo plain empty object banaya hoga usko pass karega but yeah jo pass karega not as a parameter it will pass that inside a keyword 
+called this
+
+Note:
+-----
+jab ham call use karte hain usko aise hi toh call hain use uska this hamaesha new object ko point out karta hoga so that hamne jo function likha hua hai usko dubara 
+bar bar likne ki jarurat na pade par ham us particular function ko call kar sakhte hai and jahan pe obj pass hua hai wahan pe hi ham uska new object pass karte hein 
+and this hamesha new obj ko point out karta hai. 
+
+
+3. In step 3 new trigger everything we need to be done for prototype. does something like 
+    __proto__ = Class.prototype
 
 4. if from a constructor an object is manually returned then this manual returned object is stored in the called variable, otherwise in any other case either we return something or dont return something constructor doesnot care about it and returns the value inside the this key. 
 
@@ -920,4 +942,43 @@ obj.getData(); // "deepak"
 ### Hinglish mein baat:
 
 Bhai, browser mein `var` seedha `window` object mein property daal deta hai, aur arrow function ka `this` `window` ko dekhta hai, isliye "deepak" milta hai. Node.js mein module scope ka chakkar hai, isliye `global` tak baat nahi jati aur `undefined` aata hai. Samajh gaya na? Browser aur Node ka yeh difference thoda tricky hai, lekin ab clear ho gaya hoga! Koi aur sawal?
+
+
+
+
+// Some Example of Objects without constructor
+class Product {
+    name;
+    surname;
+    fullname;
+    location;
+    area;
+    city;
+
+    displayData(){
+        console.log(this)
+    }
+}
+
+const data = new Product()
+data.name = "deepak"
+data.surname = "nayak"
+data.fullname = "deepak kumar nayak"
+data.location = "Odisha"
+data.area = "CDA SECTOR 10"
+data.city = "Cuttack"
+
+data.displayData()
+
+Output:
+--------
+Product {
+    name: 'deepak',
+    surname: 'nayak',
+    fullname: 'deepak kumar nayak',
+    location: 'Odisha',
+    area: 'CDA SECTOR 10',
+    city: 'Cuttack'
+}
+
 

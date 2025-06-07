@@ -92,13 +92,13 @@
 
 
 // freeze
-const obj = {
-    name:'deepak',
-    username:'deepak_kumar',
-    gmailid: 'deepak@gmail.com',
-    githubid : 'deepak_DKN',
-    jobid: '123SDE2',
-}
+// const obj = {
+//     name:'deepak',
+//     username:'deepak_kumar',
+//     gmailid: 'deepak@gmail.com',
+//     githubid : 'deepak_DKN',
+//     jobid: '123SDE2',
+// }
 
 /**
  * Object. Freeze 
@@ -134,12 +134,26 @@ const obj = {
 // Preventextension and define property
 // seal mean no adding no deletion only updation 
 
+class Product {
+    name;
+    surname;
+    fullname;
+    location;
+    area;
+    city;
 
-// define mein no add 
-let arr = [10,20,44,60]
+    displayData(){
+        console.log(this)
+    }
+}
 
-const data = arr.map(function getNumbers(num){
-    return num **2
-})
+const data = new Product()
+data.name = "deepak"
+data.surname = "nayak"
+data.fullname = "deepak kumar nayak"
+data.location = "Odisha"
+data.area = "CDA SECTOR 10"
+data.city = "Cuttack"
 
-console.log(data)
+data.displayData()
+
