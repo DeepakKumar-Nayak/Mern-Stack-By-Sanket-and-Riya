@@ -134,26 +134,28 @@
 // Preventextension and define property
 // seal mean no adding no deletion only updation 
 
-class Product {
-    name;
-    surname;
-    fullname;
-    location;
-    area;
-    city;
+// //class Product {
+//     name;
+//     surname;
+//     fullname;
+//     location;
+//     area;
+//     city;
 
-    displayData(){
-        console.log(this)
-    }
-}
+//     //displayData(){
+//         console.log(this)
+//     //}
+// //}
 
-const data = new Product()
-data.name = "deepak"
-data.surname = "nayak"
-data.fullname = "deepak kumar nayak"
-data.location = "Odisha"
-data.area = "CDA SECTOR 10"
-data.city = "Cuttack"
+// const data = new Product()
+// data.name = "deepak"
+// data.surname = "nayak"
+// data.fullname = "deepak kumar nayak"
+// data.location = "Odisha"
+// data.area = "CDA SECTOR 10"
+// data.city = "Cuttack"
 
-data.displayData()
+// //data.displayData()
+
+
 

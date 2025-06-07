@@ -3,7 +3,7 @@ class Product {
     #price
     #quantity
 
-    // yahan meine private data-memebers banaya hai kyun ki mein nahi chahta hoon ki koi bhi akke mere data-memebers mein idhar udhar ki value pass kar de, and private ki vajeh se bhi class ke bahar se koi value aise update nahi kar paenge jab tak ham getter and setter use na kare
+    // yahan meine private data-memebers banaya hai kyun ki mein nahi chahta hoon ki koi bhi  bahar se akke mere data-memebers mein idhar udhar ki value pass kar de, and private ki vajeh se bhi class ke bahar se koi value aise update nahi kar paenge jab tak ham getter and setter use na kare
 
     
 
@@ -17,7 +17,7 @@ class Product {
         this.#quantity = builder.quantity;
     }
 
-    // if i use the approach of creating a product without conatructor then i will face a number of problems like i will not be able to do the validatuon before object creation. suppose u got a senario where before object creation you have to do some validatons aur aggar apka validation fulfill nahi hua then apka object creation bandh ho jaega and ham getter and setter bhi nahi use kar paenge toh dono issue hamko solve karna hai
+    // if i use the approach of creating a product without constructor then i will face a number of problems like i will not be able to do the validatuon before object creation. suppose u got a senario where before object creation you have to do some validatons aur aggar apka validation fulfill nahi hua then apka object creation bandh ho jaega and ham getter and setter bhi nahi use kar paenge toh dono issue hamko solve karna hai
 
     displayProduct(){
         console.log(this.#name, this.#price, this.#quantity)
