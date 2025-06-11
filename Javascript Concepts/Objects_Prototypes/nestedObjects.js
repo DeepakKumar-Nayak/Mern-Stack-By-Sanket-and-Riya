@@ -54,3 +54,26 @@ const company = {
 // accessing team 
 const {departments :{engineering:{teams:{frontend:{projects:{projectA:{techStack}}}}}}} = company
 console.log(techStack)
+
+
+//-----
+
+const data = {name : 'deepak', info : {firstname:'deepak', moreInfo : {city: 'cuttack'}}}
+const {info : {firstname}} = data
+//console.log(firstname)
+
+const {info : {moreInfo: {city}}} = data
+console.log(city)
+
+const user = {
+    name: 'Deepak', age: 24, 
+    address: { street: 'Main Street', city: 'Cuttack', zip: 753001}, 
+    contact: { email: 'deepak@example.com', 
+        phone: { mobile: '9876543210', landline: '0671-123456'}}, 
+    skills: ['JavaScript', 'React', 'Node.js']
+  };
+
+
+// accessing landline number
+const {contact : {phone: {landline}}} = user
+console.log(landline)

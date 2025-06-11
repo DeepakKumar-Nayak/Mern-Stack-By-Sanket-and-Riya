@@ -485,14 +485,43 @@
 // const m = new Movie('kgf', '12-10-25')
 // m.BookEvent('Movie')
 
-const data = {
-    x:10,
-    y:20,
-    fn: function(){
-        const arrow = () => {
-            console.log(this.x)
-        }
-        arrow()
-    }
-}
-data.fn()
+
+// Builder Pattern Understanding
+// class Product {
+
+//     name;
+//     surname;
+
+//     constructor(builder){
+//         this.name = builder.name
+//         this.surname = builder.surname
+//     }
+
+//     setsurName(sur_name){
+//         if(sur_name === this.surname){
+//             console.log('we already have this surname we need some unique surname')
+//             return
+//         }
+//         this.surname = sur_name
+//     }
+
+//     set name(n){
+//         this.name = n
+//     }
+//     get name(){
+//         return this.name
+//     }
+
+
+// }
+
+// const data = new Product({
+//     name:'deepak',
+//     surname: 'nayak'
+// })
+
+// data.name = 'Deepak'
+// data.setsurName('rahulwa')
+
+// console.log(data)
+
