@@ -1,0 +1,37 @@
+// this -- some detail indo about this 
+// aggar koi apse yeah puche ki this ka matlab kya hai .. and what is this referring to 
+
+/**
+ * so this jo hai it depends upon where we are calling it aggar ham this ko browser mein check karenge it will be representing to window
+ * aggar ham this ko node mein check karenge it will be representing to global object but yeah jo dono apko mil rahe hai window and global object 
+ * yeah sare ke sare non strict mode mein hai aggar aap strict mode mein check karenge tph apko dono hi case mein undefined milega. and kyun aisa 
+ * milega kyun ki 
+ * 
+ * Strict mode intentionally disables JavaScript’s default behavior of binding this to the global object when a function is called without a context.
+ * In non-strict mode, agar hum ek standalone function call karte hain, toh JavaScript automatically this ko window 
+ * (in browser) ya global (in Node.js)  bind kar deti hai — even if we didn’t specify any object.
+ * 
+ * But in "use strict" mode, JavaScript expects you to explicitly define the context of this.
+ * So, agar context nahi diya gaya (like in func()), JavaScript doesn’t assume this = global. Instead, 
+ * it assigns this = undefined — to avoid silent bugs and accidental modifications to global state.”**
+ */
+
+// Example
+// "use strict";
+// function show() {
+//   console.log(this);
+// }
+// show(); // 👉 undefined
+
+// function show() {
+//     console.log(this);
+//   }
+//   show(); // 👉 window or global
+
+/**
+ * Note: 
+ * -----
+ * this works diffrently in strict mode and in non-strict mode.
+ * function ke andar bhi apko undefined mil raha hai aggar aap strict mode mein dekh rahe ho toh. 
+ * 
+ */

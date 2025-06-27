@@ -96,8 +96,7 @@ Every time we use new it does four following procedure
 
 2. It calls the constructor of the class and passes the newely created object inside a keyword called this. 
     # Person.call(obj, "Deepak")
-aggar mein esko exaplain karun then apne jo plain empty object banaya hoga usko pass karega but yeah jo pass karega not as a parameter it will pass that inside a keyword 
-called this
+aggar mein esko exaplain karun then apne jo plain empty object banaya hoga usko pass karega but yeah jo pass karega not as a parameter it will pass that inside a keyword  called this
 
 Note:
 -----

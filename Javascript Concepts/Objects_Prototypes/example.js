@@ -525,3 +525,24 @@
 
 // console.log(data)
 
+
+function Events(date){
+    this.date = date
+}
+
+Events.prototype.bookEvent = function(){
+    console.log('Booking done successfully')
+    getDetails = () => {
+        console.log('here are your details movie name is', this.name)
+    }
+    getDetails()
+}
+
+function Movies(name){
+    this.name = name
+}
+Movies.prototype = Object.create(Events.prototype)
+
+const m = new Movies('Don')
+m.bookEvent()
+
