@@ -159,3 +159,13 @@
 
 
 
+const pr = new Promise((res, rej)=>{
+    const randomNumber = Math.floor(Math.random()*100)
+    if(randomNumber % 2 === 0){
+        res(randomNumber,'its an even number')
+    }else{
+        rej(randomNumber,'its an odd number')
+    }
+})
+
+console.log(pr)

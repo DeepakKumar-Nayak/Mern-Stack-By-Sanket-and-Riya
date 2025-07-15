@@ -12,9 +12,12 @@
 //     return element**2
 // }))
 
-"use strict"
-function getData(){
-    
-    console.log(this)
+
+function sayHi(fun){
+    fun('amit')
 }
-getData()
+
+sayHi((name)=>{
+    console.log(name)
+})
+

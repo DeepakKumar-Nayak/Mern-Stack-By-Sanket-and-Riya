@@ -21,7 +21,7 @@
 // function show() {
 //   console.log(this);
 // }
-// show(); // 👉 undefined
+// show();  // 👉 undefined
 
 // function show() {
 //     console.log(this);
@@ -32,6 +32,7 @@
  * Note: 
  * -----
  * this works diffrently in strict mode and in non-strict mode.
- * function ke andar bhi apko undefined mil raha hai aggar aap strict mode mein dekh rahe ho toh. 
+ * function ke andar bhi apko undefined mil raha hai aggar aap strict mode mein dekh rahe ho toh so in function also it depends upon 
+ * strict and non-strict mode. 
  * 
  */
