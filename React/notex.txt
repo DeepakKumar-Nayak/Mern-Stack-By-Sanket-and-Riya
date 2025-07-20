@@ -1,0 +1,15 @@
+React works in the logic of Componenet Driven Architecture
+-----------------------------------------------------------
+So Component driven Architecture ka matlab kya hai ... ki aggar ham koi bhi website open kare jaise ki flipkart aur wahan aggar mein shoes ki category ko jaunga then wahan pe apko bahut sare cards dekhne ko milenge jiske andar apko shoes ke bare mein kuch info dekhne ko milenge hai na 
+
+aab sare cards ka seize and height dekh lo same hi hoga bas data allag allag hoga 
+eska so my point is ham koi ki frontend application utha le us mein bahut sare reusable elements honge ya phir reusable elements honge and react ka shuru se fundamental concept yahi raha hai ki kyun ki tumhari frontend app mein bahut sare reusable elements ho sakhte hein to hame un reusable elements ko bar bar code karne ki jarurat nahi hai
+
+and wahin pe yeahnjo hamara component driven Architecture comes into picture and what is a componenet. Component is nothing but a reusable UI Element.
+
+toh aggar koi chix bar bar use ho raha hai toh hame usko bae bar code likhe ki jarurat nahi hai ham bas ek bar code likhenge and usko use karenge for example inatagram mein apne dekha higa suggested for  you mein jo apko dikhta hai usmein ek satah 10-20 suggestions atte hein aur sabka componenet ek hi hai try karle khud dekh ke. 
+
+abb mein us resuable - component ko banaenge kaise we will create it with the help of react element.(so basically it will be a combination of multiple react element)
+
+React element is an object that describes the property of an actual dom node which will be created by react.
+

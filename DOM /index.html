@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet">
     <script src="./dom.js" defer></script>
+
 </head>
+<style>
+    .container-buttons {
+        margin-top: 20px;
+    }
+
+    .container-buttons buttons {
+        border: 1px solid black;
+        padding: 5px;
+        margin-right: 10px;
+        background-color: black;
+        color: white;
+    }
+
+   
+</style>
+
 <body>
     <a href="https://www.cricbuzz.com/">Cricbuzz</a>
-    <h1>In JavaScript, a closure is the combination of a function and the lexical environment within which that function was declared. This means that an inner function, defined within an outer function, retains access to the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing.</h1>
+    <h1 class="heading">In JavaScript, a closure is the combination of a function and the lexical environment within
+        which that function was declared. This means that an inner function, defined within an outer function, retains
+        access to the variables and parameters of its outer (enclosing) function, even after the outer function has
+        finished executing.</h1>
+
+    <div class="container-buttons">
+        <buttons class="buy-now">Button One</buttons>
+        <buttons class="buy-now">Button Two</buttons>
+        <buttons class="buy-now">Button Three</buttons>
+    </div>
+
 </body>
+
 </html>
