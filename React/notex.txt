@@ -13,3 +13,4 @@ abb mein us resuable - component ko banaenge kaise we will create it with the he
 
 React element is an object that describes the property of an actual dom node which will be created by react.
 
+Recact mein pehle class based componets use hote theey but aggar aap bhi ke time pe dekho toh nahi use hota hai abhi jyada se jyada functional based components use hote hein , but aggar aap use karna chahoge toh kar sakhte ho react bhi tak 2025 tak toh alllow kar raha hai but recommended nahi hai so its better to use functional based components.
