@@ -14,3 +14,21 @@ abb mein us resuable - component ko banaenge kaise we will create it with the he
 React element is an object that describes the property of an actual dom node which will be created by react.
 
 Recact mein pehle class based componets use hote theey but aggar aap bhi ke time pe dekho toh nahi use hota hai abhi jyada se jyada functional based components use hote hein , but aggar aap use karna chahoge toh kar sakhte ho react bhi tak 2025 tak toh alllow kar raha hai but recommended nahi hai so its better to use functional based components.
+
+React Fragment. {<> </>} (opening and closing empty angle brackets)
+-----------------------------------------------------------------------
+aggar aap nahi chahte ho ki aapko aur ek div use karna hai , ya phir aggar apko ek se jyada elements return karna hai then aap use kar sakhte ho react fragment aur wk baat kyun ki aggar aap aur ek div banaoge bhi toh dom mein jaega . dom mein ek div banega and div ke andar aap jo banaoge wohi aaega foe example aagar aap h1 and h2 bana rhe ho  then toh dom ke andar usko banao 
+
+aur waise bhi kyun ki usko wrap karna div ke andar and elements banana aap woh same chiz react fragment ke through karo
+
+React fragment use karne ke kuch benefits han multiple elements ko wrap kar sakhte hai ham single paranet meein very easily
+
+Notes:
+======
+// If we are using talwing with react then we talwing will lot alow us to use customize styling supppose for example we want to add a padding of 17px 
+now adding a padding of 17px that too with react its seems to be impossible but sill we can customize it by writting: 
+
+className = {` px-[17px] ${buttonStyling(styleType)}`} => giving cutsomise padding
+className = {` px-2 ${buttonStyling(styleType)}`}  => giving default padding
+
+// so we can give it like this inside the square bracket [17px]
