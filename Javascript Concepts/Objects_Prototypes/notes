@@ -233,7 +233,7 @@ let obj = {
 
 obj.fn()
 
-so what do you think whm does this is referring to here in the above example if we are using this inside the arrow function then it will never refer it to the callsite so we have to do some changes in arrow function this is defined lexically. 
+so what do you think what does this is referring to here in the above example if we are using this inside the arrow function then it will never refer it to the callsite so we have to do some changes in arrow function this is defined lexically. 
 
 let obj = {
     x : 10;

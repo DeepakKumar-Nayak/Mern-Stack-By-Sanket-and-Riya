@@ -13,11 +13,3 @@
 // }))
 
 
-function sayHi(fun){
-    fun('amit')
-}
-
-sayHi((name)=>{
-    console.log(name)
-})
-

@@ -1,0 +1,157 @@
+Database gives us an origanised way where we can store our data and restore pur data very easily ans in an efficient manner 
+
+Database are divided into tro categories 
+1. RDBMS 
+2. NoSQL
+
+DBMS: Databse Management System 
+--------------------------------
+Database : Jahan data store hota hai(tables and files)
+Managemenet : Jahan Data ko handle kiya jata hai (like insert update delete)
+System : Software jo yeah sab manage karta hai. 
+
+DBMS ek sofware layer hai jo tujhe data ke interact karne dete hai
+Famous DBMS Examples:
+	•	MySQL
+	•	Oracle
+	•	PostgreSQL
+	•	SQL Server
+	•	SQLite
+
+DBMS = ek software jo data ko systematically store karta hai aur us data ko manage/handle karne ke liye tools deta hai.
+
+
+SQL: SQL stands for structure query language. This is not an actual final language
+
+RDBMS: Relational Databse Managemenet Syetem One of the common properties of RDBMS is all of them depend upon the SQL Standard to interact with the database. for example: 
+    1. MySQL is derived from the SQL Standard
+    2. PostgreSQL (PGSQL / Postgres) => Open Source RDBMS
+    3. MS SQL (Microsoft SQL Server) => Microsoft SQL ka product. 
+
+Yeah sare ke sare SQL language use karte hain and aur ek common property hai ki all of these store data in a tabular format /table like format. 
+
+Aur ek commom property hai ki sare ke sare ACID Compliance hai, yani ki ACID Follow karta hai. 
+
+// Notes From ChatGPT:
+----------------------
+•	RDBMS design ka basic principle hi ACID hai
+•	Matlab → har RDBMS (MySQL, PostgreSQL, Oracle, MS SQL, SQLite, etc.) ACID follow karta hai
+•	Lekin → kuch RDBMS me ACID default hota hai, kuch me configurations (engine/transaction settings) ke hisaab se depend karta hai
+
+ACID ka matlab hota hai → Atomicity, Consistency, Isolation, Durability
+
+Ye 4 properties har RDBMS (Relational Database Management System) ko follow karni chahiye, taki data safe aur reliable rahe.
+
+1️⃣ Atomicity (All or Nothing)
+	•	Transaction = ek set of operations (like INSERT, UPDATE)
+	•	Rule: Ya toh pura transaction chalega, ya bilkul nahi chalega.
+	•	Example:
+	•	Bank me ₹500 transfer karna (account A se nikalna + account B me dalna)
+	•	Agar ek step fail ho gaya toh pura rollback hoga.
+
+⸻
+
+2️⃣ Consistency
+	•	Transaction ke baad database hamesha valid state me rahega.
+	•	Example:
+	•	Agar account A me ₹1000 hai aur account B me ₹500
+	•	Transfer ke baad total = ₹1500 hi rehna chahiye (na zyada, na kam)
+
+⸻
+
+3️⃣ Isolation
+	•	Multiple transactions ek saath chal rahe ho toh bhi ek dusre ko disturb nahi karenge.
+	•	Example:
+	•	2 log ek hi account me ek saath paise transfer kar rahe ho
+	•	Dono ko lagna chahiye ki woh single-handedly transaction kar rahe hain.
+
+⸻
+
+4️⃣ Durability
+	•	Transaction complete hone ke baad data permanently save ho jayega, chahe system crash ho jaye.
+	•	Example:
+	•	Bank transfer “success” ho gaya → power chali gayi → phir bhi data disk pe save ho chuka hai → paisa ghoom nahi gaya.
+
+⸻
+
+✅ Seedha Samajh:
+
+ACID compliance = guarantee deta hai ki database transactions reliable, safe aur consistent rahenge.
+
+NoSQL:
+-----
+Why NoSQL because most of them doesnot support the SQL type of query. for example:
+1. Mongodb
+2. Reddis
+3. Cassandra
+
+These Databases donot store data in table like format instead every NoSQL store the data in the diffrent format like 
+    1. Mongodb : stote data in the document format like Json Documnets. 
+    2. Reddis : Reddis store the data in the key value like format. 
+
+in NoSQL none of them store the data in the tabular format. 
+
+// How to create Databse:
+create DATABASE CLASSdb;
+
+// how to create a database if only that databse doesnot exist.?
+create DATABASE IF NOT EXISTS CLASSdb;
+
+// Delete database:
+DROP DATABASE CLASSdb;
+
+// Aagar apko list of Databases dikhna hai: 
+SHOW DATABASES;
+
+// Select a db to work 
+USE CLASSdb;
+
+// Show Databases;
+SHOW TABLES;
+
+Note: Its better to create an sql file and we can execute the query individually
+suppose for example if i have written more than 100 query and all the query are 
+performing some diffrent sort of operation like some query is deleting some query
+is creating table so every one is doing their own thing and we can run individually but for that we have to create an sql file like
+
+create-db-template.sql
+
+Notes: 
+------
+
+•SHOW TABLES → list of tables
+•DESC tablename → table structure
+•SELECT * FROM tablename → table ka actual data
+Schema mean the design of the table
+
+// How to print all the columns. 
+SELECT * from users;
+
+// if i want to print limited data like: name and id 
+SELECT name, id from users;
+
+// Performing Database operation using Like Operator  %.
+SELECT *  FROM POSTS WHERE CONTENT LIKE '%hello%'
+%hello% => % mean start with anything and hello somewhere in between and then it 
+can end with anything. 
+
+// if you want something which starts with hello but end with anything else. 
+SELECT * FROM POSTS WHERE CONTENT LIKE 'HELLO%'
+
+// START WITH ANYTHING BUT ENDS WITH AGAIN 
+SELECT * FROM POSTS WHERE CONTENT LIKE '%AGAIN'
+. %HELLO% = This gonna start with anything somewhere hello in the middle and 
+ends with anything 
+
+. %Hello => This should start with anything but ends with hello 
+. Hello% => This should start with hello but can have anything after that. 
+
+// how to sort the data. 
+select * from POSTS ORDER BY Created_at 
+. here i am sorting the data that belong to post on basics of Created_at. 
+. aur apko mileha yahan increasing order mein bydefault. 
+
+// aggar apko decreasing order mein chahiye then aap bas yeah karo .. 
+select * from POSTS ORDER BY Created_at DESC
+. DESC for decreasing order.
+. ASC for increasing order,  

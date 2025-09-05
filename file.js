@@ -57,34 +57,256 @@
 // let data = func(90,20)
 // console.dir(data)
 
-function downloadData(url,callback){
-    console.log('Downloading the data from . . . . ',url)
-    setTimeout(()=>{
-        console.log('downloading the data is done')
-        let downloadData = "info about the killer"
-        callback(downloadData)
-     },3000)
+// function downloadData(url,callback){
+//     console.log('Downloading the data from . . . . ',url)
+//     setTimeout(()=>{
+//         console.log('downloading the data is done')
+//         let downloadData = "info about the killer"
+//         callback(downloadData)
+//      },3000)
+// }
+
+// function writeFile(data, filename, callback){
+//     console.log('writting data to the file . . . .')
+//     setTimeout(()=>{
+//         console.log('writting',data,'to the filename',filename,'is done')
+//         let msg = "successfull"
+//         callback(data,msg)
+//     },4000)
+// }
+
+// function uploadData(data,drivename,msg){
+//     console.log('uploadind data to the drive.....')
+//     setTimeout(() => {
+//         console.log('uploading', data, 'to the',drivename,'is done')
+//         console.log('task is',msg)
+//     },5000);
+// }
+
+// downloadData('www.info.com', function handleDownload(data){
+//     writeFile(data, 'data.txt', function handleUpload(data,msg){
+//         uploadData(data,'www.googledrive.com',msg)
+//     })
+// })
+
+// const person = {
+//     firstname: "Deepak",
+//     surname: "Kumar",
+//     occupation: "Full Stack Developer",
+//     location: "Odisha",
+
+//     introduce: function () {
+//         console.log(`Hi, I am ${this.firstname} and I work as a ${this.occupation}.`);
+//     }
+// };
+
+// const teacher = {
+//     firstname: "Anita",
+//     surname: "Sharma",
+//     occupation: "Mathematics Teacher",
+//     location: "Delhi"
+// };
+// const engineer = {
+//     firstname: "Ravi",
+//     surname: "Verma",
+//     occupation: "Software Engineer",
+//     location: "Bangalore"
+// };
+
+//person.introduce.call(teacher)
+
+// var firstname = "tipun"
+// var occupation = "shop manager"
+// const person = {
+//     firstname: "Deepak",
+//     surname: "Kumar",
+//     occupation: "Full Stack Developer",
+//     location: "Odisha",
+//     introduce: function(){
+//         const getInfo =()=>{
+//             console.log(`Hi, I am ${this.firstname} and I work as a ${this.occupation}.`);
+//         }
+//         getInfo()
+//     }
+
+// };
+
+// person.introduce()
+
+// class Product {
+
+//   #name
+//   #price
+//   #quantity
+//   #rating
+
+//   constructor(name,price,quantity,rating){
+//    this.#name = name;
+//    this.#price = price;
+//    this.#quantity = quantity;
+//    this.#rating = rating
+//   }
+
+//   set price(p){
+//     if(p > 1){
+//       this.#price = p
+//     }else{
+//       throw new Error('invalid price')
+//     }
+//   }
+
+//   displayProduct(){
+//     console.log(`Product Data: ${this.#name} ${this.#price} ${this.#quantity} ${this.#rating}`)
+//   }
+  
+
+
+// }
+// try{
+//   const productOne = new Product('glass',10, 4,4)
+//   productOne.displayProduct()
+
+  // productOne.price = 11;
+  // productOne.displayProduct()
+
+
+// }catch(err){
+//   console.log(err.message)
+// }
+
+
+/// doing the same thing with function 
+
+// class Product{
+
+//   #name
+//   #price
+//   #description
+
+//   constructor(Builder){
+//     this.#name = Builder.name;
+//     this.#price = Builder.price;
+//     this.#description = Builder.description;
+//   }
+
+//   displayProduct(){
+//     console.log(`
+//       Product Info:
+//       Product Name: ${this.#name} 
+//       Product Price: ${this.#price} 
+//       Product Description: ${this.#description}
+//       `)
+//     }
+
+//   static get Builder(){
+//     class Builder {
+//       constructor(){
+//         this.name = ''
+//         this.price = ""
+//         this.description = ""
+//       }
+
+//       setName(incommingName){
+//         this.name = incommingName;
+//         return this
+//       }   
+//       setPrice(incommingPrice){
+//         this.price = incommingPrice;
+//         return this
+//       }
+//       setDescription(incommingDescription){
+//         this.description = incommingDescription;
+//         return this
+//       }
+//       build(){
+
+//         return new Product(this)
+//       }
+//     }
+//     return Builder
+//   }
+// }
+
+// const product = new Product.Builder()
+// .setName('Iphone')
+// .setPrice(70000)
+// .setDescription('Slim and Security wise its very good')
+
+// const result = product.build()
+// result.displayProduct()
+
+
+// class Product{
+
+//   #name
+//   #price
+//   #description
+
+//   constructor(Builder){
+//     this.#name = Builder.name;
+//     this.#price = Builder.price;
+//     this.#description = Builder.description;
+//   }
+
+//   displayProduct(){
+//     console.log(`
+//       Product Info:
+//       Product Name: ${this.#name} 
+//       Product Price: ${this.#price} 
+//       Product Description: ${this.#description}
+//       `)
+//     }
+
+//   static get Builder(){
+//     class Builder {
+//       constructor(){
+//         this.name = ''
+//         this.price = ""
+//         this.description = ""
+//       }
+
+//       setName(incommingName){
+//         this.name = incommingName;
+//         return this
+//       }   
+//       setPrice(incommingPrice){
+//         this.price = incommingPrice;
+//         return this
+//       }
+//       setDescription(incommingDescription){
+//         this.description = incommingDescription;
+//         return this
+//       }
+//       build(){
+
+//         return new Product(this)
+//       }
+//     }
+//     return Builder
+//   }
+// }
+
+// const product = new Product.Builder()
+// .setName('Iphone')
+// .setPrice(70000)
+// .setDescription('Slim and Security wise its very good')
+
+// const result = product.build()
+// result.displayProduct()
+
+function Events(date){
+  this.date = date
 }
 
-function writeFile(data, filename, callback){
-    console.log('writting data to the file . . . .')
-    setTimeout(()=>{
-        console.log('writting',data,'to the filename',filename,'is done')
-        let msg = "successfull"
-        callback(data,msg)
-    },4000)
+Events.prototype.bookEvent = function(){
+  console.log('booking event completed successfully')
 }
 
-function uploadData(data,drivename,msg){
-    console.log('uploadind data to the drive.....')
-    setTimeout(() => {
-        console.log('uploading', data, 'to the',drivename,'is done')
-        console.log('task is',msg)
-    },5000);
+function Movies(name,date){
+  Events.call(this,date)
+  this.name = name
 }
 
-downloadData('www.info.com', function handleDownload(data){
-    writeFile(data, 'data.txt', function handleUpload(data,msg){
-        uploadData(data,'www.googledrive.com',msg)
-    })
-})
+Movies.prototype = Object.create(Events.prototype)
+const m = new Movies('movie','11-22-92')
+m.bookEvent()

@@ -36,3 +36,16 @@
  * strict and non-strict mode. 
  * 
  */
+
+Notes:
+------
+this keyword in global space represent to global object. 
+ 
+This inside function
+----------------------
+inside the function this will be pointing out to the window object again 
+and here also it depends upon non-strict mode and strict-mode 
+
+* if we are using strict mode then for both node and browser we will get undefined
+* but without strict mode we will get window object for browser and global object for nodejs
+
