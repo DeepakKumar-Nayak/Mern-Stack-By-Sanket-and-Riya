@@ -155,3 +155,6 @@ select * from POSTS ORDER BY Created_at
 select * from POSTS ORDER BY Created_at DESC
 . DESC for decreasing order.
 . ASC for increasing order,  
+
+// Lets say if i want to delete some records.
+DELETE FROM POSTS WHERE ID = 1; 

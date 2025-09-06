@@ -1,0 +1,42 @@
+NoSQL :=> No SQL Databse
+It is a category of databse which is going to store data in non-relational-fashion.
+In relational databse out data ia being stored in the tables. But in NOSQL there
+will be no table we will get to see insort the data are not stored the form of 
+tables.
+
+and MongoDb ek docuent based databse hai jahan apko data milenge in the form of 
+ke y and value pair
+
+ MongoDB platform independent bhi hai matlab ham esko kahin bhi chala sakhte hai 
+ for example aggar mein apne macbook mein mongodb chala raha hon then wohi same 
+ code ham Windows mein bhi chala sakhte hein
+
+Mongodb internally store data in the form of JSON and BSON
+json looks like a javascript object, but it is not actually a javascript Object.
+
+// Queries: 
+------------
+aggar apko db create karna hai then we can directly write.
+. use dbname; 
+
+aggar yeah db nahi hoga then automatically create ho jaega. 
+but aggar apko dekhna hai us db ko for that the query will be. 
+. show dbs; 
+
+but aap yeah  likhne ke baad bhi apko db dekhne ko nahi milega jab tak aap 
+ek collection na banao aur aap collection kaise banaenge uske liye the query is:
+. db.createCollection("students")
+name of the collection is students. 
+
+aab aap us mein kuch data insert kardo aap single data bhi bhar sakhte ho 
+aur ap multiple data bhi. 
+. db.students.insertOne({}) => it will only allow you to add single data .
+. db.students.insertMany({}) => more than one aap data bhar sakhte ho. 
+
+
+aggar apko dekhne hai ki kitne documents / data apne bhar rakha hua hai
+then uske liye query hai. 
+db.students.countDocument() => this is show you the number of documents. 
+
+// aggar apko limited data dekhna hai suppose 5 data dekhna hai
+. db.students.find().limit(5)
