@@ -40,3 +40,33 @@ db.students.countDocument() => this is show you the number of documents.
 
 // aggar apko limited data dekhna hai suppose 5 data dekhna hai
 . db.students.find().limit(5)
+
+// aap data ko filter out bhi kar sakhte ho jaise ki apko only name dekhna hai
+who belong to CSE Branch. 
+. db.students.find({branch: "CSE"}, {name:1, _id:0})
+[
+  { name: 'Aarav Sharma' },
+  { name: 'Siddharth Rao' },
+  { name: 'Sneha Reddy' },
+  { name: 'Isha Chawla' },
+  { name: 'Riya Kapoor' }
+]
+
+yahan pe apko bas wohi log mile hai jo belong karte hai cs branch ko. 
+aand aur ek baat name: 1 => true only name dekhne ko milega and 
+_id:0 => false apko id dekhne ko nahi milega bas name hi hoga print
+
+db.students.find({eske andar likha jaega filter karne ke liye data}, {here we can specify what parameter we need})
+
+. aggar hame ek data mein se sab kuch nikalna hai par ek chiz nahi nikalna hai
+for example mujhe 10 mein se 1 nahi chahiye baki sare chahiye toh kya uske liye 
+ham ek ek karke har 9 property mein :1 likhenge .. nahi nahi aisa karne ki koi 
+jarurat nahi hai aap bas ek ham karo 
+
+db.students.find({}, {proerty_we_dont_Want:0})
+jo property apko nahi chahiye bas uske liye aap :0 likh do toh es mein kya hoga
+aab apko sab kuch milega par woh nhi milega.
+
+.thisis actually easy na har ek property mein :1 likhne ke vajah jo nahi 
+chahiye us mien :0 likh do. 
+
