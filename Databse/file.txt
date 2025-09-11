@@ -1,4 +1,4 @@
-Database gives us an origanised way where we can store our data and restore pur data very easily ans in an efficient manner 
+Database gives us an origanised way where we can store our data and restore our data very easily and in an efficient manner 
 
 Database are divided into tro categories 
 1. RDBMS 

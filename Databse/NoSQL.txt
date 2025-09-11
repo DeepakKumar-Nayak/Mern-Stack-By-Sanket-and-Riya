@@ -1,6 +1,6 @@
 NoSQL :=> No SQL Databse
 It is a category of databse which is going to store data in non-relational-fashion.
-In relational databse out data ia being stored in the tables. But in NOSQL there
+In relational databse our data ia being stored in the tables. But in NOSQL there
 will be no table we will get to see insort the data are not stored the form of 
 tables.
 

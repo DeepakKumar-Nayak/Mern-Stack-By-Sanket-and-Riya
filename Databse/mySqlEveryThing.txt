@@ -1,0 +1,98 @@
+Notes: 
+------
+Kabhi bhi aap query ya phir command likhte ho toh woh jo command hai woh dbms ko send kiya jata hai and woh apke liye operations perform karta hai jaise ki Create, Delete, Update and Insert. 
+
+Par sab kuch janne se pehle ham pehle thoda sa dekh padh lete hai relational 
+databse and non-relational database. 
+
+relational database :
+----------------------
+Jo mein abhi padh raha hoon wih relational database mein atta hai jaise ki MySQL. 
+and relational databse mein data table ke form mein store hota hai. aur bhi kain 
+sare relation databse hai jaise ki postgres, mysql , microsoftsql
+
+aggar ham relataional database and non relational databse ki baat kare toh relational
+database mein hamesha table ke form mein data store hota hai and non-relational 
+databse mein document based mein store hota hai in the form of key value pairs 
+
+. aggar mein non relational database mongodb ki baat karu then wahan hamesha data jo 
+store hota hai woh document base hota hai and aggar mein MYSQL ki baat karun wahan jo 
+data store hota hai woh table format mein hota hai. 
+
+. Mongodb ek schema less databse hai and MYSQl ek schema wala databse hai aab schema kya hai. 
+schema matlab jahan hame Pehle schema define karna padta hai (table, columns, datatype, constraints).
+
+CREATE TABLE users (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  age INT
+);
+
+esko bolte hain schema jo hame mongodb mein karne ki jarurat nahi hai. 
+
+. Relationak databse (MYSQL) follows a fixed and predefine schema
+
+// command to create databse: 
+create databse startersql
+
+// uske baad aggar apko usko use karna hai uspe kam karna hai toh uske liye apko ek command likhna padega
+// use startersql;
+
+
+// how to create a table: 
+create table users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    gender ENUM ('male', 'female', 'other'),
+    date_of_birth DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+// how to check that the table is created or not.?
+select * from users;
+
+// how to drop the databse(delete)
+drop database users;
+
+// rename a table: 
+RENAME TABLE programmers to USERS; 
+
+// how to comment a line in MYSQL;
+-- select * from users; 
+just use -- (before the line)
+
+// how to add a column in the table;
+alter table users add column is_active BOOLEAN DEFAULT TRUE;
+. ek column add ho jaega is_active ke nam se 
+. BOOLEAN DEFAULT TRUE (eska matlab agar insert karte waqt is_active column 
+ki value nahi dega, to MySQL usme automatically TRUE (1) store karega.)
+
+//Aggar mujhe is_active column ko delete karna hai.
+alter table users drop column is_active; 
+
+// aggar mujhe id ke baad email ko shift karna hai toh kaise karenge. 
+. alter table users modify column email varchar (100) after id;
+
+aab pehle id then email but yahan hame specify bhi karna padega uska datatype
+that's why i have written varchar (100) and this is mandatory;
+
+// agar mujhe chahiy id se pehle bhi dob ayye matlab pehle dob id then email;
+. alter table users modify column dob DATETIME first; 
+. better to use date then using datetime kyun ki date aggar use karoge toh 
+aap khali date likhoge like ('1995-08-12') else aggar datetime use karoge toh
+apko likhna padega ('2025-09-12 21:30:00')
+
+// CURD 
+. Insert
+INSERT INTO users VALUES (1, 'Deepak', 'deepak@gmail.com', 
+'male', '1995-08-12', CURRENT_TIMESTAMP);
+
+Output:
+--------
++----+--------+------------------+--------+---------------+---------------------+
+| id | name   | email            | gender | date_of_birth | created_at          |
++----+--------+------------------+--------+---------------+---------------------+
+|  1 | Deepak | deepak@gmail.com | male   | 1995-08-12    | 2025-09-12 00:53:24 |
++----+--------+------------------+--------+---------------+---------------------+
+
