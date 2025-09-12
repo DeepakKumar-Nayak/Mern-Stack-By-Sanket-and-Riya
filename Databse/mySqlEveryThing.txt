@@ -49,6 +49,21 @@ create table users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+// this is also right;
+create table users (
+  id int auto_increment primary key,
+  name varchar(100) not null,
+  email varchar (100) unique not null,
+  gender enum ('male','female','other'),
+  date_of_birth date,
+  created_at timestamp default current_timestamp
+
+);
+
+enum ka matlab hai ki table mein sirf en three values ko hi ham insert kar 
+sakhte hai aggar kuch allag kiya toh hame milega error enke alawa aur kuch 
+aap likh nahi sakhte.
+
 // how to check that the table is created or not.?
 select * from users;
 
@@ -83,8 +98,9 @@ that's why i have written varchar (100) and this is mandatory;
 aap khali date likhoge like ('1995-08-12') else aggar datetime use karoge toh
 apko likhna padega ('2025-09-12 21:30:00')
 
-// CURD 
+// CURD Operations
 . Insert
+---------
 INSERT INTO users VALUES (1, 'Deepak', 'deepak@gmail.com', 
 'male', '1995-08-12', CURRENT_TIMESTAMP);
 
@@ -96,3 +112,86 @@ Output:
 |  1 | Deepak | deepak@gmail.com | male   | 1995-08-12    | 2025-09-12 00:53:24 |
 +----+--------+------------------+--------+---------------+---------------------+
 
+insert into users (name, email, gender, date_of_birth, created_at)
+values ('deepak','deepak@gmail.com','male','1991-11-22', current_timestamp);
+
+insert into users (name, email, gender, date_of_birth)
+values('rahul','rahul@gmail.com','male','2002-11-22');
+
+// no need of writting anything for created_at because it will take time automatically;
+because of default current timestamp;
+
+select * from users;
++----+--------+------------------+--------+---------------+---------------------+
+| id | name   | email            | gender | date_of_birth | created_at          |
++----+--------+------------------+--------+---------------+---------------------+
+|  1 | deepak | deepak@gmail.com | male   | 1991-11-22    | 2025-09-12 09:58:08 |
+|  2 | rahul  | rahul@gmail.com  | male   | 2002-11-22    | 2025-09-12 16:11:41 |
++----+--------+------------------+--------+---------------+---------------------+
+
+// we can do selection of a specefic row buy applying some condition into it like: 
+sele
+mysql> select * from users where name = "deepak";
++----+--------+------------------+--------+---------------+---------------------+
+| id | name   | email            | gender | date_of_birth | created_at          |
++----+--------+------------------+--------+---------------+---------------------+
+|  1 | deepak | deepak@gmail.com | male   | 1991-11-22    | 2025-09-12 09:58:08 |
++----+--------+------------------+--------+---------------+---------------------+
+
+// we can also do something like; 
+select name,email where name = "deepak";
++--------+------------------+
+| name   | email            |
++--------+------------------+
+| deepak | deepak@gmail.com |
++--------+------------------+
+
+// create database if not exists databasename; 
+yahan kya hoga aggar nahi hai toh hi create hoga warna nahi hoga 
+
+
+// How to use where in mysql 
+select * from users where gender = "female";
+
+// aggar apko notequal to lagana hai then use <>
+select * from users where gender <> 'female';
+
+// greater than in mysql 
+select * from users where id > 45;
++----+--------+--------------------+--------+---------------+----------+
+| id | name   | email              | gender | date_of_birth | salary   |
++----+--------+--------------------+--------+---------------+----------+
+| 46 | Satish | satish46@gmail.com | male   | 1988-06-18    | 67000.00 |
+| 47 | Radha  | radha47@gmail.com  | female | 1991-08-29    | 52000.35 |
+| 48 | Dev    | dev48@gmail.com    | male   | 1992-10-14    | 61000.60 |
+| 49 | Lata   | lata49@gmail.com   | female | 1994-12-01    | 43000.25 |
+| 50 | Omkar  | omkar50@gmail.com  | male   | 1996-02-27    | 50000.90 |
++----+--------+--------------------+--------+---------------+----------+
+
+// less than in mysql
+select * from users where id < 10;
++----+--------+-------------------+--------+---------------+----------+
+| id | name   | email             | gender | date_of_birth | salary   |
++----+--------+-------------------+--------+---------------+----------+
+|  1 | Deepak | deepak1@gmail.com | male   | 1990-01-12    | 45000.50 |
+|  2 | Amit   | amit2@gmail.com   | male   | 1985-03-22    | 52000.75 |
+|  3 | Neha   | neha3@gmail.com   | female | 1992-07-18    | 61000.20 |
+|  4 | Ravi   | ravi4@gmail.com   | male   | 1988-09-10    | 48000.00 |
+|  5 | Pooja  | pooja5@gmail.com  | female | 1995-11-25    | 55000.30 |
+|  6 | Sanjay | sanjay6@gmail.com | male   | 1991-02-05    | 67000.80 |
+|  7 | Meena  | meena7@gmail.com  | female | 1987-05-15    | 72000.90 |
+|  8 | Arjun  | arjun8@gmail.com  | male   | 1993-08-21    | 39000.40 |
+|  9 | Kiran  | kiran9@gmail.com  | female | 1996-12-30    | 45000.00 |
++----+--------+-------------------+--------+---------------+----------+
+
+// how to use between; 
+select * from users where salary between 70000 and 80000;
++----+--------+--------------------+--------+---------------+----------+
+| id | name   | email              | gender | date_of_birth | salary   |
++----+--------+--------------------+--------+---------------+----------+
+|  7 | Meena  | meena7@gmail.com   | female | 1987-05-15    | 72000.90 |
+| 16 | Mohit  | mohit16@gmail.com  | male   | 1986-01-25    | 75000.35 |
+| 26 | Rohit  | rohit26@gmail.com  | male   | 1989-03-19    | 70000.25 |
+| 32 | Suresh | suresh32@gmail.com | male   | 1986-05-20    | 73000.80 |
+| 42 | Harish | harish42@gmail.com | male   | 1987-08-11    | 71000.70 |
++----+--------+--------------------+--------+---------------+----------+
